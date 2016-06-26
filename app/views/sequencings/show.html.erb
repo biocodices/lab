@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pal:</strong>
+  <%= @sequencing.pal %>
+</p>
+
+<p>
+  <strong>Dal:</strong>
+  <%= @sequencing.dal %>
+</p>
+
+<p>
+  <strong>Pre seq date:</strong>
+  <%= @sequencing.pre_seq_date %>
+</p>
+
+<p>
+  <strong>Pre seq notes:</strong>
+  <%= @sequencing.pre_seq_notes %>
+</p>
+
+<p>
+  <strong>Investigator name:</strong>
+  <%= @sequencing.investigator_name %>
+</p>
+
+<p>
+  <strong>Rcb:</strong>
+  <%= @sequencing.rcb %>
+</p>
+
+<p>
+  <strong>Sample prep kit:</strong>
+  <%= @sequencing.sample_prep_kit %>
+</p>
+
+<p>
+  <strong>Index reads:</strong>
+  <%= @sequencing.index_reads %>
+</p>
+
+<p>
+  <strong>Read type:</strong>
+  <%= @sequencing.read_type %>
+</p>
+
+<p>
+  <strong>Cycles reads 1:</strong>
+  <%= @sequencing.cycles_reads_1 %>
+</p>
+
+<p>
+  <strong>Cycles reads 2:</strong>
+  <%= @sequencing.cycles_reads_2 %>
+</p>
+
+<p>
+  <strong>Run date:</strong>
+  <%= @sequencing.run_date %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @sequencing.notes %>
+</p>
+
+<p>
+  <strong>Old:</strong>
+  <%= @sequencing.old_id %>
+</p>
+
+<%= link_to 'Edit', edit_sequencing_path(@sequencing) %> |
+<%= link_to 'Back', sequencings_path %>

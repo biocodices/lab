@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Nanodrop Quantifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concentration</th>
+      <th>Ratio 260 280</th>
+      <th>Ratio 260 230</th>
+      <th>Absorbance 280</th>
+      <th>Absorbance 260</th>
+      <th>Factor</th>
+      <th>Dna sample</th>
+      <th>Sample type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nanodrop_quantifications.each do |nanodrop_quantification| %>
+      <tr>
+        <td><%= nanodrop_quantification.concentration %></td>
+        <td><%= nanodrop_quantification.ratio_260_280 %></td>
+        <td><%= nanodrop_quantification.ratio_260_230 %></td>
+        <td><%= nanodrop_quantification.absorbance_280 %></td>
+        <td><%= nanodrop_quantification.absorbance_260 %></td>
+        <td><%= nanodrop_quantification.factor %></td>
+        <td><%= nanodrop_quantification.dna_sample %></td>
+        <td><%= nanodrop_quantification.sample_type %></td>
+        <td><%= link_to 'Show', nanodrop_quantification %></td>
+        <td><%= link_to 'Edit', edit_nanodrop_quantification_path(nanodrop_quantification) %></td>
+        <td><%= link_to 'Destroy', nanodrop_quantification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nanodrop quantification', new_nanodrop_quantification_path %>

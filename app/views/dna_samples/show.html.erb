@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sample:</strong>
+  <%= @dna_sample.sample %>
+</p>
+
+<p>
+  <strong>Old:</strong>
+  <%= @dna_sample.old_id %>
+</p>
+
+<p>
+  <strong>Extraction date:</strong>
+  <%= @dna_sample.extraction_date %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @dna_sample.notes %>
+</p>
+
+<%= link_to 'Edit', edit_dna_sample_path(@dna_sample) %> |
+<%= link_to 'Back', dna_samples_path %>

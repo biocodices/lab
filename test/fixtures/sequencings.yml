@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pal: MyString
+  dal: MyString
+  pre_seq_date: 2016-06-26
+  pre_seq_notes: MyText
+  investigator_name: MyString
+  rcb: MyString
+  sample_prep_kit: MyString
+  index_reads: 1
+  read_type: MyString
+  cycles_reads_1: 1
+  cycles_reads_2: 1
+  run_date: 2016-06-26
+  notes: MyText
+  old_id: MyString
+
+two:
+  pal: MyString
+  dal: MyString
+  pre_seq_date: 2016-06-26
+  pre_seq_notes: MyText
+  investigator_name: MyString
+  rcb: MyString
+  sample_prep_kit: MyString
+  index_reads: 1
+  read_type: MyString
+  cycles_reads_1: 1
+  cycles_reads_2: 1
+  run_date: 2016-06-26
+  notes: MyText
+  old_id: MyString

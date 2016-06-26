@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Assay concentration:</strong>
+  <%= @qubit_quantification.assay_concentration %>
+</p>
+
+<p>
+  <strong>Stock concentration:</strong>
+  <%= @qubit_quantification.stock_concentration %>
+</p>
+
+<p>
+  <strong>Assay type:</strong>
+  <%= @qubit_quantification.assay_type %>
+</p>
+
+<p>
+  <strong>Sample vol:</strong>
+  <%= @qubit_quantification.sample_vol %>
+</p>
+
+<p>
+  <strong>Dilution factor:</strong>
+  <%= @qubit_quantification.dilution_factor %>
+</p>
+
+<p>
+  <strong>Std1 rfu:</strong>
+  <%= @qubit_quantification.std1_rfu %>
+</p>
+
+<p>
+  <strong>Std2 rfu:</strong>
+  <%= @qubit_quantification.std2_rfu %>
+</p>
+
+<p>
+  <strong>Std3 rfu:</strong>
+  <%= @qubit_quantification.std3_rfu %>
+</p>
+
+<p>
+  <strong>Excitation:</strong>
+  <%= @qubit_quantification.excitation %>
+</p>
+
+<p>
+  <strong>Green rfu:</strong>
+  <%= @qubit_quantification.green_rfu %>
+</p>
+
+<p>
+  <strong>Far red rfu:</strong>
+  <%= @qubit_quantification.far_red_rfu %>
+</p>
+
+<p>
+  <strong>Dna sample:</strong>
+  <%= @qubit_quantification.dna_sample %>
+</p>
+
+<%= link_to 'Edit', edit_qubit_quantification_path(@qubit_quantification) %> |
+<%= link_to 'Back', qubit_quantifications_path %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Concentration:</strong>
+  <%= @nanodrop_quantification.concentration %>
+</p>
+
+<p>
+  <strong>Ratio 260 280:</strong>
+  <%= @nanodrop_quantification.ratio_260_280 %>
+</p>
+
+<p>
+  <strong>Ratio 260 230:</strong>
+  <%= @nanodrop_quantification.ratio_260_230 %>
+</p>
+
+<p>
+  <strong>Absorbance 280:</strong>
+  <%= @nanodrop_quantification.absorbance_280 %>
+</p>
+
+<p>
+  <strong>Absorbance 260:</strong>
+  <%= @nanodrop_quantification.absorbance_260 %>
+</p>
+
+<p>
+  <strong>Factor:</strong>
+  <%= @nanodrop_quantification.factor %>
+</p>
+
+<p>
+  <strong>Dna sample:</strong>
+  <%= @nanodrop_quantification.dna_sample %>
+</p>
+
+<p>
+  <strong>Sample type:</strong>
+  <%= @nanodrop_quantification.sample_type %>
+</p>
+
+<%= link_to 'Edit', edit_nanodrop_quantification_path(@nanodrop_quantification) %> |
+<%= link_to 'Back', nanodrop_quantifications_path %>

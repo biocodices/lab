@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @sample.institution %>
+</p>
+
+<p>
+  <strong>Doctor full name:</strong>
+  <%= @sample.doctor_full_name %>
+</p>
+
+<p>
+  <strong>Doctor email:</strong>
+  <%= @sample.doctor_email %>
+</p>
+
+<p>
+  <strong>Request date:</strong>
+  <%= @sample.request_date %>
+</p>
+
+<p>
+  <strong>Admission date:</strong>
+  <%= @sample.admission_date %>
+</p>
+
+<p>
+  <strong>Request category:</strong>
+  <%= @sample.request_category %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @sample.notes %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @sample.project %>
+</p>
+
+<p>
+  <strong>Old:</strong>
+  <%= @sample.old_id %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @sample.patient %>
+</p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @sample.barcode %>
+</p>
+
+<%= link_to 'Edit', edit_sample_path(@sample) %> |
+<%= link_to 'Back', samples_path %>

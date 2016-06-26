@@ -1,0 +1,61 @@
+<%= form_for(@sample) do |f| %>
+  <% if @sample.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
+
+      <ul>
+      <% @sample.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :institution %><br>
+    <%= f.text_field :institution %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor_full_name %><br>
+    <%= f.text_field :doctor_full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor_email %><br>
+    <%= f.text_field :doctor_email %>
+  </div>
+  <div class="field">
+    <%= f.label :request_date %><br>
+    <%= f.date_select :request_date %>
+  </div>
+  <div class="field">
+    <%= f.label :admission_date %><br>
+    <%= f.date_select :admission_date %>
+  </div>
+  <div class="field">
+    <%= f.label :request_category %><br>
+    <%= f.text_field :request_category %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= f.text_field :project_id %>
+  </div>
+  <div class="field">
+    <%= f.label :old_id %><br>
+    <%= f.text_field :old_id %>
+  </div>
+  <div class="field">
+    <%= f.label :patient_id %><br>
+    <%= f.text_field :patient_id %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode %><br>
+    <%= f.text_field :barcode %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Samples</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Institution</th>
+      <th>Doctor full name</th>
+      <th>Doctor email</th>
+      <th>Request date</th>
+      <th>Admission date</th>
+      <th>Request category</th>
+      <th>Notes</th>
+      <th>Project</th>
+      <th>Old</th>
+      <th>Patient</th>
+      <th>Barcode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @samples.each do |sample| %>
+      <tr>
+        <td><%= sample.institution %></td>
+        <td><%= sample.doctor_full_name %></td>
+        <td><%= sample.doctor_email %></td>
+        <td><%= sample.request_date %></td>
+        <td><%= sample.admission_date %></td>
+        <td><%= sample.request_category %></td>
+        <td><%= sample.notes %></td>
+        <td><%= sample.project %></td>
+        <td><%= sample.old_id %></td>
+        <td><%= sample.patient %></td>
+        <td><%= sample.barcode %></td>
+        <td><%= link_to 'Show', sample %></td>
+        <td><%= link_to 'Edit', edit_sample_path(sample) %></td>
+        <td><%= link_to 'Destroy', sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sample', new_sample_path %>

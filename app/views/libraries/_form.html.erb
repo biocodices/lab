@@ -1,0 +1,65 @@
+<%= form_for(@library) do |f| %>
+  <% if @library.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@library.errors.count, "error") %> prohibited this library from being saved:</h2>
+
+      <ul>
+      <% @library.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :laboratory %><br>
+    <%= f.text_field :laboratory %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :hyp %><br>
+    <%= f.text_field :hyp %>
+  </div>
+  <div class="field">
+    <%= f.label :fpu %><br>
+    <%= f.text_field :fpu %>
+  </div>
+  <div class="field">
+    <%= f.label :pre_pcr_date %><br>
+    <%= f.date_select :pre_pcr_date %>
+  </div>
+  <div class="field">
+    <%= f.label :pcr_date %><br>
+    <%= f.date_select :pcr_date %>
+  </div>
+  <div class="field">
+    <%= f.label :iap %><br>
+    <%= f.text_field :iap %>
+  </div>
+  <div class="field">
+    <%= f.label :clp %><br>
+    <%= f.text_field :clp %>
+  </div>
+  <div class="field">
+    <%= f.label :lnp %><br>
+    <%= f.text_field :lnp %>
+  </div>
+  <div class="field">
+    <%= f.label :sgp %><br>
+    <%= f.text_field :sgp %>
+  </div>
+  <div class="field">
+    <%= f.label :post_pcr_date %><br>
+    <%= f.date_select :post_pcr_date %>
+  </div>
+  <div class="field">
+    <%= f.label :old_id %><br>
+    <%= f.text_field :old_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,73 @@
+<%= form_for(@sequencing) do |f| %>
+  <% if @sequencing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sequencing.errors.count, "error") %> prohibited this sequencing from being saved:</h2>
+
+      <ul>
+      <% @sequencing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pal %><br>
+    <%= f.text_field :pal %>
+  </div>
+  <div class="field">
+    <%= f.label :dal %><br>
+    <%= f.text_field :dal %>
+  </div>
+  <div class="field">
+    <%= f.label :pre_seq_date %><br>
+    <%= f.date_select :pre_seq_date %>
+  </div>
+  <div class="field">
+    <%= f.label :pre_seq_notes %><br>
+    <%= f.text_area :pre_seq_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :investigator_name %><br>
+    <%= f.text_field :investigator_name %>
+  </div>
+  <div class="field">
+    <%= f.label :rcb %><br>
+    <%= f.text_field :rcb %>
+  </div>
+  <div class="field">
+    <%= f.label :sample_prep_kit %><br>
+    <%= f.text_field :sample_prep_kit %>
+  </div>
+  <div class="field">
+    <%= f.label :index_reads %><br>
+    <%= f.number_field :index_reads %>
+  </div>
+  <div class="field">
+    <%= f.label :read_type %><br>
+    <%= f.text_field :read_type %>
+  </div>
+  <div class="field">
+    <%= f.label :cycles_reads_1 %><br>
+    <%= f.number_field :cycles_reads_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :cycles_reads_2 %><br>
+    <%= f.number_field :cycles_reads_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :run_date %><br>
+    <%= f.date_select :run_date %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :old_id %><br>
+    <%= f.text_field :old_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

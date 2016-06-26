@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sequencings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pal</th>
+      <th>Dal</th>
+      <th>Pre seq date</th>
+      <th>Pre seq notes</th>
+      <th>Investigator name</th>
+      <th>Rcb</th>
+      <th>Sample prep kit</th>
+      <th>Index reads</th>
+      <th>Read type</th>
+      <th>Cycles reads 1</th>
+      <th>Cycles reads 2</th>
+      <th>Run date</th>
+      <th>Notes</th>
+      <th>Old</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sequencings.each do |sequencing| %>
+      <tr>
+        <td><%= sequencing.pal %></td>
+        <td><%= sequencing.dal %></td>
+        <td><%= sequencing.pre_seq_date %></td>
+        <td><%= sequencing.pre_seq_notes %></td>
+        <td><%= sequencing.investigator_name %></td>
+        <td><%= sequencing.rcb %></td>
+        <td><%= sequencing.sample_prep_kit %></td>
+        <td><%= sequencing.index_reads %></td>
+        <td><%= sequencing.read_type %></td>
+        <td><%= sequencing.cycles_reads_1 %></td>
+        <td><%= sequencing.cycles_reads_2 %></td>
+        <td><%= sequencing.run_date %></td>
+        <td><%= sequencing.notes %></td>
+        <td><%= sequencing.old_id %></td>
+        <td><%= link_to 'Show', sequencing %></td>
+        <td><%= link_to 'Edit', edit_sequencing_path(sequencing) %></td>
+        <td><%= link_to 'Destroy', sequencing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sequencing', new_sequencing_path %>

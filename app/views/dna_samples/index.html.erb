@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dna Samples</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Old</th>
+      <th>Extraction date</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dna_samples.each do |dna_sample| %>
+      <tr>
+        <td><%= dna_sample.sample %></td>
+        <td><%= dna_sample.old_id %></td>
+        <td><%= dna_sample.extraction_date %></td>
+        <td><%= dna_sample.notes %></td>
+        <td><%= link_to 'Show', dna_sample %></td>
+        <td><%= link_to 'Edit', edit_dna_sample_path(dna_sample) %></td>
+        <td><%= link_to 'Destroy', dna_sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dna sample', new_dna_sample_path %>

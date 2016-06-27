@@ -1,3 +1,36 @@
-// Place all the styles related to the Samples controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.hidden-row {
+  padding: 0 !important;
+  border: 0 !important;
+
+  .padding {
+    padding: 20px;
+  }
+
+  .collapsing, .collapse.in {
+    border-left: 2px solid gold;
+    border-right: 2px solid gold;
+    border-bottom: 2px solid gold;
+  }
+}
+
+
+// Details of a DNA sample quantifications
+.dna-details {
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: lavender;
+  border: 1px solid silver;
+  border-radius: 4px;
+
+  .title {
+    font-size: 1.15em;
+  }
+
+  table.quantification {
+    margin-bottom: 0px;  // Override bootstrap's 20px
+  }
+}
+
+.quanti-index {  // First cell of quantification tables
+  width: 75px;
+}

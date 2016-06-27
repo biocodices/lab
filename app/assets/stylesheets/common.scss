@@ -10,6 +10,12 @@
 // Index tables with extra details in a hidden collapsible row:
 .display-row {
   cursor: pointer;
+  background-color: gold !important;
+  // ^ Highlights expanded samples.
+  &.collapsed {
+    background-color: initial !important;
+    // It uses the .collapsed Bootstrap class that is removed/restored on click
+  }
 }
 
 .hidden-row {
@@ -19,6 +25,33 @@
   .padding {
     padding: 20px;
   }
+
+  .collapsing, .collapse.in {
+    border-left: 2px solid gold;
+    border-right: 2px solid gold;
+    border-bottom: 2px solid gold;
+  }
+}
+
+// Details of a DNA sample quantifications
+.dna-details {
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: lavender;
+  border: 1px solid silver;
+  border-radius: 4px;
+
+  .title {
+    font-size: 1.15em;
+  }
+
+  table.quantification {
+    margin-bottom: 0px;  // Override bootstrap's 20px
+  }
+}
+
+.quanti-index {  // First cell of quantification tables
+  width: 75px;
 }
 
 

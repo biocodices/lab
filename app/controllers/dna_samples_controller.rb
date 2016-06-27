@@ -3,7 +3,7 @@ class DnaSamplesController < ApplicationController
 
   # GET /dna_samples
   def index
-    @dna_samples = DnaSample.all
+    @dna_samples = DnaSample.all.decorate
   end
 
   # GET /dna_samples/1

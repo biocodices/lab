@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Dna Samples</h1>
+<h1>Dna Samples</h1>
 
 <table class='table table-striped table-condensed'>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Patient</th>
-      <th>Old ID</th>
       <th>Extraction date</th>
-      <th>Notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @dna_samples.each do |dna_sample| %>
       <tr>
-        <td><%= dna_sample.sample.full_name %></td>
-        <td><%= dna_sample.old_id %></td>
+        <td><%= dna_sample.id %></td>
+        <td><%= dna_sample.patient.full_name %></td>
         <td><%= dna_sample.extraction_date %></td>
-        <td><%= dna_sample.notes %></td>
         <td><%= link_to 'Show', dna_sample %></td>
         <td><%= link_to 'Edit', edit_dna_sample_path(dna_sample) %></td>
         <td><%= link_to 'Destroy', dna_sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>

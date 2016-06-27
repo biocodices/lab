@@ -2,7 +2,7 @@
 
 <h1>Listing Samples</h1>
 
-<table>
+<table class='table table-striped table-condensed'>
   <thead>
     <tr>
       <th>Institution</th>
@@ -27,7 +27,7 @@
         <td><%= sample.doctor_full_name %></td>
         <td><%= sample.doctor_email %></td>
         <td><%= sample.request_date %></td>
-        <td><%= sample.admission_date %></td>
+        <td><%= sample.admission_date && sample.admission_date.strftime("%-d %b") %></td>
         <td><%= sample.request_category %></td>
         <td><%= sample.notes %></td>
         <td><%= sample.project %></td>

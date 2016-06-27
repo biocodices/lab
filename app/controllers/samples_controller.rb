@@ -3,7 +3,7 @@ class SamplesController < ApplicationController
 
   # GET /samples
   def index
-    @samples = Sample.all
+    @samples = Sample.all.decorate
   end
 
   # GET /samples/1

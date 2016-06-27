@@ -10,6 +10,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'font-awesome-rails'
+gem 'draper', '~> 1.3'
 
 gem 'jquery-rails'
 gem 'turbolinks'

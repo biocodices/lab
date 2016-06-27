@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Samples</h1>
+<h1>Samples</h1>
 
 <%= link_to 'Create new Sample', new_sample_path, class: "btn btn-default" %>
 
@@ -14,41 +14,66 @@
       <th>Request date</th>
       <th>Admission date</th>
       <th>Request category</th>
-      <th>Notes</th>
     </tr>
   </thead>
 
   <tbody>
     <% @samples.each do |sample| %>
-      <tr>
-        <td><%= sample.project.tag %></td>
+
+      <!-- Main row -->
+      <tr class="display-row" data-toggle="collapse" data-target="#detail-<%= sample.id %>" class="accordion-toggle">
+        <td>
+          <%= link_to project_path(sample.project) do %>
+            <%= sample.project.decorate.tag %>
+          <% end %>
+        </td>
         <td><%= sample.id %></td>
         <td><%= sample.patient.full_name %></td>
         <td><%= sample.institution %></td>
-        <td><%= sample.request_date  && sample.admission_date.strftime("%-d %b") %></td>
+        <td><%= sample.request_date && sample.admission_date.strftime("%-d %b") %></td>
         <td><%= sample.admission_date && sample.admission_date.strftime("%-d %b") %></td>
         <td><%= sample.request_category %></td>
-        <td><%= sample.notes %></td>
-        
-        <td class="details">
-          <div class="dropdown">
-            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= fa_icon "caret-down" %>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-              <ul>
-                <li>Doctor full name:<br><%= sample.doctor_full_name || "-" %></li>
-                <li>Doctor email:<br><%= sample.doctor_email || "-" %></li>
-                <li>Old ID:<br><%= sample.old_id || "-" %></li>
-                <li>Barcode:<br><%= sample.barcode || "-"  %></li>
-                <li><%= link_to 'Edit', edit_sample_path(sample) %></li>
-                <li><%= link_to 'Destroy', sample, method: :delete, data: { confirm: sample.delete_prompt } %></li>
-              </ul>
-            </div>
-          </div>
-        </td><!-- .details -->
-
       </tr>
+
+      <!-- Details row -->
+      <tr>
+        <td colspan="7" class="hidden-row">
+          <div class="accordion-body collapse" id="detail-<%= sample.id %>">
+            <div class="padding">
+
+              <p>Sample details:</p>
+              <ul>
+                <li>Doctor name: <%= sample.doctor_full_name || "-" %></li>
+                <li>Doctor email: <%= sample.doctor_email || "-" %></li>
+                <li>Old ID: <%= sample.old_id || "-" %></li>
+                <li>Barcode: <%= sample.barcode || "-"  %></li>
+                <li>Notes: <%= sample.notes %></li>
+              </ul>
+              <p>
+                <%= link_to 'Edit this sample', edit_sample_path(sample),
+                  class: "btn btn-default" %>
+              </p>
+
+              <% unless sample.dna_samples.count.zero? %>
+                <p>
+                  DNA extractions from this sample:
+
+                  <% sample.dna_samples.decorate.each do |dna_sample| %>
+                    <p>
+                      <%= link_to dna_sample_path(dna_sample), class: "btn btn-success" do %>
+                        <%= fa_icon "flask" %> <%= dna_sample.description %>
+                      <% end %>
+                    </p>
+                  <% end %>
+                </p>
+              <% end %>
+
+
+            </div>
+          </div><!-- accordion-body -->
+        </td>
+      </tr>
+
     <% end %>
   </tbody>
 </table>

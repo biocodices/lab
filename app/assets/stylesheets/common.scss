@@ -1,4 +1,34 @@
-td.details {
-  width: 50px;
-  text-align: center;
+.project {
+  font-weight: bold;
+
+  // Color of Project tags
+  &.enpv1 { color: darkSeaGreen; }
+  &.exome { color: burlyWood; }
+  &.pgsn  { color: darkKhaki; }
+}
+
+// Index tables with extra details in a hidden collapsible row:
+.display-row {
+  cursor: pointer;
+}
+
+.hidden-row {
+  padding: 0 !important;
+  border: 0 !important;
+
+  .padding {
+    padding: 20px;
+  }
+}
+
+
+// Fix text color of link_to buttons
+a.btn {
+  &.btn-primary:visited,
+  &.btn-info:visited,
+  &.btn-success:visited,
+  &.btn-warning:visited,
+  &.btn-danger:visited {
+    color: white;
+  }
 }

@@ -12,6 +12,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'draper', '~> 1.3'
+gem 'bootstrap_form'
 
 gem 'jquery-rails'
 gem 'turbolinks'

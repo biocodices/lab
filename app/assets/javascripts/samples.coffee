@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+ready = ->
+  $(".existing-options").find(".option").click((event) ->
+    optionValue = $.trim($(this).text())
+    associatedInput = $(this).closest('.existing-options')
+                             .siblings('.form-group').find('input')
+    associatedInput.val(optionValue)
+  )
+  
+$(document).ready(ready)
+$(document).on('page:load', ready)

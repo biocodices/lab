@@ -1,5 +1,6 @@
 class SamplesController < ApplicationController
   before_action :set_sample, only: [:show, :edit, :update, :destroy]
+  before_action :set_form_options, only: [:new, :edit]
 
   # GET /samples
   def index
@@ -46,12 +47,17 @@ class SamplesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_sample
       @sample = Sample.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    def set_form_options
+      @form_options = {
+        institutions: Sample.all.map(&:institution).uniq,
+        projects: Project.all.map{ |p| [p.tag, p.id] }
+      }
+    end
+
     def sample_params
       params.require(:sample).permit(:institution, :doctor_full_name, :doctor_email, :request_date, :admission_date, :request_category, :notes, :project_id, :old_id, :patient_id, :barcode)
     end

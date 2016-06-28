@@ -11,6 +11,12 @@
 .green { color: seaGreen; }
 .small { font-size: 0.9em !important; }
 
+// Backgrounds
+.alert-border {
+  border: 3px solid tomato !important;
+  // !important to override Bootstrap's td styles
+}
+
 // Fix text color of link_to buttons
 a.btn {
   &.btn-primary:visited,

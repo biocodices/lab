@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
 
   # GET /patients
   def index
-    @patients = Patient.all
+    @patients = Patient.all.decorate
   end
 
   # GET /patients/1

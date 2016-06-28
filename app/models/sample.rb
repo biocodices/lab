@@ -8,4 +8,8 @@ class Sample < ActiveRecord::Base
   def name
     "#{project.tag}-#{id}"
   end
+
+  def description
+    "#{name} #{patient.full_name}"
+  end
 end

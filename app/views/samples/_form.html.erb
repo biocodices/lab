@@ -14,6 +14,27 @@
       <% end %>
 
       <div class="field">
+        <label class="control-label">Project</label><br>
+        
+        <%= collection_radio_buttons(:sample, :project_id, Project.all, :id, :tag) do |b| %>
+          <%= b.label(class: "radio-inline") do %>
+            <%= b.radio_button + b.text %>
+          <% end %>
+        <% end %>
+        <%= link_to 'Create a new Project', new_project_path,
+            class: "btn btn-default", target: "_blank" %>
+      </div>
+
+      <div class="field">
+        <label class="control-label">Patient</label><br>
+        
+        <%= collection_select(:sample, :patient_id, Patient.all.decorate,
+                              :id, :select_option, {}, {class: "form-control inline"}) %>
+        <%= link_to 'Create a new patient', new_patient_path,
+            class: "btn btn-default", target: "_blank" %>
+      </div>
+
+      <div class="field">
         <%= f.text_field :institution %>
 
         <div class="btn-group existing-options">
@@ -67,22 +88,6 @@
       </div>
       <div class="field">
         <%= f.text_area :notes %>
-      </div>
-
-      <div class="field">
-        <label class="control-label">Project</label><br>
-        
-        <%= collection_radio_buttons(:sample, :project_id, Project.all, :id, :tag) do |b| %>
-          <%= b.label(class: "radio-inline") do %>
-            <%= b.radio_button + b.text %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <label class="control-label">Patient</label><br>
-        
-        <%= collection_select(:sample, :patient_id, Patient.all.decorate, :id, :select_option, {}, {class: "form-control"}) %>
       </div>
 
       <div class="field">

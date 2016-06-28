@@ -1,0 +1,22 @@
+.field {
+  margin-bottom: 25px !important;
+  // Overrides Bootstrap's div.field
+}
+
+.control-label {
+  font-size: 1.15em;
+  color: steelBlue;
+}
+
+
+// Options to easily fill the form fields
+.existing-options {
+  .btn {
+    font-size: 0.9em;
+  }
+}
+
+.form-control.inline {
+  display: inline-block;
+  width: auto;
+}

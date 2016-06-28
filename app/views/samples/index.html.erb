@@ -7,13 +7,6 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <p>
-    </p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
 
     <table class='table table-striped table-condensed'>
       <thead>
@@ -41,7 +34,7 @@
             </td>
             <td><%= sample.id %></td>
             <td><%= sample.patient.full_name %></td>
-            <td><%= safe_join(sample.dna_samples.map{ fa_icon "flask", class: "grey small" }) %></td>
+            <td><%= safe_join(sample.dna_samples.map{ fa_icon "flask", class: ["grey", "small"] }) %></td>
             <td><%= sample.institution %></td>
             <td><%= sample.request_date && sample.admission_date.strftime("%-d %b") %></td>
             <td><%= sample.admission_date && sample.admission_date.strftime("%-d %b") %></td>
@@ -54,116 +47,9 @@
               <div class="accordion-body collapse" id="detail-<%= sample.id %>">
                 <div class="padding">
 
-                  <p>Sample details:</p>
-                  <ul>
-                    <li>Doctor name: <%= sample.doctor_full_name || "-" %></li>
-                    <li>Doctor email: <%= sample.doctor_email || "-" %></li>
-                    <li>Old ID: <%= sample.old_id || "-" %></li>
-                    <li>Barcode: <%= sample.barcode || "-"  %></li>
-                    <li>Notes: <%= sample.notes || "-" %></li>
-                  </ul>
-                  <p>
-                    <%= link_to 'Edit the sample details', edit_sample_path(sample),
-                      class: "btn btn-default", target: "_blank" %>
-                    <%= link_to 'Edit the patient details', edit_patient_path(sample.patient),
-                      class: "btn btn-default", target: "_blank" %>
-                  </p>
+                  <%= render sample %>
 
-                  <% unless sample.dna_samples.count.zero? %>
-                    <p>
-                      DNA extractions from this sample:
-
-                      <% sample.dna_samples.decorate.each do |dna_sample| %>
-                        <div class="dna-details">
-                          <p class="title">
-                            <%= link_to edit_dna_sample_path(dna_sample), class: "" do %>
-                              <%= fa_icon "flask" %>
-                            <% end %>
-                            <%= dna_sample.description %>
-                          </p>
-
-                          <% unless dna_sample.nanodrop_quantifications.count.zero? %>
-                            <table class="table table-condensed table-striped quantification">
-                              <% dna_sample.nanodrop_quantifications.decorate.each do |nd| %>
-                                <tr>
-                                  <th>
-                                    <%= link_to edit_nanodrop_quantification_path(nd), title: "Edit this table" do %>
-                                      <span class="grey small">edit</span>
-                                    <% end %>
-                                  </th>
-                                  <th>Concentration</th>
-                                  <th>260/280</th>
-                                  <th>260/230</th>
-                                  <th>Abs. 280</th>
-                                  <th>Abs. 260</th>
-                                  <th>Factor</th>
-                                  <th>Type</th>
-                                  <th>Date</th>
-                                </tr>
-                                <tr>
-                                  <th class="quanti-index">Nanodrop</td>
-                                  <td><%= nd.concentration %></td>
-                                  <td><%= nd.ratio_260_280 %></td>
-                                  <td><%= nd.ratio_260_230 %></td>
-                                  <td><%= nd.absorbance_280 %></td>
-                                  <td><%= nd.absorbance_260 %></td>
-                                  <td><%= nd.factor %></td>
-                                  <td><%= nd.sample_type %></td>
-                                  <td><%= nd.created_at %></td>
-                                </tr>
-                              <% end %>
-                            </table>
-                          <% end %>
-
-                          <% unless dna_sample.qubit_quantifications.count.zero? %>
-                            <table class="table table-condensed table-striped quantification">
-                              <% dna_sample.qubit_quantifications.decorate.each do |qb| %>
-                                <tr>
-                                  <th>
-                                    <%= link_to edit_qubit_quantification_path(qb), title: "Edit this table" do %>
-                                      <span class="grey small">edit</span>
-                                    <% end %>
-                                  </th>
-                                  <th>[Assay]</th>
-                                  <th>[Stock]</th>
-                                  <th>Assay Type</th>
-                                  <th>Sample vol.</th>
-                                  <th>Dilution Factor</th>
-                                  <!-- <th>STD1</th> -->
-                                  <!-- <th>STD2</th> -->
-                                  <!-- <th>STD3</th> -->
-                                  <!-- <th>Excit.</th> -->
-                                  <!-- <th>Green RFU</th> -->
-                                  <!-- <th>Far red RFU</th> -->
-                                  <th>Date</th>
-                                </tr>
-                                <tr>
-                                  <th class="quanti-index">Qubit</td>
-                                  <td><%= qb.assay_concentration %></td>
-                                  <td><%= qb.stock_concentration %></td>
-                                  <td><%= qb.assay_type %></td>
-                                  <td><%= qb.sample_vol %></td>
-                                  <td><%= qb.dilution_factor %></td>
-                                  <!-- <td><%= qb.std1_rfu %></td> -->
-                                  <!-- <td><%= qb.std2_rfu %></td> -->
-                                  <!-- <td><%= qb.std3_rfu %></td> -->
-                                  <!-- <td><%= qb.excitation %></td> -->
-                                  <!-- <td><%= qb.green_rfu %></td> -->
-                                  <!-- <td><%= qb.far_red_rfu %></td> -->
-                                  <td><%= qb.created_at %></td>
-                                </tr>
-                              <% end %>
-                            </table>
-                          <% end %>
-
-                        </div><!-- .dna-sample-details -->
-                      <% end %>
-                    </p>
-
-                  <% end %>
-
-
-                </div>
+                </div><!-- .padding -->
               </div><!-- accordion-body -->
             </td>
           </tr>

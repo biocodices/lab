@@ -1,0 +1,28 @@
+<tr>
+  <th>
+    <%= link_to edit_nanodrop_quantification_path(nanodrop_quantification),
+        title: "Edit this table" do %>
+      <span class="grey small">edit</span>
+    <% end %>
+  </th>
+  <th>Concentration</th>
+  <th>260/280</th>
+  <th>260/230</th>
+  <th>Abs. 280</th>
+  <th>Abs. 260</th>
+  <th>Factor</th>
+  <th>Type</th>
+  <th>Date</th>
+</tr>
+<tr>
+  <th class="quanti-index">Nanodrop</td>
+  <td><%= nanodrop_quantification.concentration %></td>
+  <td><%= nanodrop_quantification.ratio_260_280 %></td>
+  <td><%= nanodrop_quantification.ratio_260_230 %></td>
+  <td><%= nanodrop_quantification.absorbance_280 %></td>
+  <td><%= nanodrop_quantification.absorbance_260 %></td>
+  <td><%= nanodrop_quantification.factor %></td>
+  <td><%= nanodrop_quantification.sample_type %></td>
+  <td><%= nanodrop_quantification.created_at %></td>
+</tr>
+

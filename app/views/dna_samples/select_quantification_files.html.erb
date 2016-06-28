@@ -1,0 +1,31 @@
+<h1>Load quantification data from files</h1>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_tag("/dna_samples/upload_quantification_files", action: :upload, multipart: true) do |f| %>
+      <div class="field">
+        <label class="control-label" for="nanodrop_file">
+          Load Nanodrop quantification file (.tsv)
+        </label>
+        <%= file_field_tag :nanodrop_file %>
+      </div>
+
+      <div class="field">
+        <label class="control-label" for="qubit_file">
+          Load Qubit quantification file (.csv)
+        </label>
+        <%= file_field_tag :qubit_file %>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        Submit the chosen files
+      </button>
+
+      <button type="reset" class="btn btn-default">
+        Reset the chosen files
+      </button>
+    <% end %>
+  </div>
+</div>
+
+

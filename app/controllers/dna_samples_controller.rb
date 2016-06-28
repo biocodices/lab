@@ -45,14 +45,47 @@ class DnaSamplesController < ApplicationController
     redirect_to dna_samples_url, notice: 'Dna sample was successfully destroyed.'
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dna_sample
-      @dna_sample = DnaSample.find(params[:id])
+  def select_quantification_files
+    render :select_quantification_files
+  end
+
+  def upload_quantification_files
+    if !params[:nanodrop_file] && !params[:qubit_file]
+      redirect_to dna_samples_url, alert: 'No files uploaded' and return
     end
 
-    # Only allow a trusted parameter "white list" through.
-    def dna_sample_params
-      params.require(:dna_sample).permit(:sample_id, :old_id, :extraction_date, :notes)
+    uploader = QuantificationUploader.new
+
+    notice_lines = []
+
+    if params[:nanodrop_file]
+      uploader.store!(params[:nanodrop_file])
+      tsv_filepath = uploader.file.file
+      nanodrops = NanodropQuantification.save_records_from_tsv!(tsv_filepath)
+      notice_lines << 'Nanodrop data loaded.'
     end
+
+    if params[:qubit_file]
+      uploader.store!(params[:qubit_file])
+      csv_filepath = uploader.file.file
+      qubits = QubitQuantification.save_records_from_csv!(csv_filepath)
+      notice_lines << 'Qubit data loaded.'
+    end
+
+    notice_text = notice_lines.join(' ')
+    redirect_to dna_samples_url, notice: notice_text
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dna_sample
+    @dna_sample = DnaSample.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def dna_sample_params
+    params.require(:dna_sample).permit(:sample_id, :old_id, :extraction_date,
+                                       :notes)
+  end
 end

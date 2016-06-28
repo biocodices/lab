@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  resources :sequencings
-  resources :libraries
-  resources :qubit_quantifications
-  resources :nanodrop_quantifications
-  resources :dna_samples
-  resources :samples
-  resources :patients
-  resources :projects
-  resources :patients
-  resources :projects
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -18,8 +8,20 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
+  post 'dna_samples/upload_quantification_files' => 'dna_samples#upload_quantification_files'
+
+  get 'dna_samples/select_quantification_files' => 'dna_samples#select_quantification_files'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  resources :sequencings
+  resources :libraries
+  resources :qubit_quantifications
+  resources :nanodrop_quantifications
+  resources :samples
+  resources :dna_samples
+  resources :patients
+  resources :projects
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

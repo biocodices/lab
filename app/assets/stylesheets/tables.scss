@@ -14,12 +14,16 @@
   }
 }
 
+// FIXME: !important war
 .display-row {
   cursor: pointer;
   background-color: gold !important;
   // ^ Highlights expanded samples.
   // !important overrides bootstrap heavily nested rule.
   &.collapsed {
+    &:hover {
+      background-color: lightGoldenrodYellow !important;
+    }
     background-color: initial !important;
     // It uses the .collapsed Bootstrap class that is removed/restored on click
   // !important overrides bootstrap heavily nested rule.

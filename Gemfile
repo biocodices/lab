@@ -13,6 +13,7 @@ gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'draper', '~> 1.3'
 gem 'bootstrap_form'
+gem 'carrierwave'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -30,8 +31,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # gem 'byebug'
   gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do

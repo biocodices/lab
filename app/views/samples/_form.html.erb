@@ -27,9 +27,26 @@
 
       <div class="field">
         <%= f.text_field :doctor_full_name %>
+
+        <div class="btn-group existing-options">
+          <% @form_options[:doctor_names].each do |doctor_name| %>
+            <button type="button" class="btn btn-default option">
+              <%= doctor_name %>
+            </button>
+          <% end %>
+        </div>
       </div>
+
       <div class="field">
         <%= f.text_field :doctor_email %>
+
+        <div class="btn-group existing-options">
+          <% @form_options[:doctor_emails].each do |doctor_email| %>
+            <button type="button" class="btn btn-default option">
+              <%= doctor_email %>
+            </button>
+          <% end %>
+        </div>
       </div>
       <div class="field">
         <%= f.date_select :request_date %>
@@ -39,6 +56,14 @@
       </div>
       <div class="field">
         <%= f.text_field :request_category %>
+
+        <div class="btn-group existing-options">
+          <% @form_options[:request_categories].each do |request_category| %>
+            <button type="button" class="btn btn-default option">
+              <%= request_category %>
+            </button>
+          <% end %>
+        </div>
       </div>
       <div class="field">
         <%= f.text_area :notes %>
@@ -55,8 +80,11 @@
       </div>
 
       <div class="field">
-        <%= f.text_field :patient_id %>
+        <label class="control-label">Patient</label><br>
+        
+        <%= collection_select(:sample, :patient_id, Patient.all.decorate, :id, :select_option, {}, {class: "form-control"}) %>
       </div>
+
       <div class="field">
         <%= f.text_field :barcode %>
       </div>

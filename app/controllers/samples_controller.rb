@@ -53,8 +53,12 @@ class SamplesController < ApplicationController
 
     def set_form_options
       @form_options = {
-        institutions: Sample.all.map(&:institution).uniq,
-        projects: Project.all.map{ |p| [p.tag, p.id] }
+        institutions: Sample.pluck(:institution).uniq,
+        projects: Project.pluck(:tag, :id),
+        # patients: Patient.all.map{ |p| [p.full_name, p.id] },
+        doctor_names: Sample.pluck(:doctor_full_name).uniq.reject(&:blank?),
+        doctor_emails: Sample.pluck(:doctor_email).uniq.reject(&:blank?),
+        request_categories: Sample.pluck(:request_category).uniq,
       }
     end
 

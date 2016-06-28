@@ -4,4 +4,8 @@ class Sample < ActiveRecord::Base
   has_many :dna_samples
 
   delegate :full_name, to: :patient
+
+  def name
+    "#{project.tag}-#{id}"
+  end
 end

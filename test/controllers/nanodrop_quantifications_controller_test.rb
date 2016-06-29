@@ -18,7 +18,7 @@ class NanodropQuantificationsControllerTest < ActionController::TestCase
 
   test "should create nanodrop_quantification" do
     assert_difference('NanodropQuantification.count') do
-      post :create, nanodrop_quantification: { absorbance_260: @nanodrop_quantification.absorbance_260, absorbance_280: @nanodrop_quantification.absorbance_280, concentration: @nanodrop_quantification.concentration, dna_sample_id: @nanodrop_quantification.dna_sample_id, factor: @nanodrop_quantification.factor, ratio_260_230: @nanodrop_quantification.ratio_260_230, ratio_260_280: @nanodrop_quantification.ratio_260_280, sample_type: @nanodrop_quantification.sample_type }
+      post :create, nanodrop_quantification: { absorbance_260: @nanodrop_quantification.absorbance_260, absorbance_280: @nanodrop_quantification.absorbance_280, concentration: @nanodrop_quantification.concentration, dna_extraction_id: @nanodrop_quantification.dna_extraction_id, factor: @nanodrop_quantification.factor, ratio_260_230: @nanodrop_quantification.ratio_260_230, ratio_260_280: @nanodrop_quantification.ratio_260_280, sample_type: @nanodrop_quantification.sample_type }
     end
 
     assert_redirected_to nanodrop_quantification_path(assigns(:nanodrop_quantification))
@@ -35,7 +35,7 @@ class NanodropQuantificationsControllerTest < ActionController::TestCase
   end
 
   test "should update nanodrop_quantification" do
-    patch :update, id: @nanodrop_quantification, nanodrop_quantification: { absorbance_260: @nanodrop_quantification.absorbance_260, absorbance_280: @nanodrop_quantification.absorbance_280, concentration: @nanodrop_quantification.concentration, dna_sample_id: @nanodrop_quantification.dna_sample_id, factor: @nanodrop_quantification.factor, ratio_260_230: @nanodrop_quantification.ratio_260_230, ratio_260_280: @nanodrop_quantification.ratio_260_280, sample_type: @nanodrop_quantification.sample_type }
+    patch :update, id: @nanodrop_quantification, nanodrop_quantification: { absorbance_260: @nanodrop_quantification.absorbance_260, absorbance_280: @nanodrop_quantification.absorbance_280, concentration: @nanodrop_quantification.concentration, dna_extraction_id: @nanodrop_quantification.dna_extraction_id, factor: @nanodrop_quantification.factor, ratio_260_230: @nanodrop_quantification.ratio_260_230, ratio_260_280: @nanodrop_quantification.ratio_260_280, sample_type: @nanodrop_quantification.sample_type }
     assert_redirected_to nanodrop_quantification_path(assigns(:nanodrop_quantification))
   end
 

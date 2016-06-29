@@ -7,7 +7,7 @@ one:
   absorbance_280: 1.5
   absorbance_260: 1.5
   factor: 1.5
-  dna_sample_id: 
+  dna_extraction_id: 
   sample_type: MyString
 
 two:
@@ -17,5 +17,5 @@ two:
   absorbance_280: 1.5
   absorbance_260: 1.5
   factor: 1.5
-  dna_sample_id: 
+  dna_extraction_id: 
   sample_type: MyString

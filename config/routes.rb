@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  post 'dna_samples/upload_quantification_files' => 'dna_samples#upload_quantification_files'
+  post 'dna_extractions/upload_quantification_files' => 'dna_extractions#upload_quantification_files'
 
-  get 'dna_samples/select_quantification_files' => 'dna_samples#select_quantification_files'
+  get 'dna_extractions/select_quantification_files' => 'dna_extractions#select_quantification_files'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :qubit_quantifications
   resources :nanodrop_quantifications
   resources :samples
-  resources :dna_samples
+  resources :dna_extractions
   resources :patients
   resources :projects
 

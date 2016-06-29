@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DnaSampleTest < ActiveSupport::TestCase
+class DnaExtractionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

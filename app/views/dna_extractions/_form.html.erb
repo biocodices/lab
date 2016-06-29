@@ -1,0 +1,29 @@
+<%= bootstrap_form_for(@dna_extraction) do |f| %>
+  <% if @dna_extraction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dna_extraction.errors.count, "error") %> prohibited this dna_extraction from being saved:</h2>
+
+      <ul>
+      <% @dna_extraction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label class="control-label">DNA extracted from this raw sample:</label><br>
+    <%= collection_select(:dna_extraction, :sample_id, Sample.all.decorate,
+                          :id, :description, {},
+                          {class: "form-control inline"}) %>
+  </div>
+  <div class="field">
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.text_area :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

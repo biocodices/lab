@@ -43,8 +43,8 @@
   </div><!-- .left -->
 
   <div><!-- Element for the flex -->
-    <% library.dna_samples.each do |dna_sample| %>
-      <%= puts dna_sample.sample.patient.full_name %>
+    <% library.dna_extractions.each do |dna_extraction| %>
+      <%= puts dna_extraction.sample.patient.full_name %>
     <% end %>
   </div>
 </div><!-- .horizontal-flex>

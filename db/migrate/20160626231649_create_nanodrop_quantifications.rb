@@ -7,7 +7,8 @@ class CreateNanodropQuantifications < ActiveRecord::Migration
       t.float :absorbance_280
       t.float :absorbance_260
       t.float :factor
-      t.references :dna_sample, index: true, foreign_key: true
+      t.date :date
+      t.references :dna_extraction, index: true, foreign_key: true
       t.string :sample_type
 
       t.timestamps null: false

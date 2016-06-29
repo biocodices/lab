@@ -1,0 +1,26 @@
+<div class="dna-details">
+  <p class="title">
+    <%= link_to edit_dna_extraction_path(dna_extraction) do %>
+      <%= fa_icon "flask" %>
+    <% end %>
+    <%= dna_extraction.description %>
+  </p>
+
+  <% unless dna_extraction.nanodrop_quantifications.count.zero? %>
+    <table class="table table-bordered table-condensed table-striped quantification">
+      <% dna_extraction.nanodrop_quantifications.decorate.each do |nanodrop_quantification| %>
+        <%= render nanodrop_quantification %>
+      <% end %>
+    </table>
+  <% end %>
+
+  <% unless dna_extraction.qubit_quantifications.count.zero? %>
+    <table class="table table-bordered table-condensed table-striped quantification">
+      <% dna_extraction.qubit_quantifications.decorate.each do |qubit_quantification| %>
+        <%= render qubit_quantification %>
+      <% end %>
+    </table>
+  <% end %>
+
+</div><!-- .dna-extraction-details -->
+

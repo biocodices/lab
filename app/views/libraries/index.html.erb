@@ -15,7 +15,7 @@
     <tr>
       <th>Project</th>
       <th>ID</th>
-      <th>N samples</th>
+      <th>N DNA extractions</th>
       <th>Used in<br>sequencing(s)</th>
       <th>Laboratory</th>
     </tr>
@@ -29,7 +29,7 @@
             <%= safe_join(library.projects.decorate.map(&:tag).uniq, ', ') %>
           </td>
           <td><%= library.id %></td>
-          <td><%= library.dna_samples.count %></td>
+          <td><%= library.dna_extractions.count %></td>
           <td><%= library.sequencings.map(&:id).uniq.join(', ') %></td>
           <td><%= library.laboratory %></td>
         </tr>

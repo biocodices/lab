@@ -18,7 +18,7 @@ class QubitQuantificationsControllerTest < ActionController::TestCase
 
   test "should create qubit_quantification" do
     assert_difference('QubitQuantification.count') do
-      post :create, qubit_quantification: { assay_concentration: @qubit_quantification.assay_concentration, assay_type: @qubit_quantification.assay_type, dilution_factor: @qubit_quantification.dilution_factor, dna_sample_id: @qubit_quantification.dna_sample_id, excitation: @qubit_quantification.excitation, far_red_rfu: @qubit_quantification.far_red_rfu, green_rfu: @qubit_quantification.green_rfu, sample_vol: @qubit_quantification.sample_vol, std1_rfu: @qubit_quantification.std1_rfu, std2_rfu: @qubit_quantification.std2_rfu, std3_rfu: @qubit_quantification.std3_rfu, stock_concentration: @qubit_quantification.stock_concentration }
+      post :create, qubit_quantification: { assay_concentration: @qubit_quantification.assay_concentration, assay_type: @qubit_quantification.assay_type, dilution_factor: @qubit_quantification.dilution_factor, dna_extraction_id: @qubit_quantification.dna_extraction_id, excitation: @qubit_quantification.excitation, far_red_rfu: @qubit_quantification.far_red_rfu, green_rfu: @qubit_quantification.green_rfu, sample_vol: @qubit_quantification.sample_vol, std1_rfu: @qubit_quantification.std1_rfu, std2_rfu: @qubit_quantification.std2_rfu, std3_rfu: @qubit_quantification.std3_rfu, stock_concentration: @qubit_quantification.stock_concentration }
     end
 
     assert_redirected_to qubit_quantification_path(assigns(:qubit_quantification))
@@ -35,7 +35,7 @@ class QubitQuantificationsControllerTest < ActionController::TestCase
   end
 
   test "should update qubit_quantification" do
-    patch :update, id: @qubit_quantification, qubit_quantification: { assay_concentration: @qubit_quantification.assay_concentration, assay_type: @qubit_quantification.assay_type, dilution_factor: @qubit_quantification.dilution_factor, dna_sample_id: @qubit_quantification.dna_sample_id, excitation: @qubit_quantification.excitation, far_red_rfu: @qubit_quantification.far_red_rfu, green_rfu: @qubit_quantification.green_rfu, sample_vol: @qubit_quantification.sample_vol, std1_rfu: @qubit_quantification.std1_rfu, std2_rfu: @qubit_quantification.std2_rfu, std3_rfu: @qubit_quantification.std3_rfu, stock_concentration: @qubit_quantification.stock_concentration }
+    patch :update, id: @qubit_quantification, qubit_quantification: { assay_concentration: @qubit_quantification.assay_concentration, assay_type: @qubit_quantification.assay_type, dilution_factor: @qubit_quantification.dilution_factor, dna_extraction_id: @qubit_quantification.dna_extraction_id, excitation: @qubit_quantification.excitation, far_red_rfu: @qubit_quantification.far_red_rfu, green_rfu: @qubit_quantification.green_rfu, sample_vol: @qubit_quantification.sample_vol, std1_rfu: @qubit_quantification.std1_rfu, std2_rfu: @qubit_quantification.std2_rfu, std3_rfu: @qubit_quantification.std3_rfu, stock_concentration: @qubit_quantification.stock_concentration }
     assert_redirected_to qubit_quantification_path(assigns(:qubit_quantification))
   end
 

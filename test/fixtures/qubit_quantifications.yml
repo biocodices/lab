@@ -12,7 +12,7 @@ one:
   excitation: 1.5
   green_rfu: 1.5
   far_red_rfu: 1.5
-  dna_sample_id: 
+  dna_extraction_id: 
 
 two:
   assay_concentration: 1.5
@@ -26,4 +26,4 @@ two:
   excitation: 1.5
   green_rfu: 1.5
   far_red_rfu: 1.5
-  dna_sample_id: 
+  dna_extraction_id: 

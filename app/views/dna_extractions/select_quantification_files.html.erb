@@ -10,10 +10,10 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="alert alert-info">
-      Please put <strong><span class="mono-font">ProjectTag-DnaID</span></strong> in the "Sample ID" field of the quantification files.
+      Please refer to the IDs in <%= link_to 'samples', samples_path, target: '_blank' %> for the the "Sample ID" field of the quantification files.
     </div>
 
-    <%= form_tag("/dna_samples/upload_quantification_files", action: :upload, multipart: true) do |f| %>
+    <%= form_tag("/dna_extractions/upload_quantification_files", action: :upload, multipart: true) do |f| %>
       <div class="field">
         <label class="control-label" for="nanodrop_file">
           Load Nanodrop quantification file (.tsv)
@@ -39,4 +39,14 @@
   </div>
 </div>
 
+<div class="header">
+  <div class="title">
 
+  </div>
+  <div class="actions">
+
+  </div>
+</div>
+
+
+<%= render file: 'dna_extractions/index' %>

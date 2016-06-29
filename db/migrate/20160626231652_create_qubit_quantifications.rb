@@ -12,7 +12,8 @@ class CreateQubitQuantifications < ActiveRecord::Migration
       t.float :excitation
       t.float :green_rfu
       t.float :far_red_rfu
-      t.references :dna_sample, index: true, foreign_key: true
+      t.date :date
+      t.references :dna_extraction, index: true, foreign_key: true
 
       t.timestamps null: false
     end

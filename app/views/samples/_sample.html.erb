@@ -19,36 +19,12 @@
     class: "btn btn-default", target: "_blank" %>
 </p>
 
-<% unless sample.dna_samples.count.zero? %>
+<% unless sample.dna_extractions.count.zero? %>
   <p>
     DNA extractions from this sample:
 
-    <% sample.dna_samples.decorate.each do |dna_sample| %>
-      <div class="dna-details">
-        <p class="title">
-          <%= link_to edit_dna_sample_path(dna_sample) do %>
-            <%= fa_icon "flask" %>
-          <% end %>
-          <%= dna_sample.description %>
-        </p>
-
-        <% unless dna_sample.nanodrop_quantifications.count.zero? %>
-          <table class="table table-bordered table-condensed table-striped quantification">
-            <% dna_sample.nanodrop_quantifications.decorate.each do |nanodrop_quantification| %>
-              <%= render nanodrop_quantification %>
-            <% end %>
-          </table>
-        <% end %>
-
-        <% unless dna_sample.qubit_quantifications.count.zero? %>
-          <table class="table table-bordered table-condensed table-striped quantification">
-            <% dna_sample.qubit_quantifications.decorate.each do |qubit_quantification| %>
-              <%= render qubit_quantification %>
-            <% end %>
-          </table>
-        <% end %>
-
-      </div><!-- .dna-sample-details -->
+    <% sample.dna_extractions.decorate.each do |dna_extraction| %>
+      <%= render dna_extraction %>
     <% end %>
   </p>
 <% end %>

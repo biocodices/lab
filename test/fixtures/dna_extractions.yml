@@ -3,11 +3,11 @@
 one:
   sample_id: 
   old_id: MyString
-  extraction_date: 2016-06-26
+  date: 2016-06-26
   notes: MyText
 
 two:
   sample_id: 
   old_id: MyString
-  extraction_date: 2016-06-26
+  date: 2016-06-26
   notes: MyText

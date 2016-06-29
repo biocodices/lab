@@ -1,6 +1,6 @@
-<h1>Editing Library</h1>
+<h1 class="title">
+  <%= fa_icon 'braille' %>
+  Editing Library
+</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @library %> |
-<%= link_to 'Back', libraries_path %>
+<%= render partial: 'form', locals: { submit_button_text: 'Update the sample' } %>

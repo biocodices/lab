@@ -1,5 +1,6 @@
-<h1>New Library</h1>
+<h1 class="title">
+  <%= fa_icon 'braille' %>
+  Build a new Library
+</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', libraries_path %>
+<%= render partial: 'form', locals: { submit_button_text: 'Create the sample' } %>

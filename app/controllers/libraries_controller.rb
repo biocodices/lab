@@ -13,6 +13,14 @@ class LibrariesController < ApplicationController
   # GET /libraries/new
   def new
     @library = Library.new
+    used_dna_ids = DnaExtraction.joins(:libraries).pluck(:id).uniq
+    used_dnas = DnaExtraction.find(used_dna_ids).map(&:decorate).reverse
+    unused_dnas = DnaExtraction.where.not(id: used_dna_ids).map(&:decorate).reverse
+
+    @dna_extractions = {
+      belong_to_a_library: used_dnas,
+      dont_belong_to_a_library: unused_dnas
+    }
   end
 
   # GET /libraries/1/edit

@@ -1,3 +1,13 @@
-// Place all the styles related to the Libraries controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.selectable-dnas {
+  display: flex;
+  flex-wrap: wrap;
+
+  .used {
+    max-height: 400px;
+    overflow: scroll;
+    margin: 15px;
+  }
+  .not-used {
+    margin: 15px;
+  }
+}

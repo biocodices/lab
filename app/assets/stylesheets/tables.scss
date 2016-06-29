@@ -29,3 +29,10 @@
   // !important overrides bootstrap heavily nested rule.
   }
 }
+
+// Vertical table with ths in on the first column
+.table-vertical {
+  width: auto;
+
+  th { width: 150px; }
+}

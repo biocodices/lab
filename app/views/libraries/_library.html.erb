@@ -1,0 +1,50 @@
+<div class="horizontal-flex">
+  <div><!-- Element for the flex -->
+    <table class="table table-bordered table-condensed table-striped table-vertical">
+      <tr>
+        <th class="align-right">Pre pcr date</th><td><%= library.pre_pcr_date %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Hyp</th><td><%= library.hyp %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Fpu</th><td><%= library.fpu %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Pcr date</th><td><%= library.pcr_date %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Iap</th><td><%= library.iap %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Clp</th><td><%= library.clp %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Lnp</th><td><%= library.lnp %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Sgp</th><td><%= library.sgp %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Post pcr date</th><td><%= library.post_pcr_date %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Notes</th><td><%= library.notes || '-' %></th>
+      </tr>
+      <tr>
+        <th class="align-right">Old ID</th><td><%= library.old_id %></th>
+      </tr>
+    </table>
+
+    <%= link_to 'Edit this library info', edit_library_path(library),
+        class: 'btn btn-default' %>
+    <%= link_to 'Destroy this library', library, class: 'btn btn-default',
+        method: 'delete', data: { confirm: "Destroy library #{library.id}?" } %>
+  </div><!-- .left -->
+
+  <div><!-- Element for the flex -->
+    <% library.dna_samples.each do |dna_sample| %>
+      <%= puts dna_sample.sample.patient.full_name %>
+    <% end %>
+  </div>
+</div><!-- .horizontal-flex>

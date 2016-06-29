@@ -6,6 +6,8 @@ class DnaSample < ActiveRecord::Base
   has_many :sequencings, through: :dna_sequencings, dependent: :destroy
 
   has_one :patient, through: :sample
+  has_one :project, through: :sample
+
   has_many :nanodrop_quantifications, dependent: :destroy
   has_many :qubit_quantifications, dependent: :destroy
 end

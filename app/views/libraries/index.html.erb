@@ -10,44 +10,43 @@
   </div>
 </div>
 
-<table>
+<table class="table table-condensed table-striped">
   <thead>
     <tr>
+      <th>Project</th>
+      <th>ID</th>
+      <th>N samples</th>
+      <th>Used in<br>sequencing(s)</th>
       <th>Laboratory</th>
-      <th>Notes</th>
-      <th>Hyp</th>
-      <th>Fpu</th>
-      <th>Pre pcr date</th>
-      <th>Pcr date</th>
-      <th>Iap</th>
-      <th>Clp</th>
-      <th>Lnp</th>
-      <th>Sgp</th>
-      <th>Post pcr date</th>
-      <th>Old</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @libraries.each do |library| %>
-      <tr>
-        <td><%= library.laboratory %></td>
-        <td><%= library.notes %></td>
-        <td><%= library.hyp %></td>
-        <td><%= library.fpu %></td>
-        <td><%= library.pre_pcr_date %></td>
-        <td><%= library.pcr_date %></td>
-        <td><%= library.iap %></td>
-        <td><%= library.clp %></td>
-        <td><%= library.lnp %></td>
-        <td><%= library.sgp %></td>
-        <td><%= library.post_pcr_date %></td>
-        <td><%= library.old_id %></td>
-        <td><%= link_to 'Show', library %></td>
-        <td><%= link_to 'Edit', edit_library_path(library) %></td>
-        <td><%= link_to 'Destroy', library, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @libraries.decorate.each do |library| %>
+        <!-- Main row -->
+        <tr class="display-row collapsed" data-toggle="collapse" data-target="#detail-<%= library.id %>" class="accordion-toggle">
+          <td class="project-tag">
+            <%= safe_join(library.projects.decorate.map(&:tag).uniq, ', ') %>
+          </td>
+          <td><%= library.id %></td>
+          <td><%= library.dna_samples.count %></td>
+          <td><%= library.sequencings.map(&:id).uniq.join(', ') %></td>
+          <td><%= library.laboratory %></td>
+        </tr>
+
+        <!-- Details box -->
+        <tr class="hidden-row">
+          <td colspan="5">
+            <div class="accordion-body collapse" id="detail-<%= library.id %>">
+              <div class="padding">
+
+                <%= render library %>
+
+              </div><!-- .padding -->
+            </div><!-- .accordion-body -->
+          </td>
+        </tr>
+
     <% end %>
   </tbody>
 </table>

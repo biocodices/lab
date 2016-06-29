@@ -1,6 +1,7 @@
 class Sample < ActiveRecord::Base
   belongs_to :project
   belongs_to :patient
+
   has_many :dna_samples, dependent: :destroy
 
   delegate :full_name, to: :patient

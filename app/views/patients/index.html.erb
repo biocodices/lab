@@ -28,7 +28,6 @@
     <% @patients.each do |patient| %>
 
       <!-- Main row -->
-      <tr class="display-row collapsed">
       <tr class="display-row collapsed" data-toggle="collapse"
         data-target="#detail-<%= patient.id %>" class="accordion-toggle">
         <td><%= patient.id %></td>

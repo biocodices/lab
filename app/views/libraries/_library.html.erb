@@ -1,5 +1,8 @@
 <div class="horizontal-flex">
-  <div><!-- Element for the flex -->
+  <div class="left"><!-- Element for the flex -->
+
+    <h2 class="title">Library details</h2>
+    <!-- Vertical table with the library info -->
     <table class="table table-bordered table-condensed table-striped table-vertical">
       <tr>
         <th class="align-right">Pre pcr date</th><td><%= library.pre_pcr_date %></th>
@@ -42,9 +45,9 @@
         method: 'delete', data: { confirm: "Destroy library #{library.id}?" } %>
   </div><!-- .left -->
 
-  <div><!-- Element for the flex -->
-    <% library.dna_extractions.each do |dna_extraction| %>
-      <%= puts dna_extraction.sample.patient.full_name %>
-    <% end %>
+  <div class="right flex-grow"><!-- Element for the flex -->
+    <h2 class='title'>DNA Extractions in this library</h2>
+    <% @dna_extractions = library.dna_extractions.decorate %>
+    <%= render file: 'dna_extractions/index', locals: { omit_header: true } %>
   </div>
 </div><!-- .horizontal-flex>

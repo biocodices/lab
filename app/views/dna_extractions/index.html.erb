@@ -1,16 +1,17 @@
-<div class="header">
-  <div class="title">
-    <h1>
-      <%= fa_icon 'tint' %>
-      DNA Extraction
-    </h1>
+<% unless defined?(omit_header) && omit_header %>
+  <div class="header">
+    <div class="title">
+      <h1>
+        <%= fa_icon 'tint' %>
+        DNA Extractions
+      </h1>
+    </div>
+    <div class="actions">
+      <%= link_to 'Manually create a new DNA Extraction record', new_dna_extraction_path,
+        class: "btn btn-default" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= link_to 'Manually create a new DNA Extraction record', new_dna_extraction_path,
-      class: "btn btn-default" %>
-  </div>
-</div>
-
+<% end %>
 
 <table class='table table-striped table-condensed'>
   <thead>
@@ -25,7 +26,7 @@
   <tbody>
     <% @dna_extractions.each do |dna_extraction| %>
 
-      <tr class="display-row collapsed" data-toggle="collapse" data-target="#detail-<%= dna_extraction.id %>" class="accordion-toggle">
+      <tr class="display-row collapsed" data-toggle="collapse" data-target="#dna-detail-<%= dna_extraction.id %>" class="accordion-toggle">
         <td><%= dna_extraction.id %></td>
         <td>
           <%= link_to edit_sample_path(dna_extraction.sample) do %>
@@ -40,7 +41,7 @@
 
       <tr class="hidden-row">
         <td colspan="8">
-          <div class="accordion-body collapse" id="detail-<%= dna_extraction.id %>">
+          <div class="accordion-body collapse" id="dna-detail-<%= dna_extraction.id %>">
             <div class="padding">
 
               <%= render dna_extraction %>

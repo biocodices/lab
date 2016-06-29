@@ -16,11 +16,25 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 20px;
-
-  .title {
-    font-family: serif;
-    font-size: 2em;
-  }
+}
+.title {
+  font-family: serif;
+  font-size: 2em;
 }
 
+.horizontal-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
 
+  .left {
+    margin-bottom: 25px;
+  }
+  .right {
+    margin-left: 35px;
+  }
+
+  .flex-grow {
+    flex-grow: 1;
+  }
+}

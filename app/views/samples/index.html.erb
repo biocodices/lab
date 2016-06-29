@@ -42,7 +42,7 @@
             </td>
             <td><%= sample.id %></td>
             <td><%= sample.patient.full_name %></td>
-            <td><%= safe_join(sample.dna_extractions.map{ fa_icon "flask", class: ["grey", "small"] }) %></td>
+            <td><%= safe_join(sample.dna_extractions.map{ fa_icon 'tint', class: ["grey", "small"] }) %></td>
             <td><%= sample.institution %></td>
             <td><%= sample.request_date && sample.admission_date.strftime("%-d %b") %></td>
             <td><%= sample.admission_date && sample.admission_date.strftime("%-d %b") %></td>

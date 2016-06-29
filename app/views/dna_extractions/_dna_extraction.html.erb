@@ -1,9 +1,9 @@
 <div class="dna-details">
   <p class="title">
+    <%= fa_icon 'tint' %>
     <%= link_to edit_dna_extraction_path(dna_extraction) do %>
-      <%= fa_icon "flask" %>
+      <%= dna_extraction.description %>
     <% end %>
-    <%= dna_extraction.description %>
   </p>
 
   <% unless dna_extraction.nanodrop_quantifications.count.zero? %>

@@ -1,7 +1,6 @@
-<p>Sample details:</p>
+<p>Sample <%= sample.project.tag %>-<%= sample.id %> details:</p>
 <ul>
   <% if show_full_data %>
-    <li><%= sample.project.tag %>-<%= sample.id %></li>
     <li>Patient: <%= sample.patient.full_name %></li>
     <li>Institution: <%= sample.institution %></li>
     <li>Request date: <%= sample.request_date %></li>

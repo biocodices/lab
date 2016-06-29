@@ -5,7 +5,7 @@ class NanodropQuantificationDecorator < Draper::Decorator
     "#{object.concentration} #{object.class::CONCENTRATION_UNIT}"
   end
 
-  # Generate a warning-highlighted table cell if the ratio 260/280 is off-range
+  # Generate a warning-highlighted table cell if the ratio 260/280 is off-range.
   def ratio_260_280_td
     ratio_ok = object.class::RATIO_260_280_OK_RANGE.member? object.ratio_260_280
     background_color_class = ratio_ok ? '' : 'alert-border'

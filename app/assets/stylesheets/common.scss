@@ -1,20 +1,40 @@
-.enpv1, .exome, .pgsn {
-  font-weight: bold;
+.project-tag {
+  font-family: monospace;
+  /* font-weight: bold; */
 }
 
-.enpv1 { color: darkSeaGreen; }
-.exome { color: burlyWood; }
-.pgsn  { color: darkKhaki; }
+.enpv1 { color: dodgerBlue; }
+.enpv2 { color: darkMagenta; }
+.exome { color: olive; }
+.pgsn  { color: orangeRed; }
+.pgsnm { color: mediumVioletRed; }
+.pgsa { color: darkRed; }
+.pgdk { color: sienna; }
+.cdp { color: forestGreen; }
+.ela { color: teal; }
+.pgsam { color: mediumSlateBlue; }
 
 .grey { color: grey; }
 .red { color: fireBrik; }
 .green { color: seaGreen; }
 .small { font-size: 0.9em !important; }
 
+.mono-font { font-family: monospace; }
+
 // Backgrounds
 .alert-border {
   border: 3px solid tomato !important;
   // !important to override Bootstrap's td styles
+}
+
+.rotate-on-hover {
+  transition: transform .25s ease;
+  &:hover { transform: rotate(15deg); }
+}
+
+.tomato-on-hover {
+  transition: color .25 ease;
+  &:hover { color: tomato; }
 }
 
 // Fix text color of link_to buttons

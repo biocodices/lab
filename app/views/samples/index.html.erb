@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="header">
+  <div class="title">
+    <h1>
+      <%= fa_icon 'flask', class: 'rotate-on-hover' %>
+      Samples
+    </h1>
+  </div>
 
-<h1>
-  Samples
-  <%= link_to 'Create a new sample', new_sample_path, class: "btn btn-default" %>
-</h1>
+  <div class="actions">
+    <%= link_to new_sample_path, class: 'btn btn-default' do %>
+      <%= fa_icon 'archive', text: 'A new sample has arrived' %>
+  <% end %>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-sm-12">
@@ -27,7 +35,7 @@
 
           <!-- Main row -->
           <tr class="display-row collapsed" data-toggle="collapse" data-target="#detail-<%= sample.id %>" class="accordion-toggle">
-            <td>
+            <td class="project-tag">
               <%= link_to project_path(sample.project) do %>
                 <%= sample.project.decorate.tag %>
               <% end %>
@@ -38,7 +46,7 @@
             <td><%= sample.institution %></td>
             <td><%= sample.request_date && sample.admission_date.strftime("%-d %b") %></td>
             <td><%= sample.admission_date && sample.admission_date.strftime("%-d %b") %></td>
-            <td><%= sample.request_category %></td>
+            <td class='mono-font'><%= sample.request_category.downcase[0..2] %></td>
           </tr>
 
           <!-- Details row -->
@@ -47,7 +55,8 @@
               <div class="accordion-body collapse" id="detail-<%= sample.id %>">
                 <div class="padding">
 
-                  <%= render sample %>
+                  <%= render partial: 'sample',
+                      locals: { sample: sample, show_full_data: false } %>
 
                 </div><!-- .padding -->
               </div><!-- accordion-body -->

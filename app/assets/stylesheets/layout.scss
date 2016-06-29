@@ -1,0 +1,26 @@
+// Headers + action buttons, usually on top of the page
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+
+  .title {
+    font-family: serif;
+  }
+}
+
+// Headers + action buttons, usually on top of the page
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+
+  .title {
+    font-family: serif;
+    font-size: 2em;
+  }
+}
+
+

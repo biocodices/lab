@@ -4,7 +4,7 @@ class SamplesController < ApplicationController
 
   # GET /samples
   def index
-    @samples = Sample.all.decorate
+    @samples = Sample.all.decorate.reverse
   end
 
   # GET /samples/1
@@ -53,12 +53,11 @@ class SamplesController < ApplicationController
 
     def set_form_options
       @form_options = {
-        institutions: Sample.pluck(:institution).uniq,
-        projects: Project.pluck(:tag, :id),
-        # patients: Patient.all.map{ |p| [p.full_name, p.id] },
-        doctor_names: Sample.pluck(:doctor_full_name).uniq.reject(&:blank?),
-        doctor_emails: Sample.pluck(:doctor_email).uniq.reject(&:blank?),
-        request_categories: Sample.pluck(:request_category).uniq,
+        institutions: Sample.pluck(:institution).uniq.reverse,
+        # projects: Project.pluck(:tag, :id),
+        doctor_names: Sample.pluck(:doctor_full_name).uniq.reject(&:blank?).reverse,
+        doctor_emails: Sample.pluck(:doctor_email).uniq.reject(&:blank?).reverse,
+        request_categories: Sample.pluck(:request_category).uniq
       }
     end
 

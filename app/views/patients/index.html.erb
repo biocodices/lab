@@ -1,7 +1,16 @@
-<h1>
-  Patients
-  <%= link_to 'Create a new patient', new_patient_path, class: "btn btn-default" %>
-</h1>
+<div class="header">
+  <div class="title">
+    <h1>
+      <%= fa_icon 'female', class: 'tomato-on-hover' %>
+      Patients
+    </h1>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Create a new patient', new_patient_path, class: 'btn btn-default' %>
+  </div>
+</div>
+  
 
 <table class='table table-striped table-condensed'>
   <thead>
@@ -24,12 +33,12 @@
         data-target="#detail-<%= patient.id %>" class="accordion-toggle">
         <td><%= patient.id %></td>
         <td><%= patient.full_name %></td>
-        <td><%= safe_join(patient.project_tags, ', ') %></td>
+        <td class="project-tag"><%= safe_join(patient.project_tags, ', ') %></td>
         <td><%= patient.birthdate && patient.birthdate.strftime("%B %-d, %Y") %></td>
         <td><%= patient.age %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient,
-                method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                method: :delete, data: { confirm: patient.delete_prompt} %></td>
       </tr>
 
       <!-- Details row -->
@@ -40,7 +49,8 @@
               <p>Samples:</p>
               <% patient.samples.each do |sample| %>
                 <div class="subtle-box">
-                  <%= render sample %>
+                  <%= render partial: 'samples/sample',
+                      locals: { sample: sample, show_full_data: true } %>
                 </div>
               <% end %>
             </div><!-- .padding -->

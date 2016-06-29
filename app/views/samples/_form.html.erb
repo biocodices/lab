@@ -15,12 +15,13 @@
 
       <div class="field">
         <label class="control-label">Project</label><br>
-        
         <%= collection_radio_buttons(:sample, :project_id, Project.all, :id, :tag) do |b| %>
           <%= b.label(class: "radio-inline") do %>
-            <%= b.radio_button + b.text %>
+            <%= b.radio_button %>
+            <span class="project-tag <%= b.text.downcase %>"><%= b.text %></span>
           <% end %>
         <% end %>
+        <br><br>
         <%= link_to 'Create a new Project', new_project_path,
             class: "btn btn-default", target: "_blank" %>
       </div>
@@ -28,7 +29,7 @@
       <div class="field">
         <label class="control-label">Patient</label><br>
         
-        <%= collection_select(:sample, :patient_id, Patient.all.decorate,
+        <%= collection_select(:sample, :patient_id, Patient.all.decorate.reverse,
                               :id, :select_option, {}, {class: "form-control inline"}) %>
         <%= link_to 'Create a new patient', new_patient_path,
             class: "btn btn-default", target: "_blank" %>
@@ -81,7 +82,7 @@
         <div class="btn-group existing-options">
           <% @form_options[:request_categories].each do |request_category| %>
             <button type="button" class="btn btn-default option">
-              <%= request_category %>
+              <span class="mono-font"><%= request_category %></span>
             </button>
           <% end %>
         </div>
@@ -95,7 +96,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit 'Update Sample', class: "btn btn-primary" %>
+        <%= f.submit submit_button_text, class: "btn btn-primary" %>
         <button type="reset" class="btn btn-default">Reset the form</button>
       </div>
     <% end %>

@@ -19,4 +19,13 @@ class PatientDecorator < Draper::Decorator
 
     "#{object.full_name} [ #{object.id} ] #{project_tag} #{institution}"
   end
+
+  def delete_prompt
+    msg = "Delete patient #{object.full_name} from the database?"
+    unless object.samples.count.zero?
+      msg += " It will delete #{h.pluralize(object.samples.count, 'sample')} too!"
+    end
+
+    msg
+  end
 end

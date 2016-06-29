@@ -1,3 +1,9 @@
-<h1>Create a new sample</h1>
+<div class="header">
+  <div class="title">
+    <h1>
+      <%= fa_icon 'file-text-o', text: 'Load a new sample' %> 
+    </h1>
+  </div>
+</div>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: { submit_button_text: 'Create the sample' } %>

@@ -2,12 +2,15 @@
   display: flex;
   flex-wrap: wrap;
 
-  .used {
-    max-height: 400px;
-    overflow: scroll;
-    margin: 15px;
+  .group {
+    margin: 10px;
+    max-width: 32%;  // 1/3 of whole row! Supposes 3 elements.
   }
-  .not-used {
-    margin: 15px;
+
+  .with-scroll {
+    .checkbox {
+      max-height: 400px;
+      overflow: scroll;
+    }
   }
 }

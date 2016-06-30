@@ -1,6 +1,6 @@
 <h1 class="title">
   <%= fa_icon 'braille' %>
-  Editing Library
+  Editing Library #<%= @library.id %> (<span id="counter"><%= @library.dna_extractions.count %></span>)
 </h1>
 
 <%= render partial: 'form', 

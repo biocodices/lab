@@ -13,10 +13,10 @@
 <table class="table table-condensed table-striped">
   <thead>
     <tr>
-      <th>Project</th>
       <th>ID</th>
+      <th>Project</th>
       <th>N DNA extractions</th>
-      <th>Used in<br>sequencing(s)</th>
+      <th>Used in these<br>sequencings</th>
       <th>Laboratory</th>
     </tr>
   </thead>
@@ -25,10 +25,10 @@
     <% @libraries.decorate.each do |library| %>
         <!-- Main row -->
         <tr class="display-row collapsed" data-toggle="collapse" data-target="#detail-<%= library.id %>" class="accordion-toggle">
+          <td><%= library.id %></td>
           <td class="project-tag">
             <%= safe_join(library.projects.decorate.map(&:tag).uniq, ', ') %>
           </td>
-          <td><%= library.id %></td>
           <td><%= library.dna_extractions.count %></td>
           <td><%= library.sequencings.map(&:id).uniq.join(', ') %></td>
           <td><%= library.laboratory %></td>
@@ -50,7 +50,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Library', new_library_path %>

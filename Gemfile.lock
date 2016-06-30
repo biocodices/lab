@@ -151,6 +151,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selectize-rails (0.12.2)
     slop (3.6.0)
     spring (1.7.1)
     sprockets (3.6.2)
@@ -201,6 +202,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  selectize-rails
   spring
   therubyracer
   turbolinks (~> 5.0.0.beta)

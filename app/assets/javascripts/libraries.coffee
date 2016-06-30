@@ -4,10 +4,13 @@ ready = ->
       $(this).closest('label').addClass('highlighted')
     else
       $(this).closest('label').removeClass('highlighted')
+
+    updateCounter()
   )
 
-countChecked = ->
+updateCounter = ->
+    count = $('.selectable-dnas input[type=checkbox]:checked').length
+    $('#counter').text(count)
 
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).on('turbolinks:load', ready)

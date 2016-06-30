@@ -5,7 +5,7 @@ ready = ->
     associatedInput = $(this).closest('.existing-options')
                              .siblings('.form-group').find('input')
     associatedInput.val(optionValue)
+    console.log optionValue
   )
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).on('turbolinks:load', ready)

@@ -30,7 +30,9 @@
         <label class="control-label">Patient</label><br>
         
         <%= collection_select(:sample, :patient_id, Patient.all.decorate.reverse,
-                              :id, :select_option, {}, {class: "form-control inline"}) %>
+                              :id, :select_option,
+                              {prompt: 'Select an existing patient...'},
+                              {class: 'form-control'}) %>
         <%= link_to 'Create a new patient', new_patient_path,
             class: "btn btn-default", target: "_blank" %>
       </div>

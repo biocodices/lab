@@ -1,4 +1,4 @@
-<%= form_for(@sequencing) do |f| %>
+<%= bootstrap_form_for(@sequencing) do |f| %>
   <% if @sequencing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sequencing.errors.count, "error") %> prohibited this sequencing from being saved:</h2>
@@ -12,62 +12,98 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pal %><br>
-    <%= f.text_field :pal %>
-  </div>
-  <div class="field">
-    <%= f.label :dal %><br>
-    <%= f.text_field :dal %>
-  </div>
-  <div class="field">
-    <%= f.label :pre_seq_date %><br>
-    <%= f.date_select :pre_seq_date %>
-  </div>
-  <div class="field">
-    <%= f.label :pre_seq_notes %><br>
-    <%= f.text_area :pre_seq_notes %>
-  </div>
-  <div class="field">
-    <%= f.label :investigator_name %><br>
-    <%= f.text_field :investigator_name %>
-  </div>
-  <div class="field">
-    <%= f.label :rcb %><br>
-    <%= f.text_field :rcb %>
-  </div>
-  <div class="field">
-    <%= f.label :sample_prep_kit %><br>
-    <%= f.text_field :sample_prep_kit %>
-  </div>
-  <div class="field">
-    <%= f.label :index_reads %><br>
-    <%= f.number_field :index_reads %>
-  </div>
-  <div class="field">
-    <%= f.label :read_type %><br>
-    <%= f.text_field :read_type %>
-  </div>
-  <div class="field">
-    <%= f.label :cycles_reads_1 %><br>
-    <%= f.number_field :cycles_reads_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :cycles_reads_2 %><br>
-    <%= f.number_field :cycles_reads_2 %>
-  </div>
-  <div class="field">
-    <%= f.label :run_date %><br>
-    <%= f.date_select :run_date %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :old_id %><br>
-    <%= f.text_field :old_id %>
-  </div>
+    <div class="selectable-dnas">
+
+      <div class="group with-scroll">
+        <h2 class="title">Used DNAs</h2>
+        <div class="checkbox">
+          <%= collection_check_boxes(:sequencing, :dna_extraction_ids, @dna_extractions[:belong_to_a_sequencing], :id, :description) do |b| %>
+            <%= b.label do %>
+              <%= b.check_box + b.text %>
+            <% end %>
+            <br>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2 class="title">Unused DNAs</h2>
+        <div class="checkbox">
+          <%= collection_check_boxes(:sequencing, :dna_extraction_ids, @dna_extractions[:dont_belong_to_a_sequencing], :id, :description) do |b| %>
+            <%= b.label do %>
+              <%= b.check_box + b.text %>
+            <% end %>
+            <br>
+          <% end %>
+        </div>
+      </div>
+
+      <% unless @dna_extractions[:already_selected].count.zero? %>
+        <div class="group">
+          <h2 class="title">Already selected DNAs</h2>
+          <div class="checkbox">
+            <%= collection_check_boxes(:sequencing, :dna_extraction_ids, @dna_extractions[:already_selected], :id, :description) do |b| %>
+              <%= b.label do %>
+                <%= b.check_box + b.text %>
+              <% end %>
+              <br>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div><!-- .selectable-dnas -->
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="field">
+        <%= f.text_field :pal %>
+      </div>
+      <div class="field">
+        <%= f.text_field :dal %>
+      </div>
+      <div class="field">
+        <%= f.date_select :pre_seq_date %>
+      </div>
+      <div class="field">
+        <%= f.text_area :pre_seq_notes %>
+      </div>
+      <div class="field">
+        <%= f.text_field :investigator_name %>
+      </div>
+      <div class="field">
+        <%= f.text_field :rcb %>
+      </div>
+      <div class="field">
+        <%= f.text_field :sample_prep_kit %>
+      </div>
+    </div><!-- .com-sm-6 -->
+
+    <div class="col-sm-6">
+      <div class="field">
+        <%= f.number_field :index_reads %>
+      </div>
+      <div class="field">
+        <%= f.text_field :read_type %>
+      </div>
+      <div class="field">
+        <%= f.number_field :cycles_reads_1 %>
+      </div>
+      <div class="field">
+        <%= f.number_field :cycles_reads_2 %>
+      </div>
+      <div class="field">
+        <%= f.date_select :run_date %>
+      </div>
+      <div class="field">
+        <%= f.text_area :notes %>
+      </div>
+    </div><!-- .com-sm-6 -->
+  </div><!-- .row -->
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit submit_button_text, class: "btn btn-primary" %>
+    <button type="reset" class="btn btn-default">Reset the form</button>
   </div>
 <% end %>

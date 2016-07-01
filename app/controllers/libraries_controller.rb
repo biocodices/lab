@@ -1,6 +1,6 @@
 class LibrariesController < ApplicationController
   before_action :set_library, only: [:show, :edit, :update, :destroy]
-  before_action :set_available_dnas, only: [:new, :edit]
+  before_action :get_available_dnas, only: [:new, :edit]
 
   # GET /libraries
   def index
@@ -23,7 +23,7 @@ class LibrariesController < ApplicationController
   # POST /libraries
   def create
     @library = Library.new(library_params)
-    set_associated_dnas
+    get_associated_dnas
 
     if @library.save
       redirect_to libraries_url,
@@ -35,7 +35,7 @@ class LibrariesController < ApplicationController
 
   # PATCH/PUT /libraries/1
   def update
-    set_associated_dnas
+    get_associated_dnas
 
     if @library.update(library_params)
       redirect_to libraries_url,
@@ -58,7 +58,7 @@ class LibrariesController < ApplicationController
     @library = Library.find(params[:id])
   end
 
-  def set_available_dnas
+  def get_available_dnas
     selected_dna_ids = @library ? @library.dna_extraction_ids : []
     used_dna_ids = DnaExtraction.joins(:libraries).pluck(:id).uniq
 
@@ -75,7 +75,7 @@ class LibrariesController < ApplicationController
     }
   end
 
-  def set_associated_dnas
+  def get_associated_dnas
     dna_extraction_ids = params[:library][:dna_extraction_ids].reject(&:empty?)
     @library.dna_extractions = dna_extraction_ids.map do |id|
       DnaExtraction.find(id)

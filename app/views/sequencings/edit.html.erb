@@ -1,6 +1,6 @@
-<h1>Editing Sequencing</h1>
+<h1>
+  Editing Sequencing #<%= @sequencing.id %>
+  (<span id="counter"><%= @sequencing.dna_extractions.count %></span>)
+</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @sequencing %> |
-<%= link_to 'Back', sequencings_path %>
+<%= render partial: 'form', locals: { submit_button_text: 'Update this sequencing' } %>

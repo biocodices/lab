@@ -27,7 +27,7 @@
         <tr class="display-row collapsed" data-toggle="collapse" data-target="#detail-<%= library.id %>" class="accordion-toggle">
           <td><%= library.id %></td>
           <td class="project-tag">
-            <%= safe_join(library.projects.decorate.map(&:tag).uniq, ', ') %>
+            <%= safe_join(library.projects.decorate.map(&:tag).uniq, ',') %>
           </td>
           <td><%= library.dna_extractions.count %></td>
           <td><%= library.sequencings.map(&:id).uniq.join(', ') %></td>

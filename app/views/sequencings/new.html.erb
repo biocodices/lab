@@ -1,5 +1,6 @@
-<h1>New Sequencing</h1>
+<h1>
+  Set up a new sequencing
+  (<span id="counter">0</span>)
+</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', sequencings_path %>
+<%= render partial: 'form', locals: { submit_button_text: 'Create the new sequencing' } %>

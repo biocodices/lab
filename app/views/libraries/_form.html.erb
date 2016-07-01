@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <% if @dna_extractions[:already_selected] %>
+      <% unless @dna_extractions[:already_selected].count.zero? %>
         <div class="group">
           <h2 class="title">Already selected DNAs</h2>
           <div class="checkbox">
@@ -53,7 +53,7 @@
       <% end %>
 
     </div>
-  </div>
+  </div><!-- .selectable-dnas -->
 
   <div class="row">
     <div class="col-sm-6">

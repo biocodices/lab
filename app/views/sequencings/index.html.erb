@@ -15,6 +15,7 @@
     <tr>
       <th>ID</th>
       <th>Project</th>
+      <th>Libraries used</th>
       <th>Investigator name</th>
       <th>Pre seq date</th>
       <th>Run date</th>
@@ -24,10 +25,13 @@
   <tbody>
     <% @sequencings.each do |sequencing| %>
       <!-- Main row -->
-      <tr class="display-row collapsedNOT" data-toggle="collapse"
+      <tr class="display-row collapsed" data-toggle="collapse"
           data-target="#detail-<%= sequencing.id %>" class="accordion-toggle">
         <td><%= sequencing.id %></td>
-        <td><%= safe_join(sequencing.projects.map(&:decorate).map(&:tag), ',') %></td>
+        <td class="project-tag">
+          <%= safe_join(sequencing.projects.map(&:decorate).map(&:tag), ',') %>
+        </td>
+        <td><%= sequencing.libraries.uniq.map(&:id).join(', ') %></td>
         <td><%= sequencing.investigator_name %></td>
         <td><%= sequencing.pre_seq_date %></td>
         <td><%= sequencing.run_date %></td>
@@ -35,8 +39,8 @@
 
       <!-- Details row -->
       <tr class="hidden-row">
-        <td colspan="5">
-          <div class="accordion-body collapse in" id="detail-<%= sequencing.id %>">
+        <td colspan="6">
+          <div class="accordion-body collapse" id="detail-<%= sequencing.id %>">
 
             <%= render sequencing %>
 

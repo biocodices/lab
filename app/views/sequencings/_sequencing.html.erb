@@ -21,6 +21,7 @@
 
       <%= link_to 'Edit this sequencing info', edit_sequencing_path(sequencing),
           class: 'btn btn-default' %>
+      <br>
       <%= link_to 'Remove this sequencing from the db', sequencing,
         class: 'btn btn-default', method: :delete,
         data: { confirm: sequencing.delete_prompt } %>

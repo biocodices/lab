@@ -21,6 +21,9 @@
       class: "btn btn-default", target: "_blank" %>
     <%= link_to 'Edit the patient details', edit_patient_path(sample.patient),
       class: "btn btn-default", target: "_blank" %>
+    <%= link_to 'Destroy this sample', sample,
+        class: 'btn btn-default',
+        method: 'delete', data: { confirm: "Destroy sample #{sample.id} from patient #{sample.patient.full_name}?" } %>
   </p>
 
   <% unless sample.dna_extractions.count.zero? %>

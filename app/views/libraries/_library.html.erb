@@ -48,6 +48,6 @@
   <div class="right flex-grow"><!-- Element for the flex -->
     <h2 class='title'>DNA Extractions in this library</h2>
     <% @dna_extractions = library.dna_extractions.decorate %>
-    <%= render file: 'dna_extractions/index', locals: { omit_header: true } %>
+    <%= render file: 'dna_extractions/index', locals: { omit_header: true, owner_id: library.id } %>
   </div>
 </div><!-- .horizontal-flex -->

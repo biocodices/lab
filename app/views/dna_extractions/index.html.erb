@@ -26,7 +26,7 @@
   <tbody>
     <% @dna_extractions.each do |dna_extraction| %>
 
-      <tr class="display-row collapsed" data-toggle="collapse" data-target="#dna-detail-<%= dna_extraction.id %>" class="accordion-toggle">
+      <tr class="display-row collapsed" data-toggle="collapse" data-target="#dna-detail-<%= dna_extraction.id %><%= "-#{owner_id}" if defined? owner_id %>" class="accordion-toggle">
         <td><%= dna_extraction.id %></td>
         <td>
           <%= link_to edit_sample_path(dna_extraction.sample) do %>
@@ -40,7 +40,7 @@
 
       <tr class="hidden-row">
         <td colspan="8">
-          <div class="accordion-body collapse" id="dna-detail-<%= dna_extraction.id %>">
+          <div class="accordion-body collapse" id="dna-detail-<%= dna_extraction.id %><%= "-#{owner_id}" if defined? owner_id %>">
             <div class="card">
 
               <% unless dna_extraction.nanodrop_quantifications.count.zero? %>

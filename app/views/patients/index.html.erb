@@ -46,15 +46,12 @@
       <tr class="hidden-row">
         <td colspan="8">
           <div class="accordion-body collapse" id="detail-<%= patient.id %>">
-            <div class="padding">
-              <p>Samples:</p>
-              <% patient.samples.decorate.each do |sample| %>
-                <div class="subtle-box">
-                  <%= render partial: 'samples/sample',
-                      locals: { sample: sample, show_full_data: true } %>
-                </div>
-              <% end %>
-            </div><!-- .padding -->
+            <% patient.samples.decorate.each do |sample| %>
+
+              <%= render partial: 'samples/sample',
+                  locals: { sample: sample, show_full_data: true } %>
+
+            <% end %>
           </div><!-- .accordion-body -->
         </td>
       </tr>

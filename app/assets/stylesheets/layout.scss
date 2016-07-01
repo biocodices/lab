@@ -9,14 +9,6 @@
   font-family: serif;
 }
 
-// Headers + action buttons, usually on top of the page
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 20px;
-}
-
 .horizontal-flex {
   display: flex;
   flex-wrap: wrap;
@@ -33,3 +25,8 @@
     flex-grow: 1;
   }
 }
+
+.quanti-index {  // First cell of quantification tables
+  width: 75px;
+}
+

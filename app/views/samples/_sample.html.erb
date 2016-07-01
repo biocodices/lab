@@ -1,31 +1,33 @@
-<p><%= fa_icon 'flask' %> Sample <%= sample.project.tag %>-<%= sample.id %> details:</p>
-<ul>
-  <% if show_full_data %>
-    <li>Patient: <%= sample.patient.full_name %></li>
-    <li>Institution: <%= sample.institution %></li>
-  <% end %>
-  <li>Request date: <%= sample.request_date %></li>
-  <li>Admission date: <%= sample.admission_date %></li>
-  <li>Doctor name: <%= sample.doctor_full_name || "-" %></li>
-  <li>Doctor email: <%= sample.doctor_email || "-" %></li>
-  <li>Old ID: <%= sample.old_id || "-" %></li>
-  <li>Barcode: <%= sample.barcode || "-"  %></li>
-  <li>Notes: <%= sample.notes || "-" %></li>
-</ul>
-<p>
-  <%= link_to 'Edit the sample details', edit_sample_path(sample),
-    class: "btn btn-default", target: "_blank" %>
-  <%= link_to 'Edit the patient details', edit_patient_path(sample.patient),
-    class: "btn btn-default", target: "_blank" %>
-</p>
+<div class="card">
+  <div class="card__title">
+    <%= fa_icon 'flask' %> Sample <%= sample.project.tag %>-<%= sample.id %> details:
+  </div>
 
-<% unless sample.dna_extractions.count.zero? %>
-  <p>
-    DNA extractions from this sample:
-
-    <% sample.dna_extractions.decorate.each do |dna_extraction| %>
-      <%= render dna_extraction %>
+  <ul>
+    <% if show_full_data %>
+      <li>Patient: <%= sample.patient.full_name %></li>
+      <li>Institution: <%= sample.institution %></li>
     <% end %>
+    <li>Request date: <%= sample.request_date %></li>
+    <li>Admission date: <%= sample.admission_date %></li>
+    <li>Doctor name: <%= sample.doctor_full_name || "-" %></li>
+    <li>Doctor email: <%= sample.doctor_email || "-" %></li>
+    <li>Old ID: <%= sample.old_id || "-" %></li>
+    <li>Barcode: <%= sample.barcode || "-"  %></li>
+    <li>Notes: <%= sample.notes || "-" %></li>
+  </ul>
+  <p>
+    <%= link_to 'Edit the sample details', edit_sample_path(sample),
+      class: "btn btn-default", target: "_blank" %>
+    <%= link_to 'Edit the patient details', edit_patient_path(sample.patient),
+      class: "btn btn-default", target: "_blank" %>
   </p>
-<% end %>
 
+  <% unless sample.dna_extractions.count.zero? %>
+    <% sample.dna_extractions.decorate.each do |dna_extraction| %>
+
+      <%= render dna_extraction %>
+
+    <% end %>
+  <% end %>
+</div>

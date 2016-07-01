@@ -42,7 +42,7 @@
       <tr class="hidden-row">
         <td colspan="8">
           <div class="accordion-body collapse" id="dna-detail-<%= dna_extraction.id %>">
-            <div class="padding">
+            <div class="card">
 
               <% unless dna_extraction.nanodrop_quantifications.count.zero? %>
                 <table class="table table-bordered table-condensed table-striped quantification">
@@ -60,7 +60,7 @@
                 </table>
               <% end %>
 
-            </div><!-- .padding -->
+            </div><!-- .card -->
           </div><!-- accordion-body -->
         </td>
       </tr>

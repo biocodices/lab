@@ -1,0 +1,15 @@
+.card {
+  padding: 15px;
+
+  &:not(:last-child) {
+    border-bottom: 1px dashed gray;
+  }
+}
+
+.card__title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.15em;
+}
+
+

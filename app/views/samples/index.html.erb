@@ -53,12 +53,10 @@
           <tr class="hidden-row">
             <td colspan="8">
               <div class="accordion-body collapse" id="detail-<%= sample.id %>">
-                <div class="padding">
 
-                  <%= render partial: 'sample',
-                      locals: { sample: sample, show_full_data: false } %>
+                <%= render partial: 'sample',
+                    locals: { sample: sample, show_full_data: false } %>
 
-                </div><!-- .padding -->
               </div><!-- accordion-body -->
             </td>
           </tr>

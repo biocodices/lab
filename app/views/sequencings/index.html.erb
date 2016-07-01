@@ -1,9 +1,12 @@
 <div class="header">
   <div class="title">
-    <h1>Sequencings</h1>
+    <h1>
+      <%= fa_icon 'braille' %>
+      Sequencings
+    </h1>
   </div>
   <div class="actions">
-    <%= link_to 'Set a new sequencing', new_sequencing_path, class: 'btn btn-default' %>
+    <%= link_to 'Set up a new sequencing', new_sequencing_path, class: 'btn btn-default' %>
   </div>
 </div>
 
@@ -11,54 +14,32 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Project</th>
       <th>Investigator name</th>
       <th>Pre seq date</th>
-      <th>Pre seq date</th>
-      <th>Rcb</th>
-      <th>Sample prep kit</th>
-      <th>Index reads</th>
-      <th>Read type</th>
-      <th>Cycles reads 1</th>
-      <th>Cycles reads 2</th>
       <th>Run date</th>
-      <th>Notes</th>
     </tr>
   </thead>
 
   <tbody>
     <% @sequencings.each do |sequencing| %>
       <!-- Main row -->
-      <tr class="display-row collapsed" data-toggle="collapse"
+      <tr class="display-row collapsedNOT" data-toggle="collapse"
           data-target="#detail-<%= sequencing.id %>" class="accordion-toggle">
+        <td><%= sequencing.id %></td>
+        <td><%= safe_join(sequencing.projects.map(&:decorate).map(&:tag), ',') %></td>
         <td><%= sequencing.investigator_name %></td>
+        <td><%= sequencing.pre_seq_date %></td>
         <td><%= sequencing.run_date %></td>
       </tr>
 
       <!-- Details row -->
       <tr class="hidden-row">
-        <td colspan="8">
-          <div class="accordion-body collapse" id="detail-<%= sequencing.id %>">
-            <div class="card">
+        <td colspan="5">
+          <div class="accordion-body collapse in" id="detail-<%= sequencing.id %>">
 
-              Hey there seq.
-              <%# render sequencing %>
-              <td><%= sequencing.pal %></td>
-              <td><%= sequencing.dal %></td>
-              <td><%= sequencing.pre_seq_date %></td>
-              <td><%= sequencing.pre_seq_notes %></td>
-              <td><%= sequencing.rcb %></td>
-              <td><%= sequencing.sample_prep_kit %></td>
-              <td><%= sequencing.index_reads %></td>
-              <td><%= sequencing.read_type %></td>
-              <td><%= sequencing.cycles_reads_1 %></td>
-              <td><%= sequencing.cycles_reads_2 %></td>
-              <td><%= sequencing.notes %></td>
-              <td><%= sequencing.old_id %></td>
-              <td><%= link_to 'Show', sequencing %></td>
-              <td><%= link_to 'Edit', edit_sequencing_path(sequencing) %></td>
-              <td><%= link_to 'Destroy', sequencing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%= render sequencing %>
 
-            </div><!-- .card -->
           </div><!-- accordion-body -->
         </td>
       </tr>

@@ -1,13 +1,17 @@
 class SequencingDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def run_date
+    return unless object.run_date
+    object.run_date.strftime('%B %-d, %Y')
+  end
 
+  def pre_seq_date
+    return unless object.pre_seq_date
+    object.pre_seq_date.strftime('%B %-d, %Y')
+  end
+
+  def delete_prompt
+    "Destroy sequencing ##{object.id}?"
+  end
 end

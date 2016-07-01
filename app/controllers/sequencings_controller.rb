@@ -3,7 +3,7 @@ class SequencingsController < ApplicationController
 
   # GET /sequencings
   def index
-    @sequencings = Sequencing.all
+    @sequencings = Sequencing.all.decorate
   end
 
   # GET /sequencings/1

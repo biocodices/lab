@@ -30,5 +30,11 @@
 .table-vertical {
   width: auto;
 
-  th { width: 150px; }
+  th {
+    width: 150px;
+    text-align: right;
+  }
+  td {
+    max-width: 300px;
+  }
 }

@@ -1,4 +1,6 @@
 class SequencingsController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_sequencing, only: [:show, :edit, :update, :destroy]
   before_action :set_available_dnas, only: [:new, :edit]
 
@@ -59,20 +61,7 @@ class SequencingsController < ApplicationController
   end
 
   def set_available_dnas
-    selected_dna_ids = @sequencing ? @sequencing.dna_extraction_ids : []
-    used_dna_ids = DnaExtraction.joins(:libraries).pluck(:id).uniq
-
-    selected_dnas = DnaExtraction.find(selected_dna_ids).map(&:decorate)
-    used_dnas = DnaExtraction.find(used_dna_ids - selected_dna_ids)
-                             .map(&:decorate).reverse
-    unused_dnas = DnaExtraction.where.not(id: used_dna_ids + selected_dna_ids)
-                               .map(&:decorate).reverse
-
-    @dna_extractions = {
-      already_selected: selected_dnas,
-      belong_to_a_sequencing: used_dnas,
-      dont_belong_to_a_sequencing: unused_dnas
-    }
+    @dna_extractions = available_dnas @sequencing, :sequencings
   end
 
   def set_associated_dnas

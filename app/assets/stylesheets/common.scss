@@ -31,7 +31,6 @@
 .mono-font { font-family: monospace; }
 .align-right { text-align: right; }
 
-
 .danger-highlight {
   border: 3px solid tomato !important;
   // !important to override Bootstrap's td styles
@@ -60,4 +59,10 @@ a.btn {
   &.btn-danger:visited {
     color: white;
   }
+}
+
+// I use this barcode icon rotated to picture a gel electrophoresis
+.fa.fa-barcode {
+  font-size: 0.85em;
+  transform: rotate(90deg);
 }

@@ -12,48 +12,10 @@
   <% end %>
 
   <div class="field">
-    <div class="selectable-dnas">
-
-      <div class="group with-scroll">
-        <h2 class="title">Used DNAs</h2>
-        <div class="checkbox">
-          <%= collection_check_boxes(:sequencing, :dna_extraction_ids, @dna_extractions[:belong_to_a_sequencing], :id, :description) do |b| %>
-            <%= b.label do %>
-              <%= b.check_box + b.text %>
-            <% end %>
-            <br>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="group">
-        <h2 class="title">Unused DNAs</h2>
-        <div class="checkbox">
-          <%= collection_check_boxes(:sequencing, :dna_extraction_ids, @dna_extractions[:dont_belong_to_a_sequencing], :id, :description) do |b| %>
-            <%= b.label do %>
-              <%= b.check_box + b.text %>
-            <% end %>
-            <br>
-          <% end %>
-        </div>
-      </div>
-
-      <% unless @dna_extractions[:already_selected].count.zero? %>
-        <div class="group">
-          <h2 class="title">Already selected DNAs</h2>
-          <div class="checkbox">
-            <%= collection_check_boxes(:sequencing, :dna_extraction_ids, @dna_extractions[:already_selected], :id, :description) do |b| %>
-              <%= b.label do %>
-                <%= b.check_box + b.text %>
-              <% end %>
-              <br>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-
-    </div>
-  </div><!-- .selectable-dnas -->
+    <%= render partial: 'dna_extractions/selectable_dnas',
+      locals: { object_sym: :sequencing,
+                dna_extractions: @dna_extractions } %>
+  </div>
 
   <div class="row">
     <div class="col-sm-6">

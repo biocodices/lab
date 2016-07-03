@@ -1,6 +1,8 @@
 class LibrariesController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_library, only: [:show, :edit, :update, :destroy]
-  before_action :get_available_dnas, only: [:new, :edit]
+  before_action :set_available_dnas, only: [:new, :edit]
 
   # GET /libraries
   def index
@@ -58,24 +60,11 @@ class LibrariesController < ApplicationController
     @library = Library.find(params[:id])
   end
 
-  def get_available_dnas
-    selected_dna_ids = @library ? @library.dna_extraction_ids : []
-    used_dna_ids = DnaExtraction.joins(:libraries).pluck(:id).uniq
-
-    selected_dnas = DnaExtraction.find(selected_dna_ids).map(&:decorate)
-    used_dnas = DnaExtraction.find(used_dna_ids - selected_dna_ids)
-                             .map(&:decorate).reverse
-    unused_dnas = DnaExtraction.where.not(id: used_dna_ids + selected_dna_ids)
-                               .map(&:decorate).reverse
-
-    @dna_extractions = {
-      already_selected: selected_dnas,
-      belong_to_a_library: used_dnas,
-      dont_belong_to_a_library: unused_dnas
-    }
+  def set_available_dnas
+    @dna_extractions = available_dnas @library, :libraries
   end
 
-  def get_associated_dnas
+  def set_associated_dnas
     dna_extraction_ids = params[:library][:dna_extraction_ids].reject(&:empty?)
     @library.dna_extractions = dna_extraction_ids.map do |id|
       DnaExtraction.find(id)

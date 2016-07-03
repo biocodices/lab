@@ -41,12 +41,62 @@
 
 <div class="header">
   <div class="title">
-
-  </div>
-  <div class="actions">
-
+    <h1>
+      <%= fa_icon 'barcode' %>
+      Upload a gel electrophoresis picture
+    </h1>
   </div>
 </div>
 
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_tag('/dna_extractions/upload_gel_picture', action: :upload, multipart: true) do |f| %>
+      <div class="field">
+        <label class="control-label">Associated DNA extractions</label>
+        <div class="selectable-dnas">
 
-<%= render file: 'dna_extractions/index' %>
+          <div class="group with-scroll">
+            <h2 class="title">DNAs with pic</h2>
+            <% @dna_extractions[:have_gel_picture].each do |dna_extraction| %>
+              <label for="associated_dnas_<%= dna_extraction.id %>">
+                <%= check_box_tag('associated_dnas[]', dna_extraction.id) %>
+                <%= dna_extraction.description %>
+              </label>
+              <br>
+            <% end %>
+            <div class="checkbox">
+            </div>
+          </div>
+
+          <div class="group with-scroll">
+            <h2 class="title">DNAs without pic</h2>
+            <div class="checkbox">
+            <% @dna_extractions[:dont_have_gel_picture].each do |dna_extraction| %>
+              <label for="associated_dnas_<%= dna_extraction.id %>">
+                <%= check_box_tag("associated_dnas[#{dna_extraction.id}]", dna_extraction.id) %>
+                <%= dna_extraction.description %>
+              </label>
+              <br>
+            <% end %>
+            </div>
+          </div>
+
+        </div><!-- .selectable-dnas -->
+      </div>
+    <% end %>
+
+    <div class="field">
+      <label class="control-label">Gel picture (.jpg, .jpeg, .png)</label>
+      <%= file_field_tag :gel_picture %>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Submit the chosen files
+    </button>
+
+    <button type="reset" class="btn btn-default">
+      Reset the chosen files
+    </button>
+
+  </div>
+</div>

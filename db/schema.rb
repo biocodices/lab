@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626231702) do
+ActiveRecord::Schema.define(version: 20160703212602) do
 
   create_table "dna_extractions", force: :cascade do |t|
-    t.integer  "sample_id",  limit: 4
-    t.string   "old_id",     limit: 255
+    t.integer  "sample_id",   limit: 4
+    t.string   "old_id",      limit: 255
     t.date     "date"
-    t.text     "notes",      limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "notes",       limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "gel_picture", limit: 255
   end
 
   add_index "dna_extractions", ["sample_id"], name: "index_dna_extractions_on_sample_id", using: :btree

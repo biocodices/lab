@@ -10,4 +10,6 @@ class DnaExtraction < ActiveRecord::Base
 
   has_many :nanodrop_quantifications, dependent: :destroy
   has_many :qubit_quantifications, dependent: :destroy
+
+  mount_uploader :gel_picture, GelPictureUploader 
 end

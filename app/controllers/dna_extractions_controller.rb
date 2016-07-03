@@ -24,7 +24,7 @@ class DnaExtractionsController < ApplicationController
     @dna_extraction = DnaExtraction.new(dna_sample_params)
 
     if @dna_extraction.save
-      redirect_to @dna_extraction, notice: 'Dna sample was successfully created.'
+      redirect_to @dna_extraction, notice: 'DNA was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class DnaExtractionsController < ApplicationController
   # PATCH/PUT /dna_extractions/1
   def update
     if @dna_extraction.update(dna_sample_params)
-      redirect_to @dna_extraction, notice: 'Dna sample was successfully updated.'
+      redirect_to @dna_extraction, notice: 'DNA was successfully updated.'
     else
       render :edit
     end
@@ -42,11 +42,18 @@ class DnaExtractionsController < ApplicationController
   # DELETE /dna_extractions/1
   def destroy
     @dna_extraction.destroy
-    redirect_to dna_extractions_url, notice: 'Dna sample was successfully destroyed.'
+    redirect_to dna_extractions_url, notice: 'DNA was successfully destroyed.'
   end
 
   def select_quantification_files
-    @dna_extractions = DnaExtraction.all.decorate
+    dna_ids_with_gel = DnaExtraction.all.to_a.keep_if(&:gel_picture?)
+    @dna_extractions = {
+      have_gel_picture: DnaExtraction.where(id: dna_ids_with_gel)
+                                     .map(&:decorate),
+      dont_have_gel_picture: DnaExtraction.where.not(id: dna_ids_with_gel)
+                                          .map(&:decorate)
+    }
+
     render :select_quantification_files
   end
 
@@ -60,21 +67,37 @@ class DnaExtractionsController < ApplicationController
     notice_lines = []
 
     if params[:nanodrop_file]
-      uploader.store!(params[:nanodrop_file])
+      uploader.store! params[:nanodrop_file] 
       tsv_filepath = uploader.file.file
       nanodrops = NanodropQuantification.save_records_from_tsv!(tsv_filepath)
       notice_lines << 'Nanodrop data loaded.'
     end
 
     if params[:qubit_file]
-      uploader.store!(params[:qubit_file])
+      uploader.store! params[:qubit_file] 
       csv_filepath = uploader.file.file
       qubits = QubitQuantification.save_records_from_csv!(csv_filepath)
       notice_lines << 'Qubit data loaded.'
     end
 
-    notice_text = notice_lines.join(' ')
-    redirect_to dna_extractions_url, notice: notice_text
+    redirect_to dna_extractions_url, notice: notice_lines.join(' ')
+  end
+
+  def upload_gel_picture
+    if params[:gel_picture]
+      associated_dnas = params[:gel_picture][:associated_dnas]
+      associated_dnas.each do |dna_extraction_id|
+        dna_extraction = DnaExtraction.find(dna_extraction_id)
+        dna_extraction.gel_picture = params[:gel_picture]
+        dna_extraction.save!
+      end
+
+      notice = "Gel picture associated to #{associated_dnas.count} DNA extractions."
+    else
+      notice = 'No gel picture uploaded.'
+    end
+
+    redirect_to dna_extractions_url, notice: notice
   end
 
   private

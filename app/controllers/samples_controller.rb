@@ -25,9 +25,15 @@ class SamplesController < ApplicationController
     @sample = Sample.new(sample_params)
     @sample.patient ||= Patient.create(patient_params)
 
-    if @sample.save
+    if !@sample.patient.valid?
+      @sample.errors.add(:patient,
+                         @sample.patient.errors.messages.values.join(', '))
+    end
+
+    if @sample.errors.count.zero? && @sample.save
       redirect_to @sample, notice: 'Sample was successfully created.'
     else
+      set_form_options
       render :new
     end
   end
@@ -40,6 +46,8 @@ class SamplesController < ApplicationController
     if @sample.save
       redirect_to @sample, notice: 'Sample was successfully updated.'
     else
+      set_form_options
+      set_sample
       render :edit
     end
   end

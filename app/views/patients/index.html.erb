@@ -52,6 +52,10 @@
                   locals: { sample: sample, show_full_data: true } %>
 
             <% end %>
+
+            <% if patient.samples.count.zero? %>
+              <p>No samples associated with this patient.</p>
+            <% end %>
           </div><!-- .accordion-body -->
         </td>
       </tr>

@@ -6,6 +6,7 @@ class NanodropQuantification < ActiveRecord::Base
 
   CONCENTRATION_UNIT = 'ng/μl'.freeze
   RATIO_260_280_OK_RANGE = 1.8..2.0
+  RATIO_260_280_WARN_RANGE = 1.6..1.8
 
   def self.save_records_from_tsv!(tsv_filepath)
     table = CSV.read(tsv_filepath, col_sep: "\t", encoding: 'iso-8859-1:utf-8',

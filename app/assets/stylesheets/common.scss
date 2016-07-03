@@ -31,9 +31,13 @@
 .mono-font { font-family: monospace; }
 .align-right { text-align: right; }
 
-// Backgrounds
-.alert-border {
+
+.danger-highlight {
   border: 3px solid tomato !important;
+  // !important to override Bootstrap's td styles
+}
+.warning-highlight {
+  border: 3px solid orange !important;
   // !important to override Bootstrap's td styles
 }
 

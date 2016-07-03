@@ -14,10 +14,10 @@ class PatientDecorator < Draper::Decorator
   end
 
   def select_option
-    project_tag = object.samples.first.project.try(:tag)
-    institution = object.samples.first.try(:institution)
+    project_tag = object.projects.map(&:tag).uniq.join(',')
+    institution = object.samples.map(&:institution).uniq.join(',')
 
-    "#{object.full_name} [ #{object.id} ] #{project_tag} #{institution}"
+    "##{object.id} #{object.full_name} [ #{project_tag} #{institution} ]"
   end
 
   def delete_prompt

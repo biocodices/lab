@@ -35,7 +35,10 @@ group :development, :test do
   # gem 'byebug'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'capistrano'
+  # gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-passenger'
 end
 
 group :development do

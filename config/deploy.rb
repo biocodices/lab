@@ -4,11 +4,27 @@ lock '3.5.0'
 set :application, 'lab'
 set :repo_url, 'git@github.com:biocodices/lab'
 
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
+
+# Skip migration if files in db/migrate were not modified
+set :conditionally_migrate, true
+
+set :ssh_options, { forward_agent: true }
+
+# If you use Rails 4+ and you'd like to clean up old assets after each deploy,
+# set this to the number of versions to keep
+set :keep_assets, 2
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '~/biocodices/lab-backend'
+# set :tmp_dir, '/home/juan/.tmp'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -33,17 +49,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 3
 
-namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-
-end
+after 'deploy', 'deploy:restart'
+after 'deploy', 'deploy:cleanup'

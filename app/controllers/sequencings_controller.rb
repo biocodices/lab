@@ -6,7 +6,7 @@ class SequencingsController < ApplicationController
 
   # GET /sequencings
   def index
-    @sequencings = Sequencing.all.decorate
+    @sequencings = Sequencing.preload(:dna_extractions).all.decorate
   end
 
   # GET /sequencings/1

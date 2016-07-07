@@ -3,7 +3,11 @@ class DnaExtractionsController < ApplicationController
 
   # GET /dna_extractions
   def index
-    @dna_extractions = DnaExtraction.all.decorate
+    @dna_extractions = DnaExtraction.preload(
+      :sample,
+      :nanodrop_quantifications,
+      :qubit_quantifications
+    ).all.decorate
   end
 
   # GET /dna_extractions/1

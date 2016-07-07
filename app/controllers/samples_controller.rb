@@ -4,7 +4,7 @@ class SamplesController < ApplicationController
 
   # GET /samples
   def index
-    @samples = Sample.all.decorate.reverse
+    @samples = Sample.preload(:dna_extractions).all.decorate.reverse
   end
 
   # GET /samples/1

@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
 
   # GET /patients
   def index
-    @patients = Patient.all.decorate.reverse
+    @patients = Patient.preload(:samples).all.decorate.reverse
   end
 
   # GET /patients/1

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= render partial: 'dna_extractions/selectable_dnas',
-      locals: { object_sym: :libraries,
+      locals: { object_sym: :library,
                 dna_extractions: @dna_extractions } %>
   </div>
 
@@ -26,13 +26,13 @@
         <%= f.text_area :notes %>
       </div>
       <div class="field">
-        <%= f.date_select :pre_pcr_date %>
+        <%= f.date_select :pre_pcr_date, {include_blank: true, default: nil} %>
       </div>
       <div class="field">
-        <%= f.date_select :pcr_date %>
+        <%= f.date_select :pcr_date, {include_blank: true, default: nil} %>
       </div>
       <div class="field">
-        <%= f.date_select :post_pcr_date %>
+        <%= f.date_select :post_pcr_date, {include_blank: true, default: nil} %>
       </div>
     </div><!-- .col-sm-6 -->
 

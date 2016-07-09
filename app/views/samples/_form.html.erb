@@ -37,7 +37,8 @@
           </div>
           <div class="field">
             <div class="rails-bootstrap-forms-date-select">
-              <%= date_select 'patient', 'birthdate', {start_year: 1915, end_year: Date.today.year}, class: 'form-control' %>
+              Date of birth:
+              <%= date_select 'patient', 'birthdate', {start_year: 1915, end_year: Date.today.year, include_blank: true, default: nil }, class: 'form-control' %>
             </div>
           </div>
         </fieldset>
@@ -90,10 +91,10 @@
         </div>
       </div>
       <div class="field">
-        <%= f.date_select :request_date %>
+        <%= f.date_select :request_date, { include_blank: true, default: nil } %>
       </div>
       <div class="field">
-        <%= f.date_select :admission_date %>
+        <%= f.date_select :admission_date, { include_blank: true, default: nil }, { include_blank: true, default: nil } %>
       </div>
       <div class="field">
         <%= f.text_field :request_category %>

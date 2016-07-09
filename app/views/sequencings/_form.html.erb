@@ -26,7 +26,7 @@
         <%= f.text_field :dal %>
       </div>
       <div class="field">
-        <%= f.date_select :pre_seq_date %>
+        <%= f.date_select :pre_seq_date, {include_blank: true, default: nil} %>
       </div>
       <div class="field">
         <%= f.text_area :pre_seq_notes %>
@@ -56,7 +56,7 @@
         <%= f.number_field :cycles_reads_2 %>
       </div>
       <div class="field">
-        <%= f.date_select :run_date %>
+        <%= f.date_select :run_date, {include_blank: true, default: nil} %>
       </div>
       <div class="field">
         <%= f.text_area :notes %>

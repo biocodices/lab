@@ -15,6 +15,7 @@
     <tr>
       <th>ID</th>
       <th>Project</th>
+      <th>DNA extractions</th>
       <th>Libraries used</th>
       <th>Investigator name</th>
       <th>Pre seq date</th>
@@ -31,6 +32,7 @@
         <td class="project-tag">
           <%= safe_join(sequencing.projects.map(&:decorate).map(&:tag), ',') %>
         </td>
+        <td><%= sequencing.dna_extractions.count %></td>
         <td><%= sequencing.libraries.uniq.map(&:id).join(', ') %></td>
         <td><%= sequencing.investigator_name %></td>
         <td><%= sequencing.pre_seq_date %></td>
@@ -39,7 +41,7 @@
 
       <!-- Details row -->
       <tr class="hidden-row">
-        <td colspan="6">
+        <td colspan="7">
           <div class="accordion-body collapse" id="detail-<%= sequencing.id %>">
 
             <%= render sequencing %>

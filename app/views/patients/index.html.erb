@@ -19,7 +19,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Project</th>
-      <th>N Samples</th>
+      <th>Sample IDs</th>
       <th>Birthdate</th>
       <th>Age</th>
       <th colspan="2"></th>
@@ -35,12 +35,12 @@
         <td><%= patient.id %></td>
         <td><%= patient.full_name %></td>
         <td class="project-tag"><%= safe_join(patient.project_tags, ', ') %></td>
-        <td><%= safe_join(patient.samples.map{ fa_icon 'flask', class: 'grey small' }) %></td>
+        <td><%= patient.sample_ids.join(', ') %></td>
         <td><%= patient.birthdate && patient.birthdate.strftime("%B %-d, %Y") %></td>
         <td><%= patient.age %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient,
-                method: :delete, data: { confirm: patient.delete_prompt} %></td>
+                method: :delete, data: { confirm: patient.delete_prompt } %></td>
       </tr>
 
       <!-- Details row -->

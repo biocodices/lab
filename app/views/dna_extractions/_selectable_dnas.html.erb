@@ -30,7 +30,7 @@
       <div class="checkbox">
         <%= collection_check_boxes(object_sym, :dna_extraction_ids, dna_extractions[:already_selected], :id, :description) do |b| %>
           <%= b.label do %>
-            <%= b.check_box + b.text %>
+            <%= b.check_box(checked: true) + b.text %>
           <% end %>
           <br>
         <% end %>

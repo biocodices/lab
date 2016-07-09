@@ -32,3 +32,26 @@ fieldset {
 #error_explanation ul {
   margin-top: 10px;
 }
+
+.selectable-dnas {
+  label {
+    width: 100%;
+    padding: 6px;
+    border-radius: 2px;
+    border: 1px solid silver;
+    margin: 1px;
+    padding: 3px;
+  }
+
+  input[type=checkbox] {
+    display: none;
+  }
+
+  .highlighted {
+    background-color: gold;
+    color: indigo;
+    /* font-size: 1.25em; */
+    /* font-weight: bold; */
+  }
+}
+

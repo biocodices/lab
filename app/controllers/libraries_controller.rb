@@ -25,7 +25,7 @@ class LibrariesController < ApplicationController
   # POST /libraries
   def create
     @library = Library.new(library_params)
-    get_associated_dnas
+    set_associated_dnas
 
     if @library.save
       redirect_to libraries_url,
@@ -37,7 +37,7 @@ class LibrariesController < ApplicationController
 
   # PATCH/PUT /libraries/1
   def update
-    get_associated_dnas
+    set_associated_dnas
 
     if @library.update(library_params)
       redirect_to libraries_url,
@@ -65,7 +65,7 @@ class LibrariesController < ApplicationController
   end
 
   def set_associated_dnas
-    dna_extraction_ids = params[:library][:dna_extraction_ids].reject(&:empty?)
+    dna_extraction_ids = params[:libraries][:dna_extraction_ids].reject(&:empty?)
     @library.dna_extractions = dna_extraction_ids.map do |id|
       DnaExtraction.find(id)
     end

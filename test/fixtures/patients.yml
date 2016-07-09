@@ -13,3 +13,9 @@ two:
   last_name: Coso
   # acronym: GSC
   birthdate: 1955-09-26
+
+three:
+  first_name: Amy
+  last_name: Ramírez
+  acronym: ACR
+  birthdate: 1990-08-26

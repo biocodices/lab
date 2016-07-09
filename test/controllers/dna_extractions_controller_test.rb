@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DnaExtractionsControllerTest < ActionController::TestCase
   setup do
-    @dna_extraction = dna_extraction(:one)
+    @dna_extraction = dna_extractions(:one)
   end
 
   test "should get index" do
@@ -18,7 +18,12 @@ class DnaExtractionsControllerTest < ActionController::TestCase
 
   test "should create dna_extraction" do
     assert_difference('DnaExtraction.count') do
-      post :create, dna_extraction: { extraction_date: @dna_extraction.extraction_date, notes: @dna_extraction.notes, old_id: @dna_extraction.old_id, sample_id: @dna_extraction.sample_id }
+      post :create, dna_extraction: {
+        date: @dna_extraction.date,
+        notes: @dna_extraction.notes,
+        old_id: @dna_extraction.old_id,
+        sample_id: @dna_extraction.sample_id
+      }
     end
 
     assert_redirected_to dna_extraction_path(assigns(:dna_extraction))
@@ -35,7 +40,13 @@ class DnaExtractionsControllerTest < ActionController::TestCase
   end
 
   test "should update dna_extraction" do
-    patch :update, id: @dna_extraction, dna_extraction: { extraction_date: @dna_extraction.extraction_date, notes: @dna_extraction.notes, old_id: @dna_extraction.old_id, sample_id: @dna_extraction.sample_id }
+    patch :update, id: @dna_extraction, dna_extraction: {
+      date: @dna_extraction.date,
+      notes: @dna_extraction.notes,
+      old_id: @dna_extraction.old_id,
+      sample_id: @dna_extraction.sample_id
+    }
+
     assert_redirected_to dna_extraction_path(assigns(:dna_extraction))
   end
 

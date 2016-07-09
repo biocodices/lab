@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PatientsControllerTest < ActionController::TestCase
   setup do
-    @patient = patients(:one)
+    @patient = patients(:three)
   end
 
   test "should get index" do
@@ -17,8 +17,16 @@ class PatientsControllerTest < ActionController::TestCase
   end
 
   test "should create patient" do
+    # Randomize the name so we can test the creation of a NEW patient
+    @patient.last_name = (0..8).map { (65 + rand(26)).chr }.join
+
     assert_difference('Patient.count') do
-      post :create, patient: { acronym: @patient.acronym, birthdate: @patient.birthdate, first_name: @patient.first_name, last_name: @patient.last_name }
+      post :create, patient: {
+        acronym: @patient.acronym,
+        birthdate: @patient.birthdate,
+        first_name: @patient.first_name,
+        last_name: @patient.last_name
+      }
     end
 
     assert_redirected_to patient_path(assigns(:patient))
@@ -35,7 +43,13 @@ class PatientsControllerTest < ActionController::TestCase
   end
 
   test "should update patient" do
-    patch :update, id: @patient, patient: { acronym: @patient.acronym, birthdate: @patient.birthdate, first_name: @patient.first_name, last_name: @patient.last_name }
+    patch :update, id: @patient, patient: {
+      acronym: @patient.acronym,
+      birthdate: @patient.birthdate,
+      first_name: @patient.first_name,
+      last_name: @patient.last_name
+    }
+
     assert_redirected_to patient_path(assigns(:patient))
   end
 

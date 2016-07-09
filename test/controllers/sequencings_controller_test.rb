@@ -18,10 +18,23 @@ class SequencingsControllerTest < ActionController::TestCase
 
   test "should create sequencing" do
     assert_difference('Sequencing.count') do
-      post :create, sequencing: { cycles_reads_1: @sequencing.cycles_reads_1, cycles_reads_2: @sequencing.cycles_reads_2, dal: @sequencing.dal, index_reads: @sequencing.index_reads, investigator_name: @sequencing.investigator_name, notes: @sequencing.notes, old_id: @sequencing.old_id, pal: @sequencing.pal, pre_seq_date: @sequencing.pre_seq_date, pre_seq_notes: @sequencing.pre_seq_notes, rcb: @sequencing.rcb, read_type: @sequencing.read_type, run_date: @sequencing.run_date, sample_prep_kit: @sequencing.sample_prep_kit }
+      post :create, sequencing: {
+        cycles_reads_1: @sequencing.cycles_reads_1,
+        cycles_reads_2: @sequencing.cycles_reads_2,
+        dal: @sequencing.dal,
+        index_reads: @sequencing.index_reads,
+        investigator_name: @sequencing.investigator_name,
+        notes: @sequencing.notes,
+        old_id: @sequencing.old_id,
+        pal: @sequencing.pal,
+        pre_seq_date: @sequencing.pre_seq_date,
+        pre_seq_notes: @sequencing.pre_seq_notes,
+        rcb: @sequencing.rcb, read_type: @sequencing.read_type, run_date: @sequencing.run_date, sample_prep_kit: @sequencing.sample_prep_kit,
+        dna_extraction_ids: dna_extractions(:one, :two)
+      }
     end
 
-    assert_redirected_to sequencing_path(assigns(:sequencing))
+    assert_redirected_to sequencings_path
   end
 
   test "should show sequencing" do
@@ -35,8 +48,22 @@ class SequencingsControllerTest < ActionController::TestCase
   end
 
   test "should update sequencing" do
-    patch :update, id: @sequencing, sequencing: { cycles_reads_1: @sequencing.cycles_reads_1, cycles_reads_2: @sequencing.cycles_reads_2, dal: @sequencing.dal, index_reads: @sequencing.index_reads, investigator_name: @sequencing.investigator_name, notes: @sequencing.notes, old_id: @sequencing.old_id, pal: @sequencing.pal, pre_seq_date: @sequencing.pre_seq_date, pre_seq_notes: @sequencing.pre_seq_notes, rcb: @sequencing.rcb, read_type: @sequencing.read_type, run_date: @sequencing.run_date, sample_prep_kit: @sequencing.sample_prep_kit }
-    assert_redirected_to sequencing_path(assigns(:sequencing))
+    patch :update, id: @sequencing, sequencing: {
+      cycles_reads_1: @sequencing.cycles_reads_1,
+      cycles_reads_2: @sequencing.cycles_reads_2,
+      dal: @sequencing.dal,
+      index_reads: @sequencing.index_reads,
+      investigator_name: @sequencing.investigator_name,
+      notes: @sequencing.notes,
+      old_id: @sequencing.old_id,
+      pal: @sequencing.pal,
+      pre_seq_date: @sequencing.pre_seq_date,
+      pre_seq_notes: @sequencing.pre_seq_notes,
+      rcb: @sequencing.rcb, read_type: @sequencing.read_type, run_date: @sequencing.run_date, sample_prep_kit: @sequencing.sample_prep_kit,
+      dna_extraction_ids: dna_extractions(:one, :two)
+    }
+
+    assert_redirected_to sequencings_path
   end
 
   test "should destroy sequencing" do

@@ -33,7 +33,7 @@ class SamplesControllerTest < ActionController::TestCase
       }
     end
 
-    assert_redirected_to sample_path(assigns(:sample))
+    assert_redirected_to samples_path
   end
 
   test "should show sample" do
@@ -61,7 +61,7 @@ class SamplesControllerTest < ActionController::TestCase
       request_date: @sample.request_date 
     }
 
-    assert_redirected_to sample_path(assigns(:sample))
+    assert_redirected_to samples_path
   end
 
   test "should destroy sample" do

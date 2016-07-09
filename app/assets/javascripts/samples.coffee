@@ -1,8 +1,9 @@
 ready = ->
-  $select = $('#sample_patient_id').selectize({ onChange: updatePatientForm; })
-
-  # If no patient is selected, enable the new patient form
-  updatePatientForm($select[0].selectize.getValue())
+  $select = $('#sample_patient_id')
+  if $select.length
+    $select.selectize({ onChange: updatePatientForm; })
+    # If no patient is selected, enable the new patient form
+    updatePatientForm($select[0].selectize.getValue())
 
 updatePatientForm = (value) ->
   patientSelected = (value != '')

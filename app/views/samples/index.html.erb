@@ -9,9 +9,11 @@
   <div class="actions">
     <%= link_to new_sample_path, class: 'btn btn-default' do %>
       <%= fa_icon 'archive', text: 'A new sample has arrived' %>
-  <% end %>
+    <% end %>
   </div>
 </div>
+
+<%= render 'shared/search_form' %>
 
 <div class="row">
   <div class="col-sm-12">
@@ -54,8 +56,7 @@
             <td colspan="8">
               <div class="accordion-body collapse" id="detail-<%= sample.id %>">
 
-                <%= render partial: 'sample',
-                    locals: { sample: sample, show_full_data: false } %>
+                <%= render sample %>
 
               </div><!-- accordion-body -->
             </td>

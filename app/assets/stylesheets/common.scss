@@ -40,13 +40,17 @@
   // !important to override Bootstrap's td styles
 }
 
+.search {
+  padding: 3px;
+}
+
 .rotate-on-hover {
   transition: transform .25s ease;
   &:hover { transform: rotate(15deg); }
 }
 
 .tomato-on-hover {
-  transition: color .25 ease;
+  transition: color .25s ease;
   &:hover { color: tomato; }
 }
 

@@ -4,11 +4,10 @@
   </div>
 
   <ul>
-    <% if show_full_data %>
-      <li>Patient: <%= sample.patient.full_name %></li>
-      <li>Institution: <%= sample.institution %></li>
-    <% end %>
+    <li>Patient: <%= sample.patient.full_name %></li>
+    <li>Institution: <%= sample.institution %></li>
     <li>Request date: <%= sample.request_date %></li>
+    <li>Request category: <%= sample.request_category %></li>
     <li>Admission date: <%= sample.admission_date %></li>
     <li>Doctor name: <%= sample.doctor_full_name || "-" %></li>
     <li>Doctor email: <%= sample.doctor_email || "-" %></li>

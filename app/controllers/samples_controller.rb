@@ -31,7 +31,7 @@ class SamplesController < ApplicationController
     end
 
     if @sample.errors.count.zero? && @sample.save
-      redirect_to @sample, notice: 'Sample was successfully created.'
+      redirect_to samples_path, notice: 'Sample was successfully created.'
     else
       set_form_options
       render :new
@@ -44,7 +44,7 @@ class SamplesController < ApplicationController
     @sample.patient ||= Patient.create(patient_params)
 
     if @sample.save
-      redirect_to @sample, notice: 'Sample was successfully updated.'
+      redirect_to samples_path, notice: 'Sample was successfully updated.'
     else
       set_form_options
       set_sample

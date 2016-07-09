@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  acronym: MyString
-  birthdate: 2016-06-26
+  id: 1
+  first_name: Juan Manuel
+  last_name: Berros
+  acronym: JMB
+  birthdate: 1985-04-10
 
 two:
-  first_name: MyString
-  last_name: MyString
-  acronym: MyString
-  birthdate: 2016-06-26
+  id: 2
+  first_name: Graciela
+  last_name: Coso
+  # acronym: GSC
+  birthdate: 1955-09-26

@@ -3,6 +3,7 @@ require 'test_helper'
 class LibrariesControllerTest < ActionController::TestCase
   setup do
     @library = libraries(:one)
+    @dna_extractions = dna_extractions(:one, :two, :three)
   end
 
   test "should get index" do
@@ -18,10 +19,24 @@ class LibrariesControllerTest < ActionController::TestCase
 
   test "should create library" do
     assert_difference('Library.count') do
-      post :create, library: { clp: @library.clp, fpu: @library.fpu, hyp: @library.hyp, iap: @library.iap, laboratory: @library.laboratory, lnp: @library.lnp, notes: @library.notes, old_id: @library.old_id, pcr_date: @library.pcr_date, post_pcr_date: @library.post_pcr_date, pre_pcr_date: @library.pre_pcr_date, sgp: @library.sgp }
+      post :create, library: { 
+        clp: @library.clp,
+        fpu: @library.fpu,
+        hyp: @library.hyp,
+        iap: @library.iap,
+        laboratory: @library.laboratory,
+        lnp: @library.lnp,
+        notes: @library.notes,
+        old_id: @library.old_id,
+        pcr_date: @library.pcr_date,
+        post_pcr_date: @library.post_pcr_date,
+        pre_pcr_date: @library.pre_pcr_date,
+        sgp: @library.sgp,
+        dna_extraction_ids: @dna_extractions.map(&:id)
+      }
     end
 
-    assert_redirected_to library_path(assigns(:library))
+    assert_redirected_to libraries_path
   end
 
   test "should show library" do
@@ -35,8 +50,23 @@ class LibrariesControllerTest < ActionController::TestCase
   end
 
   test "should update library" do
-    patch :update, id: @library, library: { clp: @library.clp, fpu: @library.fpu, hyp: @library.hyp, iap: @library.iap, laboratory: @library.laboratory, lnp: @library.lnp, notes: @library.notes, old_id: @library.old_id, pcr_date: @library.pcr_date, post_pcr_date: @library.post_pcr_date, pre_pcr_date: @library.pre_pcr_date, sgp: @library.sgp }
-    assert_redirected_to library_path(assigns(:library))
+    patch :update, id: @library, library: {
+      clp: @library.clp,
+      fpu: @library.fpu,
+      hyp: @library.hyp,
+      iap: @library.iap,
+      laboratory: @library.laboratory,
+      lnp: @library.lnp,
+      notes: @library.notes,
+      old_id: @library.old_id,
+      pcr_date: @library.pcr_date,
+      post_pcr_date: @library.post_pcr_date,
+      pre_pcr_date: @library.pre_pcr_date,
+      sgp: @library.sgp ,
+      dna_extraction_ids: @dna_extractions.map(&:id)
+    }
+
+    assert_redirected_to libraries_path
   end
 
   test "should destroy library" do

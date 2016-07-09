@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  full_name: MyString
-  tag: MyString
-  description: MyText
-  old_id: MyString
+  id: 1
+  full_name: 'Early Neuro Panel 1'
+  tag: ENPv1
+  description: Has markers and stuff.
+  # old_id: MyString
 
 two:
-  full_name: MyString
-  tag: MyString
-  description: MyText
-  old_id: MyString
+  id: 2
+  full_name: 'Early Neuro Panel 2'
+  tag: ENPv2
+  description: Has markers they're cool.
+  # old_id: MyString

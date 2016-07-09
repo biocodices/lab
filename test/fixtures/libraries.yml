@@ -1,29 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  laboratory: MyString
-  notes: MyText
-  hyp: MyString
-  fpu: MyString
+  laboratory: INTA
+  notes: Everything went well.
+  # hyp: 
+  # fpu: MyString
   pre_pcr_date: 2016-06-26
   pcr_date: 2016-06-26
-  iap: MyString
-  clp: MyString
-  lnp: MyString
-  sgp: MyString
+  # iap: MyString
+  # clp: MyString
+  # lnp: MyString
+  # sgp: MyString
   post_pcr_date: 2016-06-26
-  old_id: MyString
+  # old_id: MyString
+  dna_extractions: [1, 2, 3]
 
 two:
-  laboratory: MyString
-  notes: MyText
-  hyp: MyString
-  fpu: MyString
+  laboratory: INTA
+  notes: Everything went wrong.
+  # hyp: 
+  # fpu: MyString
   pre_pcr_date: 2016-06-26
   pcr_date: 2016-06-26
-  iap: MyString
-  clp: MyString
-  lnp: MyString
-  sgp: MyString
+  # iap: MyString
+  # clp: MyString
+  # lnp: MyString
+  # sgp: MyString
   post_pcr_date: 2016-06-26
-  old_id: MyString
+  # old_id: MyString
+  dna_extractions: []

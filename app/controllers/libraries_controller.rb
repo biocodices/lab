@@ -65,7 +65,7 @@ class LibrariesController < ApplicationController
   end
 
   def set_associated_dnas
-    dna_extraction_ids = params[:libraries][:dna_extraction_ids].reject(&:empty?)
+    dna_extraction_ids = params[:library][:dna_extraction_ids].reject(&:empty?)
     @library.dna_extractions = dna_extraction_ids.map do |id|
       DnaExtraction.find(id)
     end

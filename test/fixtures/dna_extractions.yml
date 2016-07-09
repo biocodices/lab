@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sample_id: 
-  old_id: MyString
+  id: 1
+  sample_id: 1
+  # old_id: MyString
   date: 2016-06-26
-  notes: MyText
+  # notes: MyText
 
 two:
-  sample_id: 
-  old_id: MyString
+  id: 2
+  sample_id: 1
+  # old_id: 
   date: 2016-06-26
-  notes: MyText
+  # notes: MyText
+
+three:
+  id: 3
+  sample_id: 2
+  # old_id: 
+  date: 2016-06-26
+  # notes: MyText

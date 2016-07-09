@@ -15,6 +15,7 @@ class NanodropQuantification < ActiveRecord::Base
       nanodrop = NanodropQuantification.new
       row['Dna ID'] = row['Dna ID'] || row['DNA ID'] || row['DnaID']
       nanodrop.associate_to_dna_extraction! row['Sample ID'], row['Dna ID']
+      nanodrop.concentration = parse_number_string row['Nucleic Acid']
       nanodrop.absorbance_260 = parse_number_string row['A260 (Abs)']
       nanodrop.absorbance_280 = parse_number_string row['A280 (Abs)']
       nanodrop.ratio_260_280 = parse_number_string row['260/280']

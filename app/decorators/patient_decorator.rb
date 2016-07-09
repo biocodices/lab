@@ -1,12 +1,6 @@
 class PatientDecorator < Draper::Decorator
   delegate_all
 
-  def sample_links
-    samples.map do |sample|
-      h.link_to sample.id, h.sample_path(sample)
-    end
-  end
-
   def project_tags
     object.projects.map do |project|
       h.content_tag :span, project.tag, class: project.tag.downcase

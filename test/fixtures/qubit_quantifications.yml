@@ -3,7 +3,7 @@
 one:
   assay_concentration: 1.5
   stock_concentration: 1.5
-  assay_type: MyString
+  # assay_type: MyString
   sample_vol: 1.5
   dilution_factor: 1.5
   std1_rfu: 1.5
@@ -12,12 +12,12 @@ one:
   excitation: 1.5
   green_rfu: 1.5
   far_red_rfu: 1.5
-  dna_extraction_id: 
+  dna_extraction_id: 2
 
 two:
   assay_concentration: 1.5
   stock_concentration: 1.5
-  assay_type: MyString
+  # assay_type: MyString
   sample_vol: 1.5
   dilution_factor: 1.5
   std1_rfu: 1.5
@@ -26,4 +26,4 @@ two:
   excitation: 1.5
   green_rfu: 1.5
   far_red_rfu: 1.5
-  dna_extraction_id: 
+  dna_extraction_id: 1

@@ -28,9 +28,12 @@ class QubitQuantification < ActiveRecord::Base
       qubit.excitation = row['Excitation']
       qubit.green_rfu = row['Green RFU']
       qubit.far_red_rfu = row['Far Red RFU']
-      qubit.date = Date.parse row['Date/Time']
 
-      # qubit.save
+      # Transform '5/11/15 10:00' to '15/11/5' for Date.parse to work.
+      date = row['Date/Time'].split.first.split('/').reverse.join('/')
+      qubit.date = Date.parse date
+
+      qubit.save
     end
   end
 end

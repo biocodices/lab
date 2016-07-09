@@ -10,7 +10,7 @@ one:
   request_category: validacion
   # notes: MyText
   project_id: 1
-  # old_id: MyString
+  old_id: old_0001
   patient_id: 1
   barcode: ABC-1234
 
@@ -24,6 +24,6 @@ two:
   request_category: comercial
   # notes: MyText
   project_id: 1
-  # old_id: MyString
+  old_id: old_0002
   patient_id: 2
   barcode: ABC-1233

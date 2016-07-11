@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @nanodrop_quantification %> |
-<%= link_to 'Back', nanodrop_quantifications_path %>
+<%= link_to 'Destroy this quantification entry', @nanodrop_quantification,
+  class: 'btn btn-danger', method: 'delete', data: { confirm: "Destroy this Nanodrop quantification entry from DNA ##{@nanodrop_quantification.dna_extraction.id}, from sample ##{@nanodrop_quantification.dna_extraction.sample.id}, from patient #{@nanodrop_quantification.dna_extraction.sample.patient.full_name}?" } %>

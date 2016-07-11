@@ -12,6 +12,8 @@ class NanodropQuantification < ActiveRecord::Base
     table = CSV.read(tsv_filepath, col_sep: "\t", encoding: 'iso-8859-1:utf-8',
                                    headers: true)
     table.each do |row|
+      next if row.map{ |_, value| value }.all?(&:nil?)
+
       nanodrop = NanodropQuantification.new
       row['Dna ID'] = row['Dna ID'] || row['DNA ID'] || row['DnaID']
       nanodrop.associate_to_dna_extraction! row['Sample ID'], row['Dna ID']

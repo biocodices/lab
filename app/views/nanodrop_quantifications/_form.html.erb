@@ -1,4 +1,4 @@
-<%= form_for(@nanodrop_quantification) do |f| %>
+<%= bootstrap_form_for(@nanodrop_quantification) do |f| %>
   <% if @nanodrop_quantification.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@nanodrop_quantification.errors.count, "error") %> prohibited this nanodrop_quantification from being saved:</h2>
@@ -12,35 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :concentration %><br>
     <%= f.text_field :concentration %>
   </div>
   <div class="field">
-    <%= f.label :ratio_260_280 %><br>
     <%= f.text_field :ratio_260_280 %>
   </div>
   <div class="field">
-    <%= f.label :ratio_260_230 %><br>
     <%= f.text_field :ratio_260_230 %>
   </div>
   <div class="field">
-    <%= f.label :absorbance_280 %><br>
     <%= f.text_field :absorbance_280 %>
   </div>
   <div class="field">
-    <%= f.label :absorbance_260 %><br>
     <%= f.text_field :absorbance_260 %>
   </div>
   <div class="field">
-    <%= f.label :factor %><br>
     <%= f.text_field :factor %>
   </div>
   <div class="field">
-    <%= f.label :dna_extraction_id %><br>
     <%= f.text_field :dna_extraction_id %>
   </div>
   <div class="field">
-    <%= f.label :sample_type %><br>
     <%= f.text_field :sample_type %>
   </div>
   <div class="actions">

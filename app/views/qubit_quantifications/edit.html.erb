@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @qubit_quantification %> |
-<%= link_to 'Back', qubit_quantifications_path %>
+<%= link_to 'Destroy this quantification entry', @qubit_quantification,
+  class: 'btn btn-danger', method: 'delete', data: { confirm: "Destroy Qubit quantification entry #{@qubit_quantification.id} from sample #{@qubit_quantification.dna_extraction.sample.id} (patient #{@qubit_quantification.dna_extraction.sample.patient.full_name})?" } %>

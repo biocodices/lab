@@ -1,4 +1,4 @@
-<%= form_for(@qubit_quantification) do |f| %>
+<%= bootstrap_form_for(@qubit_quantification) do |f| %>
   <% if @qubit_quantification.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@qubit_quantification.errors.count, "error") %> prohibited this qubit_quantification from being saved:</h2>
@@ -12,51 +12,39 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :assay_concentration %><br>
     <%= f.text_field :assay_concentration %>
   </div>
   <div class="field">
-    <%= f.label :stock_concentration %><br>
     <%= f.text_field :stock_concentration %>
   </div>
   <div class="field">
-    <%= f.label :assay_type %><br>
     <%= f.text_field :assay_type %>
   </div>
   <div class="field">
-    <%= f.label :sample_vol %><br>
     <%= f.text_field :sample_vol %>
   </div>
   <div class="field">
-    <%= f.label :dilution_factor %><br>
     <%= f.text_field :dilution_factor %>
   </div>
   <div class="field">
-    <%= f.label :std1_rfu %><br>
     <%= f.text_field :std1_rfu %>
   </div>
   <div class="field">
-    <%= f.label :std2_rfu %><br>
     <%= f.text_field :std2_rfu %>
   </div>
   <div class="field">
-    <%= f.label :std3_rfu %><br>
     <%= f.text_field :std3_rfu %>
   </div>
   <div class="field">
-    <%= f.label :excitation %><br>
     <%= f.text_field :excitation %>
   </div>
   <div class="field">
-    <%= f.label :green_rfu %><br>
     <%= f.text_field :green_rfu %>
   </div>
   <div class="field">
-    <%= f.label :far_red_rfu %><br>
     <%= f.text_field :far_red_rfu %>
   </div>
   <div class="field">
-    <%= f.label :dna_extraction_id %><br>
     <%= f.text_field :dna_extraction_id %>
   </div>
   <div class="actions">

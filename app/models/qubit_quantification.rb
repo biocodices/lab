@@ -12,8 +12,9 @@ class QubitQuantification < ActiveRecord::Base
     table = CSV.read(csv_filepath, encoding: 'iso-8859-1:utf-8', headers: true)
 
     table.each do |row|
-      qubit = QubitQuantification.new
+      next if row.map{ |_, value| value }.all?(&:nil?)
 
+      qubit = QubitQuantification.new
       # row['Name'] will contain the sample_id
       row['Dna ID'] = row['Dna ID'] || row['DNA ID'] || row['DnaID']
       qubit.associate_to_dna_extraction! row['Name'], row['Dna ID']

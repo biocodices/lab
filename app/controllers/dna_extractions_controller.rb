@@ -84,7 +84,7 @@ class DnaExtractionsController < ApplicationController
       notice_lines << 'Qubit data loaded.'
     end
 
-    redirect_to dna_extractions_url, notice: notice_lines.join(' ')
+    redirect_to samples_path, notice: notice_lines.join(' ')
   end
 
   def upload_gel_picture

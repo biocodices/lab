@@ -42,13 +42,13 @@ class QubitQuantificationsController < ApplicationController
   # DELETE /qubit_quantifications/1
   def destroy
     @qubit_quantification.destroy
-    redirect_to qubit_quantifications_url, notice: 'Qubit quantification was successfully destroyed.'
+    redirect_to 'dna_extractions/select_quantification_files', notice: 'Qubit quantification was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_qubit_quantification
-      @qubit_quantification = QubitQuantification.find(params[:id])
+      @qubit_quantification = QubitQuantification.find(params[:id]).decorate
     end
 
     # Only allow a trusted parameter "white list" through.

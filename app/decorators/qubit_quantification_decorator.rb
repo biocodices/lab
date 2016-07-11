@@ -1,6 +1,10 @@
 class QubitQuantificationDecorator < Draper::Decorator
   delegate_all
 
+  def source
+    "DnaExtraction ##{object.dna_extraction.id}"
+  end
+
   def assay_concentration
     if !object.assay_concentration
       return nil

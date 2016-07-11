@@ -44,6 +44,6 @@ class NanodropQuantificationsControllerTest < ActionController::TestCase
       delete :destroy, id: @nanodrop_quantification
     end
 
-    assert_redirected_to nanodrop_quantifications_path
+    assert_redirected_to 'dna_extractions/select_quantification_files'
   end
 end

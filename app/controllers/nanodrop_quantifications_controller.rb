@@ -42,13 +42,13 @@ class NanodropQuantificationsController < ApplicationController
   # DELETE /nanodrop_quantifications/1
   def destroy
     @nanodrop_quantification.destroy
-    redirect_to nanodrop_quantifications_url, notice: 'Nanodrop quantification was successfully destroyed.'
+    redirect_to 'dna_extractions/select_quantification_files', notice: 'Nanodrop quantification was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nanodrop_quantification
-      @nanodrop_quantification = NanodropQuantification.find(params[:id])
+      @nanodrop_quantification = NanodropQuantification.find(params[:id]).decorate
     end
 
     # Only allow a trusted parameter "white list" through.

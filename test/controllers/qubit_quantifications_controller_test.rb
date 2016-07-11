@@ -44,6 +44,6 @@ class QubitQuantificationsControllerTest < ActionController::TestCase
       delete :destroy, id: @qubit_quantification
     end
 
-    assert_redirected_to qubit_quantifications_path
+    assert_redirected_to 'dna_extractions/select_quantification_files'
   end
 end

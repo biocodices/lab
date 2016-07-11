@@ -1,6 +1,10 @@
 class NanodropQuantificationDecorator < Draper::Decorator
   delegate_all
 
+  def source
+    "DnaExtraction ##{object.dna_extraction.id}"
+  end
+
   def concentration
     "#{object.concentration} #{object.class::CONCENTRATION_UNIT}"
   end

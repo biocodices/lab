@@ -1,7 +1,7 @@
 <div class="card card-dna">
   <div class="card__title">
     <%= fa_icon 'tint' %>
-    <%= dna_extraction.description %>
+    <%= link_to dna_extraction.description, edit_dna_extraction_path(dna_extraction.id) %>
   </div>
 
   <% unless dna_extraction.nanodrop_quantifications.count.zero? %>

@@ -89,10 +89,10 @@ class DnaExtractionsController < ApplicationController
 
   def upload_gel_picture
     if params[:gel_picture]
-      associated_dnas = params[:gel_picture][:associated_dnas]
+      associated_dnas = params[:gel_picture][:associated_dnas].keys
       associated_dnas.each do |dna_extraction_id|
         dna_extraction = DnaExtraction.find(dna_extraction_id)
-        dna_extraction.gel_picture = params[:gel_picture]
+        dna_extraction.gel_picture = params[:gel_picture][:image]
         dna_extraction.save!
       end
 

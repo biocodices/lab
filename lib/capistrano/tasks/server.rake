@@ -13,7 +13,7 @@ namespace :server do
     on roles(:app) do
       hostname = capture('hostname') + '.local'
       command = "bundle exec rails server --binding=#{hostname} --daemon"
-      execute "cd #{current_path}; source ~/.zshrc; RAILS_ENV=#{fetch(:stage)} #{fetch(:rbenv_prefix)} #{command}"
+      execute "cd #{current_path}; source ~/.rails_secret; RAILS_ENV=#{fetch(:stage)} #{fetch(:rbenv_prefix)} #{command}"
     end
   end
 

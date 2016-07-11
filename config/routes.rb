@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   post 'dna_extractions/upload_quantification_files' => 'dna_extractions#upload_quantification_files'
-
   get 'dna_extractions/select_quantification_files' => 'dna_extractions#select_quantification_files'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  post 'dna_extractions/upload_gel_picture' => 'dna_extractions#upload_gel_picture'
 
   resources :sequencings
   resources :libraries

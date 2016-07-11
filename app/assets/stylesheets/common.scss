@@ -31,10 +31,6 @@
   // !important to override Bootstrap's td styles
 }
 
-.search {
-  padding: 3px;
-}
-
 .rotate-on-hover {
   transition: transform .25s ease;
   &:hover { transform: rotate(15deg); }

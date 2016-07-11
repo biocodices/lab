@@ -101,7 +101,7 @@ class DnaExtractionsController < ApplicationController
       notice = 'No gel picture uploaded.'
     end
 
-    redirect_to dna_extractions_url, notice: notice
+    redirect_to dna_extractions_select_quantification_files_url, notice: notice
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703212602) do
+ActiveRecord::Schema.define(version: 20160720015923) do
 
   create_table "dna_extractions", force: :cascade do |t|
     t.integer  "sample_id",   limit: 4
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 20160703212602) do
   end
 
   add_index "nanodrop_quantifications", ["dna_extraction_id"], name: "index_nanodrop_quantifications_on_dna_extraction_id", using: :btree
+
+  create_table "notebooks", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.date     "date"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "file",        limit: 255
+  end
 
   create_table "patients", force: :cascade do |t|
     t.string   "first_name", limit: 255

@@ -1,0 +1,39 @@
+<p><%= notice %></p>
+
+<%= bootstrap_form_for(@notebook) do |f| %>
+  <% if @notebook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notebook.errors.count, "error") %> prohibited this notebook from being saved:</h2>
+
+      <ul>
+      <% @notebook.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="field">
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.date_select :date %>
+    </div>
+    <div class="field">
+      <div class='alert alert-info'>
+        The uploader accepts either a single HTML file or a .zip with the HTML page in it and a subdirectory of images. The images linked in the HTML page should have relative paths.
+      </div>
+
+      <%= f.file_field :file %>
+    </div>
+    <div class="actions">
+      <button type="reset" class="btn btn-default">Reset the form</button>
+      <%= f.submit 'Upload the notebook', { class: 'btn btn-primary' } %>
+    </div>
+  </fieldset>
+  
+<% end %>

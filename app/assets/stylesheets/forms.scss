@@ -3,6 +3,12 @@
   // Overrides Bootstrap's div.field
 }
 
+fieldset {
+  .actions {
+    text-align: right;
+  }
+}
+
 .control-label {
   font-size: 1.15em;
   color: steelBlue;

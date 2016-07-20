@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notebooks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   post 'dna_extractions/upload_quantification_files' => 'dna_extractions#upload_quantification_files'
 
   get 'dna_extractions/select_quantification_files' => 'dna_extractions#select_quantification_files'
+
+  get 'notebooks/:subdir/:image_filename' => 'notebooks#image'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
   resources :dna_extractions
   resources :patients
   resources :projects
+  resources :notebooks
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

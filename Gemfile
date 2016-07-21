@@ -15,6 +15,7 @@ gem 'draper', '~> 1.3'
 gem 'bootstrap_form'
 gem 'carrierwave'
 gem 'selectize-rails'
+gem 'exifr'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5.0.0.beta'

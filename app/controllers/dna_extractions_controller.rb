@@ -1,4 +1,6 @@
 class DnaExtractionsController < ApplicationController
+  include DnaExtractionsHelper
+
   before_action :set_dna_sample, only: [:show, :edit, :update, :destroy]
 
   # GET /dna_extractions
@@ -110,7 +112,7 @@ class DnaExtractionsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_dna_sample
-    @dna_extraction = DnaExtraction.find(params[:id])
+    @dna_extraction = DnaExtraction.find(params[:id]).decorate
   end
 
   # Only allow a trusted parameter "white list" through.

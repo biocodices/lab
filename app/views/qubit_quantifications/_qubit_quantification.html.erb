@@ -4,32 +4,45 @@
       <span class="grey small">edit</span>
     <% end %>
   </th>
-  <th>[Assay]</th>
-  <th>[Stock]</th>
-  <th>Assay Type</th>
-  <th>Sample vol.</th>
-  <th>Dilution Factor</th>
+  <tr>
+    <td>Qubit</td>
+    <th>Technology</td>
+  </tr>
+  <tr>
+    <td><%= qubit_quantification.assay_concentration %></td>
+    <th>[Assay]</th>
+  </tr>
+  <tr>
+    <td><%= qubit_quantification.stock_concentration %></td>
+    <th>[Stock]</th>
+  </tr>
+  <tr>
+    <td><%= qubit_quantification.assay_type %></td>
+    <th>Assay Type</th>
+  </tr>
+  <tr>
+    <td><%= qubit_quantification.sample_vol %></td>
+    <th>Sample vol.</th>
+  </tr>
+  <tr>
+    <td><%= qubit_quantification.dilution_factor %></td>
+    <th>Dilution Factor</th>
+  </tr>
   <!-- <th>STD1</th> -->
   <!-- <th>STD2</th> -->
   <!-- <th>STD3</th> -->
   <!-- <th>Excit.</th> -->
   <!-- <th>Green RFU</th> -->
   <!-- <th>Far red RFU</th> -->
-  <th>Date</th>
-</tr>
-<tr>
-  <th class="quanti-index">Qubit</td>
-  <td><%= qubit_quantification.assay_concentration %></td>
-  <td><%= qubit_quantification.stock_concentration %></td>
-  <td><%= qubit_quantification.assay_type %></td>
-  <td><%= qubit_quantification.sample_vol %></td>
-  <td><%= qubit_quantification.dilution_factor %></td>
+  <tr>
+    <td><%= qubit_quantification.created_at %></td>
+    <th>Date</th>
+  </tr>
   <!-- <td><%= qubit_quantification.std1_rfu %></td> -->
   <!-- <td><%= qubit_quantification.std2_rfu %></td> -->
   <!-- <td><%= qubit_quantification.std3_rfu %></td> -->
   <!-- <td><%= qubit_quantification.excitation %></td> -->
   <!-- <td><%= qubit_quantification.green_rfu %></td> -->
   <!-- <td><%= qubit_quantification.far_red_rfu %></td> -->
-  <td><%= qubit_quantification.created_at %></td>
 </tr>
 

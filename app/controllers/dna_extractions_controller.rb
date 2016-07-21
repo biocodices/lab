@@ -51,12 +51,14 @@ class DnaExtractionsController < ApplicationController
 
   def select_quantification_files
     dna_ids_with_gel = DnaExtraction.all.to_a.keep_if(&:gel_picture?)
-    @dna_extractions = {
+    @dna_extractions_by_pic = {
       have_gel_picture: DnaExtraction.where(id: dna_ids_with_gel)
                                      .map(&:decorate),
       dont_have_gel_picture: DnaExtraction.where.not(id: dna_ids_with_gel)
                                           .map(&:decorate)
     }
+
+    @dna_extractions = DnaExtraction.all.decorate
 
     render :select_quantification_files
   end
@@ -71,14 +73,14 @@ class DnaExtractionsController < ApplicationController
     notice_lines = []
 
     if params[:nanodrop_file]
-      uploader.store! params[:nanodrop_file] 
+      uploader.store! params[:nanodrop_file]
       tsv_filepath = uploader.file.file
       nanodrops = NanodropQuantification.save_records_from_tsv!(tsv_filepath)
       notice_lines << 'Nanodrop data loaded.'
     end
 
     if params[:qubit_file]
-      uploader.store! params[:qubit_file] 
+      uploader.store! params[:qubit_file]
       csv_filepath = uploader.file.file
       qubits = QubitQuantification.save_records_from_csv!(csv_filepath)
       notice_lines << 'Qubit data loaded.'

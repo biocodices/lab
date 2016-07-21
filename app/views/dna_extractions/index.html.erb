@@ -41,25 +41,9 @@
       <tr class="hidden-row">
         <td colspan="8">
           <div class="accordion-body collapse" id="dna-detail-<%= dna_extraction.id %><%= "-#{owner_id}" if defined? owner_id %>">
-            <div class="card">
 
-              <% unless dna_extraction.nanodrop_quantifications.count.zero? %>
-                <table class="table table-bordered table-condensed table-striped quantification">
-                  <% dna_extraction.nanodrop_quantifications.decorate.each do |nanodrop_quantification| %>
-                    <%= render nanodrop_quantification %>
-                  <% end %>
-                </table>
-              <% end %>
+            <%= render dna_extraction %>
 
-              <% unless dna_extraction.qubit_quantifications.count.zero? %>
-                <table class="table table-bordered table-condensed table-striped quantification">
-                  <% dna_extraction.qubit_quantifications.decorate.each do |qubit_quantification| %>
-                    <%= render qubit_quantification %>
-                  <% end %>
-                </table>
-              <% end %>
-
-            </div><!-- .card -->
           </div><!-- accordion-body -->
         </td>
       </tr>

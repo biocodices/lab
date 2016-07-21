@@ -39,6 +39,8 @@
   </div>
 </div>
 
+<hr>
+
 <div class="header">
   <div class="title">
     <h1>
@@ -58,7 +60,7 @@
           <div class="group with-scroll">
             <h2 class="title">DNAs with pic</h2>
             <div class="checkbox">
-              <% @dna_extractions[:have_gel_picture].each do |dna_extraction| %>
+              <% @dna_extractions_by_pic[:have_gel_picture].each do |dna_extraction| %>
                 <label for="gel_picture_associated_dnas_<%= dna_extraction.id %>">
                   <%= check_box_tag("gel_picture[associated_dnas][#{dna_extraction.id}]", dna_extraction.id) %>
                   <%= dna_extraction.description %>
@@ -71,7 +73,7 @@
           <div class="group with-scroll">
             <h2 class="title">DNAs without pic</h2>
             <div class="checkbox">
-            <% @dna_extractions[:dont_have_gel_picture].each do |dna_extraction| %>
+            <% @dna_extractions_by_pic[:dont_have_gel_picture].each do |dna_extraction| %>
               <label for="gel_picture_associated_dnas_<%= dna_extraction.id %>">
                 <%= check_box_tag("gel_picture[associated_dnas][#{dna_extraction.id}]", dna_extraction.id) %>
                 <%= dna_extraction.description %>
@@ -100,3 +102,7 @@
 
   </div><!-- .col-sm-12 -->
 </div><!-- .row -->
+
+<hr>
+
+<%= render file: 'dna_extractions/index' %>

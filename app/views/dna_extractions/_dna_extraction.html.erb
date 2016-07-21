@@ -7,7 +7,7 @@
   </div>
 
   <div class="horizontal-flex">
-    <div class="flex-grow">
+    <div class="flex-child">
 
       <!-- Quantification tables -->
       <% unless dna_extraction.nanodrop_quantifications.count.zero? %>
@@ -19,7 +19,7 @@
       <% end %>
     </div>
 
-    <div class="flex-grow">
+    <div class="flex-child">
       <% unless dna_extraction.qubit_quantifications.count.zero? %>
         <table class="table table-bordered table-condensed table-striped quantification">
           <% dna_extraction.qubit_quantifications.decorate.each do |qubit_quantification| %>
@@ -32,12 +32,16 @@
 
     <!-- Gel picture preview -->
     <% if dna_extraction.gel_picture.file %>
-      <div class="flex-grow">
+      <div class="flex-child">
         <a data-toggle="modal" data-target="#gel-modal-<%= dna_extraction.id %>">
-          <div class="flex-grow">
             <%= image_tag dna_extraction.gel_picture.url, class: 'preview' %>
-          </div>
         </a>
+      </div>
+
+      <div class="flex-child">
+        <p class="img-comment">
+          <%= extract_img_comment(dna_extraction.gel_picture.path) %>
+        </p>
       </div>
 
       <!-- Large modal with the Gel Picture associated to this DNA Extraction -->

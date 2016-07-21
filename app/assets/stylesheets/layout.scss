@@ -38,9 +38,12 @@ hr {
     text-align: right;
   }
 
+  .flex-child {
+    margin: 10px;
+  }
+
   .flex-grow {
     flex-grow: 1;
-    margin: 10px;
   }
 }
 

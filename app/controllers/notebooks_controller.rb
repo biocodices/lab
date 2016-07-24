@@ -7,7 +7,7 @@ class NotebooksController < ApplicationController
   end
 
   def show
-    render file: @notebook.file.path
+    render file: @notebook.html_filepath
   end
 
   def image

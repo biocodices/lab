@@ -1,3 +1,4 @@
 Name,Date/Time,Assay Conc.,Units,Stock Conc.,Units,Assay Type,Sample Vol (無),Dilution Factor,Std 1 RFU,Std 2 RFU,Std 3 RFU,Excitation,Green RFU,Far Red RFU
-1,5/11/15 10:00,570,痢/ml,,ng/無,dsDNA BR,2,100.00,,,,,,
-old_0002,5/11/15 10:00,777,痢/ml,,ng/無,dsDNA BR,3,101.00,,,,,,
+1-1,5/9/15 10:00,570,痢/ml,,ng/無,dsDNA BR,2,100.00,,,,,,
+1-2,5/10/15 10:00,977,痢/ml,,ng/無,dsDNA BR,4,201.00,,,,,,
+2-1,5/11/15 10:00,777,痢/ml,,ng/無,dsDNA BR,3,101.00,,,,,,

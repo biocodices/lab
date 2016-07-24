@@ -30,7 +30,7 @@
         <td><%= dna_extraction.tag %></td>
         <td>
           <%= dna_extraction.patient.try(:full_name) || 'No patient associated with this DNA sample?' %></td>
-        <td><%= dna_extraction.date || dna_extraction.created_at %></td>
+        <td><%= dna_extraction.formated_date || dna_extraction.created_at %></td>
         <td><%= link_to 'Edit', edit_dna_extraction_path(dna_extraction) %></td>
         <td><%= link_to 'Destroy', dna_extraction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

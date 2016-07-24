@@ -3,7 +3,6 @@ class DnaExtractionsController < ApplicationController
 
   before_action :set_dna_sample, only: [:show, :edit, :update, :destroy]
 
-  # GET /dna_extractions
   def index
     @dna_extractions = DnaExtraction.preload(
       :sample,
@@ -12,20 +11,16 @@ class DnaExtractionsController < ApplicationController
     ).all.decorate
   end
 
-  # GET /dna_extractions/1
   def show
   end
 
-  # GET /dna_extractions/new
-  def new
-    @dna_extraction = DnaExtraction.new
-  end
+  # def new
+    # @dna_extraction = DnaExtraction.new
+  # end
 
-  # GET /dna_extractions/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
-  # POST /dna_extractions
   def create
     @dna_extraction = DnaExtraction.new(dna_sample_params)
 
@@ -36,7 +31,6 @@ class DnaExtractionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /dna_extractions/1
   def update
     if @dna_extraction.update(dna_sample_params)
       redirect_to @dna_extraction, notice: 'DNA was successfully updated.'
@@ -45,7 +39,6 @@ class DnaExtractionsController < ApplicationController
     end
   end
 
-  # DELETE /dna_extractions/1
   def destroy
     @dna_extraction.destroy
     redirect_to dna_extractions_url, notice: 'DNA was successfully destroyed.'

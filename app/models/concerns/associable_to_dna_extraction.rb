@@ -1,9 +1,10 @@
 module AssociableToDnaExtraction
   extend ActiveSupport::Concern
 
+  # This method was written to associate a Nanodrop or a Qubit quantification
+  # with a DnaExtraction, given a DnaExtraction tag that's included in the .csv
+  # or .tsv file of quantification info.
   def associate_to_dna_extraction!(dna_extraction_tag)
-    sample = infer_sample sample_id
-
     # A DNA-tag will be passed in the Sample field for Nanodrop and Qubit
     # quantifications. The DNA-tag is composed of an existing Sample ID and
     # an either existing or non-existing DNA-order-number:
@@ -34,19 +35,5 @@ module AssociableToDnaExtraction
     end
 
     self.dna_extraction = dna_extraction
-  end
-
-  private
-
-  def infer_sample(sample_id)
-    # Try to find a sample with this ID. If it doesn't exist, revert to
-    # searching by the old IDs.
-    sample = begin
-               Sample.find sample_id
-             rescue ActiveRecord::RecordNotFound
-               Sample.find_by old_id: sample_id
-             end
-
-    sample or raise ActiveRecord::RecordNotFound
   end
 end

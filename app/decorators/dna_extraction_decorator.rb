@@ -1,7 +1,7 @@
 class DnaExtractionDecorator < Draper::Decorator
   delegate_all
 
-  def date
+  def formated_date
     object.date.try(:strftime, '%-d %B %Y')
   end
 

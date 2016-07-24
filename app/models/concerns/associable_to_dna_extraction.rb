@@ -1,30 +1,39 @@
 module AssociableToDnaExtraction
   extend ActiveSupport::Concern
 
-  def associate_to_dna_extraction!(sample_id, possible_dna_extraction_id)
+  def associate_to_dna_extraction!(dna_extraction_tag)
     sample = infer_sample sample_id
 
-    # If a DnaExtraction ID is passed, find that DnaExtraction or raise an
-    # exception. The search *should fail* if no DnaExtraction is found, because
-    # if the field is present, it means the user is explicitely trying to
-    # associate the quantification to an *existing* DnaExtraction. So she should
-    # go back to the TSV file and fix the DnaExtraction ID.
+    # A DNA-tag will be passed in the Sample field for Nanodrop and Qubit
+    # quantifications. The DNA-tag is composed of an existing Sample ID and
+    # an either existing or non-existing DNA-order-number:
     #
-    # That's why I'm not using ActiveRecord's #find_or_create method.
+    #   "#{sample.id}-#{dna_ordinal}"
     #
-    # If no DnaExtraction ID was included, we just create a new DnaExtraction
-    # record to associate with this quantification. This should be the usual.
-    self.dna_extraction = if possible_dna_extraction_id
-                            DnaExtraction.find possible_dna_extraction_id
-                          else
-                            DnaExtraction.create(sample: sample)
-                          end
+    # The DNA ordinal number is the number of the DNA in the context of its
+    # sample of origin. For instance, sample 10's first DNA Extraction is 10-1,
+    # the next one will be 10-2, and so on.
+    #
+    # So, when receiving a tag like '10-1':
+    #
+    #  - We look for a DnaExtraction with tag 10-1 and choose it if it exists.
+    #    A DnaExtraction with such tag will always be associated with Sample 10.
+    #  - If there isn't a DnaExtraction with that tag, we create a new
+    #    DnaExtraction, associate it with Sample 10 and assign it the tag.
+    #
+    # There is room for error if the user passes a tag like '10-2' when there
+    # isn't still a Dna tagged like '10-1'. The problem is that the user will
+    # always assign these tags to their tubes *before* loading the data to the
+    # database, so the consistency with the tags and ordinal numbers is out
+    # of our control and it's their responsibility.
 
-    if self.dna_extraction.sample != sample
-      raise "The Dna Extraction #{possible_dna_extraction_id} belongs to "
-        "sample ##{dna_extraction.sample.id} but you say it belongs to "
-        "sample ##{sample.id}."
+    dna_extraction = DnaExtraction.find_or_initialize_by(tag: dna_extraction_tag)
+    unless dna_extraction.persisted?
+      dna_extraction.sample_id = dna_extraction_tag.split('-').first
+      dna_extraction.save!
     end
+
+    self.dna_extraction = dna_extraction
   end
 
   private

@@ -16,8 +16,7 @@ class QubitQuantification < ActiveRecord::Base
 
       qubit = QubitQuantification.new
       # row['Name'] will contain the sample_id
-      row['Dna ID'] = row['Dna ID'] || row['DNA ID'] || row['DnaID']
-      qubit.associate_to_dna_extraction! row['Name'], row['Dna ID']
+      qubit.associate_to_dna_extraction! row['Name']
       qubit.assay_type = row['Assay Type']
       qubit.assay_concentration = row['Assay Conc.'].try(:to_i)
       qubit.stock_concentration = row['Stock Conc.'].try(:to_i)

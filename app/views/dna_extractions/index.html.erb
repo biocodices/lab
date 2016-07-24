@@ -16,8 +16,8 @@
 <table class='table table-striped table-condensed'>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Extracted from</th>
+      <th>DNA Tag</th>
+      <th>Patient name</th>
       <th>Extraction date</th>
       <th colspan="2"></th>
     </tr>
@@ -27,12 +27,9 @@
     <% @dna_extractions.each do |dna_extraction| %>
 
       <tr class="display-row collapsed" data-toggle="collapse" data-target="#dna-detail-<%= dna_extraction.id %><%= "-#{owner_id}" if defined? owner_id %>" class="accordion-toggle">
-        <td><%= dna_extraction.id %></td>
+        <td><%= dna_extraction.tag %></td>
         <td>
-          <%= link_to edit_sample_path(dna_extraction.sample) do %>
-            Sample#<%= dna_extraction.sample.id %>
-          <% end %> 
-          from <%= dna_extraction.patient.try(:full_name) || 'No patient associated with this DNA sample?' %></td>
+          <%= dna_extraction.patient.try(:full_name) || 'No patient associated with this DNA sample?' %></td>
         <td><%= dna_extraction.date || dna_extraction.created_at %></td>
         <td><%= link_to 'Edit', edit_dna_extraction_path(dna_extraction) %></td>
         <td><%= link_to 'Destroy', dna_extraction, method: :delete, data: { confirm: 'Are you sure?' } %></td>

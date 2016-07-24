@@ -1,8 +1,14 @@
 <div class="card card-dna">
   <div class="card__title horizontal-flex">
     <div class="left flex-grow">
-      <%= fa_icon 'tint' %>
-      <%= link_to dna_extraction.description, dna_extraction_path(dna_extraction.id) %>
+      <p>
+        <%= fa_icon 'tint' %>
+        <%= dna_extraction.description %>
+      </p>
+      <ul>
+        <li>Is part of Library: <%= dna_extraction.libraries.map(&:id).join(', ') %></li>
+        <li>Was sequenced in Sequencing: <%= dna_extraction.sequencings.map(&:id).join(', ') %></li>
+      </ul>
     </div>
   </div>
 

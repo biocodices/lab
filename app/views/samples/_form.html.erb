@@ -91,10 +91,10 @@
         </div>
       </div>
       <div class="field">
-        <%= f.date_select :request_date, { include_blank: true, default: nil } %>
+        <%= f.date_select :request_date, { include_blank: true, default: nil, start_year: Date.today.year - 1, end_year: Date.today.year } %>
       </div>
       <div class="field">
-        <%= f.date_select :admission_date, { include_blank: true, default: nil }, { include_blank: true, default: nil } %>
+        <%= f.date_select :admission_date %>
       </div>
       <div class="field">
         <%= f.text_field :request_category %>

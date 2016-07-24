@@ -8,10 +8,12 @@ class PatientDecorator < Draper::Decorator
   end
 
   def select_option
-    project_tag = object.projects.map(&:tag).uniq.join(',')
-    institution = object.samples.map(&:institution).uniq.join(',')
+    project_tags = object.projects.map(&:tag).uniq.join(', ')
+    institutions = object.samples.map(&:institution).uniq.join(', ')
+    bday = object.birthdate.strftime('%-d %B %Y') if object.birthdate
 
-    "##{object.id} #{object.full_name} [ #{project_tag} #{institution} ]"
+    ["##{object.id} #{object.full_name}", project_tags,
+     institutions, bday].reject(&:blank?).join(' | ')
   end
 
   def delete_prompt

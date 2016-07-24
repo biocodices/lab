@@ -47,7 +47,7 @@
 
       <div class="field">
         <label class="control-label">Project</label><br>
-        <%= collection_radio_buttons(:sample, :project_id, Project.all, :id, :tag) do |b| %>
+        <%= collection_radio_buttons(:sample, :project_id, Project.order(:tag), :id, :tag) do |b| %>
           <%= b.label(class: "radio-inline") do %>
             <%= b.radio_button %>
             <span class="project-tag <%= b.text.downcase %>"><%= b.text %></span>

@@ -6,16 +6,11 @@
   /* font-weight: bold; */
 }
 
-.enpv1 { color: dodgerBlue; }
-.enpv2 { color: darkMagenta; }
+.enpv1,.enpv2 { color: dodgerBlue; }
 .exome { color: olive; }
-.pgsn  { color: orangeRed; }
-.pgsnm { color: mediumVioletRed; }
-.pgsa { color: darkRed; }
-.pgdk { color: sienna; }
+.pgsn,.pgsnm,.pgsa, .pgdk, .pgsam { color: orangeRed; }
 .cdp { color: forestGreen; }
-.ela { color: teal; }
-.pgsam { color: mediumSlateBlue; }
+.ela { color: black; }
 
 .grey { color: grey; }
 .red { color: fireBrik; }

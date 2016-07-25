@@ -1,14 +1,10 @@
 class DnaExtractionsController < ApplicationController
   include DnaExtractionsHelper
 
+  before_action :all_dnas, only: [:index, :select_quantification_files]
   before_action :set_dna_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dna_extractions = DnaExtraction.preload(
-      :sample,
-      :nanodrop_quantifications,
-      :qubit_quantifications
-    ).all.decorate
   end
 
   def show
@@ -52,8 +48,6 @@ class DnaExtractionsController < ApplicationController
       dont_have_gel_picture: DnaExtraction.where.not(id: dna_ids_with_gel)
                                           .map(&:decorate)
     }
-
-    @dna_extractions = DnaExtraction.all.decorate
 
     render :select_quantification_files
   end
@@ -102,6 +96,14 @@ class DnaExtractionsController < ApplicationController
   end
 
   private
+
+  def all_dnas
+    @dna_extractions = DnaExtraction.preload(
+      :sample,
+      :nanodrop_quantifications,
+      :qubit_quantifications
+    ).all.decorate.reverse
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_dna_sample

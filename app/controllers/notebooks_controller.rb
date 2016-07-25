@@ -2,7 +2,7 @@ class NotebooksController < ApplicationController
   before_action :set_notebook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notebooks = Notebook.all.decorate
+    @notebooks = Notebook.order(date: :desc).decorate
     @notebook = Notebook.new
   end
 

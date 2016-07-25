@@ -3,27 +3,26 @@
 <table class="table table-condensed table-striped">
   <thead>
     <tr>
-      <th></th>
       <th>Title</th>
       <th>Description</th>
       <th>Date</th>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @notebooks.each do |notebook| %>
       <tr>
-        <td>
-          <%= link_to notebook.file.url, title: 'Download zipped' do %>
-            <%= fa_icon 'download' %>
-          <% end %>
-        </td>
         <td><%= link_to notebook.title, notebook %></td>
         <td><%= notebook.description %></td>
         <td><%= notebook.date %></td>
         <td><%= link_to 'Edit details', edit_notebook_path(notebook) %></td>
         <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to notebook.file.url, title: 'Download zipped' do %>
+            <%= fa_icon 'download' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

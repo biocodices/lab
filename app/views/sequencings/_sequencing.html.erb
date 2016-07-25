@@ -1,37 +1,30 @@
-<div class="card horizontal-flex">
-  <div class="left">
-      <h2 class="title">
-        Sequencing #<%= sequencing.id %>
-      </h2>
+<div class="card">
+  <h2 class="title">
+    Sequencing #<%= sequencing.id %>
+  </h2>
 
-      <table class="table table-vertical table-bordered table-striped table-condensed">
-        <tr><th>PAL</th><td><%= sequencing.pal %></td></tr>
-        <tr><th>DAL</th><td><%= sequencing.dal %></td></tr>
-        <tr><th>Pre-Seq date</th><td><%= sequencing.pre_seq_date %></td></tr>
-        <tr><th>Pre-Seq notes</th><td><%= sequencing.pre_seq_notes %></td></tr>
-        <tr><th>RCB</th><td><%= sequencing.rcb %></td></tr>
-        <tr><th>Sample prep-kit</th><td><%= sequencing.sample_prep_kit %></td></tr>
-        <tr><th>Index reads</th><td><%= sequencing.index_reads %></td></tr>
-        <tr><th>Read type</th><td><%= sequencing.read_type %></td></tr>
-        <tr><th>Cycles reads 1</th><td><%= sequencing.cycles_reads_1 %></td></tr>
-        <tr><th>Cycles reads 2</th><td><%= sequencing.cycles_reads_2 %></td></tr>
-        <tr><th>Notes</th><td><%= sequencing.notes %></td></tr>
-        <tr><th>Old ID</th><td><%= sequencing.old_id %></td></tr>
-      </table>
+  <table class="table table-vertical table-bordered table-striped table-condensed">
+    <tr><th>PAL</th><td><%= sequencing.pal %></td></tr>
+    <tr><th>DAL</th><td><%= sequencing.dal %></td></tr>
+    <tr><th>Pre-Seq date</th><td><%= sequencing.pre_seq_date %></td></tr>
+    <tr><th>Pre-Seq notes</th><td><%= sequencing.pre_seq_notes %></td></tr>
+    <tr><th>RCB</th><td><%= sequencing.rcb %></td></tr>
+    <tr><th>Sample prep-kit</th><td><%= sequencing.sample_prep_kit %></td></tr>
+    <tr><th>Index reads</th><td><%= sequencing.index_reads %></td></tr>
+    <tr><th>Read type</th><td><%= sequencing.read_type %></td></tr>
+    <tr><th>Cycles reads 1</th><td><%= sequencing.cycles_reads_1 %></td></tr>
+    <tr><th>Cycles reads 2</th><td><%= sequencing.cycles_reads_2 %></td></tr>
+    <tr><th>Notes</th><td><%= sequencing.notes %></td></tr>
+    <tr><th>Old ID</th><td><%= sequencing.old_id %></td></tr>
+  </table>
 
-      <%= link_to 'Edit this sequencing info', edit_sequencing_path(sequencing),
-          class: 'btn btn-default' %>
-      <br>
-      <%= link_to 'Remove this sequencing from the db', sequencing,
-        class: 'btn btn-default', method: :delete,
-        data: { confirm: sequencing.delete_prompt } %>
-    </div><!-- .left -->
+  <h2 class="title">DNA Extractions in this sequencing</h2>
+  <% @dna_extractions = sequencing.dna_extractions.decorate %>
+  <%= render file: 'dna_extractions/index', locals: { omit_header: true, owner_id: sequencing.id } %>
 
-    <div class="right flex-grow"><!-- Element for the flex -->
-      <h2 class="title">DNA Extractions in this sequencing</h2>
-      <% @dna_extractions = sequencing.dna_extractions.decorate %>
-      <%= render file: 'dna_extractions/index', locals: { omit_header: true, owner_id: sequencing.id } %>
-    </div>
-  </div><!-- .horizontal-flex -->
-
+  <%= link_to 'Edit this sequencing info', edit_sequencing_path(sequencing),
+      class: 'btn btn-info' %>
+  <%= link_to 'Remove this sequencing from the db', sequencing,
+    class: 'btn btn-danger', method: :delete,
+    data: { confirm: sequencing.delete_prompt } %>
 </div>

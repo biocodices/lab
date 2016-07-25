@@ -54,7 +54,12 @@
   <div class="col-sm-12">
     <%= form_tag('/dna_extractions/upload_gel_picture', action: :upload, multipart: true) do |f| %>
       <div class="field">
-        <label class="control-label">DNA extractions in this electrophoresis</label>
+        <label class="control-label">Gel picture (.jpg, .jpeg, .png)</label>
+        <%= file_field_tag 'gel_picture[image]' %>
+      </div>
+
+      <div class="field">
+        <label class="control-label">DNA extractions shown in the picture</label>
         <div class="selectable-dnas">
 
           <div class="group with-scroll">
@@ -84,11 +89,6 @@
           </div>
 
         </div><!-- .selectable-dnas -->
-      </div>
-
-      <div class="field">
-        <label class="control-label">Gel picture (.jpg, .jpeg, .png)</label>
-        <%= file_field_tag 'gel_picture[image]' %>
       </div>
 
       <button type="submit" class="btn btn-primary">

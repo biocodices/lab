@@ -1,25 +1,20 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_patients, only: [:index, :upload_reports]
+  before_action :set_patient, only: [:show, :edit, :update, :destroy, :upload_report]
 
-  # GET /patients
   def index
-    @patients = Patient.preload(:samples).all.decorate.reverse
   end
 
-  # GET /patients/1
   def show
   end
 
-  # GET /patients/new
   def new
     @patient = Patient.new
   end
 
-  # GET /patients/1/edit
   def edit
   end
 
-  # POST /patients
   def create
     @patient = Patient.new(patient_params)
 
@@ -30,29 +25,42 @@ class PatientsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /patients/1
   def update
+    respond_to do |format|
     if @patient.update(patient_params)
-      redirect_to @patient, notice: 'Patient was successfully updated.'
-    else
-      render :edit
+        format.html {
+          redirect_to @patient, notice: 'Patient was successfully updated.'
+        }
+        format.json { render json: @patient, status: :saved }
+      else
+        format.html { render :edit }
+        format.json {
+          render json: @patient.errors, status: :unprocessable_entity
+        }
+      end
     end
+
   end
 
-  # DELETE /patients/1
   def destroy
     @patient.destroy
     redirect_to patients_url, notice: 'Patient was successfully destroyed.'
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_patient
-      @patient = Patient.find(params[:id])
-    end
+  def upload_reports
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def patient_params
-      params.require(:patient).permit(:first_name, :last_name, :acronym, :birthdate)
-    end
+  private
+
+  def set_patients
+    @patients = Patient.preload(:samples).all.decorate.reverse
+  end
+
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
+
+  def patient_params
+    params.require(:patient).permit(:first_name, :last_name, :acronym, :birthdate)
+  end
 end

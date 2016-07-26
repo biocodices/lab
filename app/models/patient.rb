@@ -2,6 +2,8 @@ class Patient < ActiveRecord::Base
   has_many :samples, dependent: :destroy
   validate :unique_name_or_acronym, on: :create
 
+  mount_uploader :report, ReportUploader
+
   def doctors
     samples.map(&:doctor_full_name).uniq
   end
@@ -38,5 +40,9 @@ class Patient < ActiveRecord::Base
     return acronym if !first_name || !last_name
 
     "#{first_name} #{last_name}"
+  end
+
+  def dna_extractions
+    samples.map(&:dna_extractions)
   end
 end

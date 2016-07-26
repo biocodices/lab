@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724000619) do
+ActiveRecord::Schema.define(version: 20160726014611) do
 
   create_table "dna_extractions", force: :cascade do |t|
     t.integer  "sample_id",   limit: 4
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20160724000619) do
     t.date     "birthdate"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "report",     limit: 255
   end
 
   create_table "projects", force: :cascade do |t|

@@ -1,0 +1,24 @@
+<h1>Upload reports</h1>
+
+<p>
+  <input id="search" class="search" placeholder="Filter patients..." autofocus>
+</p>
+
+<% @patients.each do |patient| %>
+  <%= bootstrap_form_for(patient) do |f| %>
+
+      <h2><%= patient.full_name %></h2>
+      <p>
+        Samples: <%= patient.samples.map(&:id).join(', ') %><br>
+        DnaExtractions: <%= patient.dna_extractions.flatten.map(&:tag).join(', ') %>
+      </p>
+
+      <div class="field">
+        <%= f.file_field :report %>
+      </div>
+
+      <%= f.submit 'Upload Report', class: 'btn btn-primary' %> 
+    
+      <hr>
+  <% end %>
+<% end %>

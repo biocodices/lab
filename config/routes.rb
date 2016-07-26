@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'notebooks/:subdir/:image_filename' => 'notebooks#image'
 
+  get 'patients/upload_reports' => 'patients#upload_reports', as: :upload_reports
+
   resources :sequencings
   resources :libraries
   resources :qubit_quantifications

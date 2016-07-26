@@ -25,7 +25,6 @@ class NotebooksController < ApplicationController
 
   def create
     @notebook = Notebook.new(notebook_params)
-    @notebook.file = params[:notebook][:file]
 
     if @notebook.save
       redirect_to @notebook, notice: 'Notebook was successfully created.'
@@ -39,7 +38,7 @@ class NotebooksController < ApplicationController
     if @notebook.update(notebook_params)
       redirect_to @notebook, notice: 'Notebook was successfully updated.'
     else
-      render :index
+      render :edit
     end
   end
 
@@ -55,6 +54,6 @@ class NotebooksController < ApplicationController
   end
 
   def notebook_params
-    params.require(:notebook).permit(:title, :description, :date)
+    params.require(:notebook).permit(:title, :description, :date, :file)
   end
 end

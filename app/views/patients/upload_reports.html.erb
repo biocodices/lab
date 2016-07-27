@@ -1,15 +1,17 @@
 <h1>Upload reports</h1>
 
 <p>
-  <input id="search" class="search" placeholder="Filter patients..." autofocus>
+  <input id="search-patient" class="search" placeholder="Filter patients..." autofocus>
 </p>
 
 <% @patients.each do |patient| %>
   <%= bootstrap_form_for(patient) do |f| %>
 
+    <div class='patient'>
       <h2><%= patient.full_name %></h2>
       <p>
         Samples: <%= patient.samples.map(&:id).join(', ') %><br>
+        Old Sample IDs: <%= patient.samples.map(&:old_id).join(', ') %><br>
         DnaExtractions: <%= patient.dna_extractions.flatten.map(&:tag).join(', ') %>
       </p>
 
@@ -18,7 +20,7 @@
       </div>
 
       <%= f.submit 'Upload Report', class: 'btn btn-primary' %> 
-    
       <hr>
+    </div>
   <% end %>
 <% end %>

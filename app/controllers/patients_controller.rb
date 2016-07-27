@@ -27,7 +27,7 @@ class PatientsController < ApplicationController
 
   def update
     respond_to do |format|
-    if @patient.update(patient_params)
+      if @patient.update(patient_params)
         format.html {
           redirect_to @patient, notice: 'Patient was successfully updated.'
         }
@@ -39,7 +39,6 @@ class PatientsController < ApplicationController
         }
       end
     end
-
   end
 
   def destroy
@@ -61,6 +60,6 @@ class PatientsController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :acronym, :birthdate)
+    params.require(:patient).permit(:first_name, :last_name, :acronym, :birthdate, :report)
   end
 end

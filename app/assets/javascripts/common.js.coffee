@@ -8,4 +8,7 @@ ready = ->
     console.log optionValue
   )
 
+  # Initialize bootstrap tooltips
+  $('[data-toggle="tooltip"]').tooltip()
+
 $(document).on('turbolinks:load', ready)

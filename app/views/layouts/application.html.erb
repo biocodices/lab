@@ -51,12 +51,36 @@
         </a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Patients", "/patients"  %></li>
-            <li><%= link_to "Samples", "/samples"  %></li>
-            <li><%= link_to "DNA Extraction", "/dna_extractions/select_quantification_files"  %></li>
-            <li><%= link_to "Libraries", "/libraries"  %></li>
-            <li><%= link_to "Sequencings", "/sequencings"  %></li>
-            <li><%= link_to "Notebooks", "/notebooks"  %></li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Patients">
+              <%= link_to "/patients" do %>
+                <%= fa_icon 'female' %>
+              <% end %>
+            </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Samples">
+              <%= link_to "/samples" do  %>
+                <%= fa_icon 'flask' %>
+              <% end %>
+            </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="DnaExtractions">
+              <%= link_to "/dna_extractions/select_quantification_files" do %>
+                <%= fa_icon 'tint' %>
+              <% end %>
+            </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Libraries">
+              <%= link_to "/libraries" do %>
+                <%= fa_icon 'th' %>
+              <% end %>
+            </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Sequencings">
+              <%= link_to "/sequencings" do %>
+                <%= fa_icon 'braille' %>
+              <% end %>
+            </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Notebooks">
+              <%= link_to "/notebooks" do %>
+                <%= fa_icon 'book' %>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>

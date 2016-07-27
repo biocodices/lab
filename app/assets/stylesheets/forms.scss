@@ -41,12 +41,16 @@ fieldset {
 
 .selectable-dnas {
   label {
-    width: 100%;
+    width: 97%;
     padding: 6px;
     border-radius: 2px;
     border: 1px solid silver;
     margin: 1px;
     padding: 3px;
+
+    &:hover {
+      background-color: lighten(gold, 40%);
+    }
   }
 
   input[type=checkbox] {
@@ -58,6 +62,10 @@ fieldset {
     color: indigo;
     /* font-size: 1.25em; */
     /* font-weight: bold; */
+
+    &:hover {
+      background-color: gold;
+    }
   }
 }
 

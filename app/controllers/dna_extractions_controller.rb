@@ -10,12 +10,12 @@ class DnaExtractionsController < ApplicationController
   def show
   end
 
-  # def new
-    # @dna_extraction = DnaExtraction.new
-  # end
+  def new
+    @dna_extraction = DnaExtraction.new
+  end
 
-  # def edit
-  # end
+  def edit
+  end
 
   def create
     @dna_extraction = DnaExtraction.new(dna_sample_params)

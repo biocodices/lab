@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :projects
   resources :notebooks
 
+  get 'wiki' => 'wiki#main'
+
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 

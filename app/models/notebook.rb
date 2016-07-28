@@ -12,11 +12,14 @@ class Notebook < ActiveRecord::Base
     file.path.gsub('.zip', '.html')
   end
 
+  def associated_dir
+    file.path.gsub('.zip', '_files')
+  end
+
   def destroy_html_and_associated_dir
     # Assumes the .zip might have come with an *identically named* subdirectory
     # with the suffix "_files".
     File.delete html_filepath if File.exists? html_filepath
-    associated_dir = file.path.gsub('.zip', '_files')
     FileUtils.remove_dir associated_dir if File.exist? associated_dir
   end
 

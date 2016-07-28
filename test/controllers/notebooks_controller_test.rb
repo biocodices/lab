@@ -3,6 +3,8 @@ require 'test_helper'
 class NotebooksControllerTest < ActionController::TestCase
   setup do
     @notebook = notebooks(:one)
+    @notebook.file = fixture_file_upload('files/Test.zip')
+    @notebook.save! # Do this in order for the unzipping to take place
   end
 
   test 'should get index' do

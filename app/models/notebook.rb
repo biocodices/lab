@@ -12,6 +12,14 @@ class Notebook < ActiveRecord::Base
     file.path.gsub('.zip', '.html')
   end
 
+  def destroy_html_and_associated_dir
+    # Assumes the .zip might have come with an *identically named* subdirectory
+    # with the suffix "_files".
+    File.delete html_filepath if File.exists? html_filepath
+    associated_dir = file.path.gsub('.zip', '_files')
+    FileUtils.remove_dir associated_dir if File.exist? associated_dir
+  end
+
   private
 
   # The .zip file that was uploaded should contain an HTML page and maybe a
@@ -24,13 +32,5 @@ class Notebook < ActiveRecord::Base
     return unless file.path.end_with? '.zip'
 
     `unzip -qq -o #{file.path} -d #{File.dirname(file.path)}`
-  end
-
-  def destroy_html_and_associated_dir
-    # Assumes the .zip might have come with an *identically named* subdirectory
-    # with the suffix "_files".
-    File.delete html_filepath if File.exists? html_filepath
-    associated_dir = file.path.gsub('.zip', '_files')
-    FileUtils.remove_dir associated_dir if File.exist? associated_dir
   end
 end

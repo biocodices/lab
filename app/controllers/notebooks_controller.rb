@@ -35,6 +35,11 @@ class NotebooksController < ApplicationController
   end
 
   def update
+    # If there's a new file goign to be associated to this notebook,
+    # Carrierwave will remove the old one, but not the unzipped contents.
+    # Those, we remove manually here:
+    @notebook.destroy_html_and_associated_dir if notebook_params[:file]
+
     if @notebook.update(notebook_params)
       redirect_to @notebook, notice: 'Notebook was successfully updated.'
     else
@@ -44,6 +49,7 @@ class NotebooksController < ApplicationController
 
   def destroy
     @notebook.destroy
+    @notebook.remove_file! # For the tests
     redirect_to notebooks_url, notice: 'Notebook was successfully destroyed.'
   end
 

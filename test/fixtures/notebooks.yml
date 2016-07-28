@@ -4,4 +4,4 @@ one:
   title: 2016-07-19__Test_Notebook
   description: The best notebook ever
   date: 2016-07-10
-  file: Test.html
+  # The file is added manually during the test setup

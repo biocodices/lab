@@ -40,6 +40,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-passenger'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

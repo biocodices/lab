@@ -6,6 +6,8 @@ class Sample < ActiveRecord::Base
   validates :patient, presence: true, allow_nil: false
 
   has_many :dna_extractions, dependent: :destroy
+  has_many :libraries, through: :dna_extractions
+  has_many :sequencings, through: :dna_extractions
 
   delegate :full_name, to: :patient
 

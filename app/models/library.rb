@@ -1,5 +1,12 @@
 class Library < ActiveRecord::Base
-  has_and_belongs_to_many :dna_extractions
-  has_many :projects, through: :dna_extractions
-  has_many :sequencings, through: :dna_extractions
+  has_many :library_dnas
+  has_many :dna_extractions, through: :library_dnas
+
+  def projects
+    dna_extractions.map(&:project).uniq
+  end
+
+  def sequencings
+    dna_extractions.map(&:sequencings).flatten.uniq
+  end
 end

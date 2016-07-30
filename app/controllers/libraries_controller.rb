@@ -4,54 +4,44 @@ class LibrariesController < ApplicationController
   before_action :set_library, only: [:show, :edit, :update, :destroy]
   before_action :set_available_dnas, only: [:new, :edit]
 
-  # GET /libraries
   def index
     @libraries = Library.all
   end
 
-  # GET /libraries/1
   def show
   end
 
-  # GET /libraries/new
   def new
     @library = Library.new
   end
 
-  # GET /libraries/1/edit
   def edit
   end
 
-  # POST /libraries
   def create
     @library = Library.new(library_params)
     set_associated_dnas
 
     if @library.save
-      redirect_to libraries_url,
-                  notice: "Library ##{@library.id} was successfully created."
+      redirect_to libraries_url, notice: 'Library was successfully created.'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /libraries/1
   def update
     set_associated_dnas
 
     if @library.update(library_params)
-      redirect_to libraries_url,
-                  notice: "Library ##{@library.id} was successfully updated."
+      redirect_to libraries_url, notice: 'Library was successfully updated.'
     else
       render :edit
     end
   end
 
-  # DELETE /libraries/1
   def destroy
     @library.destroy
-    redirect_to libraries_url,
-                notice: "Library ##{@library.id} was successfully destroyed."
+    redirect_to libraries_url, notice: 'Library was successfully destroyed.'
   end
 
   private

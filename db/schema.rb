@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724000619) do
+ActiveRecord::Schema.define(version: 20160730015214) do
 
   create_table "dna_extractions", force: :cascade do |t|
     t.integer  "sample_id",   limit: 4
@@ -26,25 +26,25 @@ ActiveRecord::Schema.define(version: 20160724000619) do
 
   add_index "dna_extractions", ["sample_id"], name: "index_dna_extractions_on_sample_id", using: :btree
 
-  create_table "dna_extractions_libraries", id: false, force: :cascade do |t|
-    t.integer "library_id",        limit: 4, null: false
-    t.integer "dna_extraction_id", limit: 4, null: false
+  create_table "dna_extractions_libraries", force: :cascade do |t|
+    t.integer "library_id",        limit: 4,   null: false
+    t.integer "dna_extraction_id", limit: 4,   null: false
+    t.string  "well",              limit: 255
+    t.string  "i5",                limit: 255
+    t.string  "i7",                limit: 255
   end
 
   add_index "dna_extractions_libraries", ["dna_extraction_id", "library_id"], name: "index_dnas_libraries", unique: true, using: :btree
 
-  create_table "dna_sequencings", force: :cascade do |t|
+  create_table "dna_extractions_sequencings", force: :cascade do |t|
     t.integer "dna_extraction_id", limit: 4
     t.integer "sequencing_id",     limit: 4
-    t.string  "well",              limit: 255
-    t.string  "i7",                limit: 255
-    t.string  "i5",                limit: 255
     t.text    "notes",             limit: 65535
     t.string  "external_id",       limit: 255
   end
 
-  add_index "dna_sequencings", ["dna_extraction_id"], name: "index_dna_sequencings_on_dna_extraction_id", using: :btree
-  add_index "dna_sequencings", ["sequencing_id"], name: "index_dna_sequencings_on_sequencing_id", using: :btree
+  add_index "dna_extractions_sequencings", ["dna_extraction_id"], name: "index_dna_extractions_sequencings_on_dna_extraction_id", using: :btree
+  add_index "dna_extractions_sequencings", ["sequencing_id"], name: "index_dna_extractions_sequencings_on_sequencing_id", using: :btree
 
   create_table "libraries", force: :cascade do |t|
     t.string   "laboratory",    limit: 255
@@ -165,8 +165,8 @@ ActiveRecord::Schema.define(version: 20160724000619) do
   end
 
   add_foreign_key "dna_extractions", "samples"
-  add_foreign_key "dna_sequencings", "dna_extractions"
-  add_foreign_key "dna_sequencings", "sequencings"
+  add_foreign_key "dna_extractions_sequencings", "dna_extractions"
+  add_foreign_key "dna_extractions_sequencings", "sequencings"
   add_foreign_key "nanodrop_quantifications", "dna_extractions"
   add_foreign_key "qubit_quantifications", "dna_extractions"
   add_foreign_key "samples", "patients"

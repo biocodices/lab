@@ -12,4 +12,9 @@ class LibraryDecorator < Draper::Decorator
   def pcr_date
     h.pretty_date object.pcr_date
   end
+
+  def project_html_tags
+    projects = object.projects.map(&:decorate).uniq
+    h.safe_join(projects.map(&:html_tag).reject(&:blank?), ',')
+  end
 end

@@ -3,6 +3,12 @@ class SequencingDna < ActiveRecord::Base
   belongs_to :library_dna
 
   has_one :dna_extraction, through: :library_dna
-  has_one :sample, through: :dna_extraction
-  has_one :patient, through: :sample
+
+  def sample
+    dna_extraction.sample
+  end
+
+  def patient
+    sample.patient
+  end
 end

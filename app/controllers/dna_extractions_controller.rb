@@ -18,7 +18,7 @@ class DnaExtractionsController < ApplicationController
   end
 
   def create
-    @dna_extraction = DnaExtraction.new(dna_sample_params)
+    @dna_extraction = DnaExtraction.new(dna_extraction_params)
 
     if @dna_extraction.save
       redirect_to @dna_extraction, notice: 'DNA was successfully created.'
@@ -28,7 +28,7 @@ class DnaExtractionsController < ApplicationController
   end
 
   def update
-    if @dna_extraction.update(dna_sample_params)
+    if @dna_extraction.update(dna_extraction_params)
       redirect_to @dna_extraction, notice: 'DNA was successfully updated.'
     else
       render :edit
@@ -64,14 +64,14 @@ class DnaExtractionsController < ApplicationController
     if params[:nanodrop_file]
       uploader.store! params[:nanodrop_file]
       tsv_filepath = uploader.file.file
-      nanodrops = NanodropQuantification.save_records_from_tsv!(tsv_filepath)
+      NanodropQuantification.save_records_from_tsv!(tsv_filepath)
       notice_lines << 'Nanodrop data loaded.'
     end
 
     if params[:qubit_file]
       uploader.store! params[:qubit_file]
       csv_filepath = uploader.file.file
-      qubits = QubitQuantification.save_records_from_csv!(csv_filepath)
+      QubitQuantification.save_records_from_csv!(csv_filepath)
       notice_lines << 'Qubit data loaded.'
     end
 
@@ -87,7 +87,8 @@ class DnaExtractionsController < ApplicationController
         dna_extraction.save!
       end
 
-      notice = "Gel picture associated to #{associated_dnas.count} DNA extractions."
+      notice = "Gel picture associated to #{associated_dnas.count} " \
+               'DNA extractions.'
     else
       notice = 'No gel picture uploaded.'
     end
@@ -102,16 +103,16 @@ class DnaExtractionsController < ApplicationController
       :sample,
       :nanodrop_quantifications,
       :qubit_quantifications
-    ).all.decorate.reverse
+    ).all_but_controls.decorate.reverse
+
+    @control_dnas = DnaExtraction.control.decorate
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_dna_sample
     @dna_extraction = DnaExtraction.find(params[:id]).decorate
   end
 
-  # Only allow a trusted parameter "white list" through.
-  def dna_sample_params
-    params.require(:dna_extraction).permit(:sample_id, :old_id, :date, :notes)
+  def dna_extraction_params
+    params.require(:dna_extraction).permit(:sample_id, :date, :notes, :tag)
   end
 end

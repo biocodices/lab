@@ -30,9 +30,7 @@
       <tr class="display-row collapsed" data-toggle="collapse"
           data-target="#detail-<%= sequencing.id %>" class="accordion-toggle">
         <td><%= sequencing.id %></td>
-        <td class="project-tag">
-          <%= safe_join(sequencing.projects.map(&:decorate).map(&:tag), ',') %>
-        </td>
+        <td class="project-tag"><%= sequencing.project_html_tags %></td>
         <td><%= sequencing.dna_extractions.count %></td>
         <td><%= sequencing.libraries.uniq.map(&:id).join(', ') %></td>
         <td><%= sequencing.investigator_name %></td>

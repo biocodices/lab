@@ -46,16 +46,16 @@ class LibrariesController < ApplicationController
   end
 
   def set_available_dnas
-    selected_dna_ids = @library ? @library.dna_extraction_ids : []
-    used_dna_ids = DnaExtraction.joins(:libraries).pluck(:id).uniq
-    selected_dnas = DnaExtraction.find(selected_dna_ids)
-    used_dnas = DnaExtraction.find(used_dna_ids - selected_dna_ids)
-    unused_dnas = DnaExtraction.where.not(id: used_dna_ids + selected_dna_ids)
+    selected_dnas = @library ? @library.dna_extractions : []
+    used_dnas = DnaExtraction.used_in_libraries - selected_dnas
+    unused_dnas = DnaExtraction.unused_in_libraries
+    control_dnas = DnaExtraction.control
 
     @dna_extractions = {
-      used_in_libraries: used_dnas.map(&:decorate).reverse,
-      unused: unused_dnas.map(&:decorate).reverse,
-      already_selected: selected_dnas.map(&:decorate)
+      used_in_other_libraries: used_dnas.map(&:decorate).reverse,
+      not_part_of_any_library: unused_dnas.map(&:decorate).reverse,
+      already_part_of_this_library: selected_dnas.map(&:decorate),
+      control_dnas: control_dnas.map(&:decorate)
     }
   end
 

@@ -2,25 +2,20 @@ class SamplesController < ApplicationController
   before_action :set_sample, only: [:show, :edit, :update, :destroy]
   before_action :set_form_options, only: [:new, :edit]
 
-  # GET /samples
   def index
     @samples = Sample.preload(:dna_extractions).all.decorate.reverse
   end
 
-  # GET /samples/1
   def show
   end
 
-  # GET /samples/new
   def new
     @sample = Sample.new
   end
 
-  # GET /samples/1/edit
   def edit
   end
 
-  # POST /samples
   def create
     @sample = Sample.new(sample_params)
     @sample.patient ||= Patient.create(patient_params)
@@ -38,7 +33,6 @@ class SamplesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /samples/1
   def update
     @sample.attributes = sample_params
     @sample.patient ||= Patient.create(patient_params)
@@ -52,7 +46,6 @@ class SamplesController < ApplicationController
     end
   end
 
-  # DELETE /samples/1
   def destroy
     @sample.destroy
     redirect_to samples_url, notice: 'Sample was successfully destroyed.'

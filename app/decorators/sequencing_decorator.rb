@@ -14,4 +14,9 @@ class SequencingDecorator < Draper::Decorator
   def delete_prompt
     "Destroy sequencing ##{object.id}?"
   end
+
+  def project_html_tags
+    projects = sequencing.projects.map(&:decorate)
+    h.safe_join(projects.map(&:html_tag).reject(&:blank?), ',')
+  end
 end

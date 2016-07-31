@@ -37,11 +37,7 @@
 
           <!-- Main row -->
           <tr class="display-row collapsed" data-toggle="collapse" data-target="#detail-<%= sample.id %>" class="accordion-toggle">
-            <td class="project-tag">
-              <%= link_to project_path(sample.project) do %>
-                <%= sample.project.decorate.tag %>
-              <% end %>
-            </td>
+            <td class="project-tag"><%= sample.project.decorate.html_tag %></td>
             <td><%= sample.id %></td>
             <td><%= sample.patient.full_name %></td>
             <td><%= safe_join(sample.dna_extractions.map{ fa_icon 'tint', class: ["grey", "small"] }) %></td>

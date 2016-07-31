@@ -18,6 +18,8 @@
     <tr>
       <th>DNA Tag</th>
       <th>Patient name</th>
+      <th>In libraries</th>
+      <th>In sequencings</th>
       <th>Extraction date</th>
       <th colspan="2"></th>
     </tr>
@@ -29,7 +31,10 @@
       <tr class="display-row collapsed" data-toggle="collapse" data-target="#dna-detail-<%= dna_extraction.id %><%= "-#{owner_id}" if defined? owner_id %>" class="accordion-toggle">
         <td><%= dna_extraction.tag %></td>
         <td>
-          <%= dna_extraction.patient.try(:full_name) || 'No patient associated with this DNA sample?' %></td>
+          <%= dna_extraction.patient.try(:full_name) || 'No patient associated with this DNA sample?' %>
+        </td>
+        <td><%= dna_extraction.libraries_list %></td>
+        <td><%= dna_extraction.sequencings_list %></td>
         <td><%= dna_extraction.formated_date || dna_extraction.created_at %></td>
         <td><%= link_to 'Edit', edit_dna_extraction_path(dna_extraction) %></td>
         <td><%= link_to 'Destroy', dna_extraction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -48,3 +53,37 @@
     <% end %>
   </tbody>
 </table>
+
+<h2>Control DNAs</h2>
+
+<table class='table table-striped table-condensed'>
+  <thead>
+    <tr>
+      <th>DNA Tag</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @control_dnas.each do |control_dna| %>
+
+      <tr class="display-row collapsed" data-toggle="collapse" data-target="#dna-detail-<%= control_dna.id %><%= "-#{owner_id}" if defined? owner_id %>" class="accordion-toggle">
+        <td><%= control_dna.tag %></td>
+        <td><%= link_to 'Edit', edit_dna_extraction_path(control_dna) %></td>
+        <td><%= link_to 'Destroy', control_dna, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+      <tr class="hidden-row">
+        <td colspan="3">
+          <div class="accordion-body collapse" id="dna-detail-<%= control_dna.id %><%= "-#{owner_id}" if defined? owner_id %>">
+
+            <%= render control_dna %>
+
+          </div><!-- accordion-body -->
+        </td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+

@@ -5,20 +5,20 @@ class SamplesControllerTest < ActionController::TestCase
     @sample = samples(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:samples)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create sample" do
+  test 'should create sample' do
     assert_difference('Sample.count') do
-      post :create, sample: { 
+      post :create, sample: {
         admission_date: @sample.admission_date,
         barcode: @sample.barcode,
         doctor_email: @sample.doctor_email,
@@ -36,17 +36,26 @@ class SamplesControllerTest < ActionController::TestCase
     assert_redirected_to samples_path
   end
 
-  test "should show sample" do
+  test 'creates a new patient associated with a sample' do
+    Patient.destroy_all
+
+    assert_difference('Patient.count') do
+      post :create, sample: { project_id: projects(:one).id },
+                    patient: { first_name: 'Pipo', last_name: 'Ramírez' }
+    end
+  end
+
+  test 'should show sample' do
     get :show, id: @sample
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @sample
     assert_response :success
   end
 
-  test "should update sample" do
+  test 'should update sample' do
     patch :update, id: @sample, sample: {
       admission_date: @sample.admission_date,
       barcode: @sample.barcode,
@@ -58,13 +67,13 @@ class SamplesControllerTest < ActionController::TestCase
       patient_id: @sample.patient_id,
       project_id: @sample.project_id,
       request_category: @sample.request_category,
-      request_date: @sample.request_date 
+      request_date: @sample.request_date
     }
 
     assert_redirected_to samples_path
   end
 
-  test "should destroy sample" do
+  test 'should destroy sample' do
     assert_difference('Sample.count', -1) do
       delete :destroy, id: @sample
     end

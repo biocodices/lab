@@ -11,11 +11,7 @@ class Sample < ActiveRecord::Base
 
   delegate :full_name, to: :patient
 
-  def name
-    "#{project.tag}-#{id}"
-  end
-
   def description
-    "#{name} #{patient.full_name}"
+    "##{id} from #{patient.full_name}"
   end
 end

@@ -1,25 +1,20 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   id: 1
   sample_id: 1
-  # old_id: MyString
   date: 2016-06-26
   tag: 1-1
-  # notes: MyText
 
 two:
   id: 2
   sample_id: 1
   tag: 1-2
-  # old_id: 
   date: 2016-06-26
-  # notes: MyText
 
 three:
   id: 3
   sample_id: 2
   tag: 2-1
-  # old_id: 
   date: 2016-06-26
-  # notes: MyText
+
+control:
+  tag: 'Control-1'

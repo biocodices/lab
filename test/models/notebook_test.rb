@@ -10,7 +10,6 @@ class NotebookTest < ActiveSupport::TestCase
       title: random_title,
       file: fixture_file_upload('files/Test.zip')
     })
-
   end
 
   test 'has a file' do

@@ -12,30 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= render partial: 'dna_extractions/selectable_dnas',
-      locals: { object_sym: :sequencing,
-                dna_extractions: @dna_extractions } %>
+    <%= render partial: 'shared/selectable_dnas',
+        locals: { owner_sym: :sequencing,
+                  owned_sym_ids: :library_dna_ids,
+                  dna_groups: @library_dnas } %>
   </div>
 
   <div class="row">
     <div class="col-sm-6">
       <div class="field">
-        <%= f.text_field :pal %>
+        <%= f.text_field :pal, label: 'PAL' %>
       </div>
       <div class="field">
-        <%= f.text_field :dal %>
+        <%= f.text_field :dal, label: 'DAL' %>
       </div>
       <div class="field">
-        <%= f.date_select :pre_seq_date, {include_blank: true, default: nil} %>
+        <%= f.date_select :pre_seq_date, label: 'Pre-sequencing date', include_blank: true, default: nil %>
       </div>
       <div class="field">
-        <%= f.text_area :pre_seq_notes %>
+        <%= f.text_area :pre_seq_notes, label: 'Pre-sequencing notes' %>
       </div>
       <div class="field">
         <%= f.text_field :investigator_name %>
       </div>
       <div class="field">
-        <%= f.text_field :rcb %>
+        <%= f.text_field :rcb, label: 'RCB' %>
       </div>
       <div class="field">
         <%= f.text_field :sample_prep_kit %>
@@ -44,7 +45,12 @@
 
     <div class="col-sm-6">
       <div class="field">
-        <%= f.number_field :index_reads %>
+        <%= f.form_group :index_reads, label: { text: 'Index reads' } do %>
+          <br>
+          <%= f.radio_button :index_reads, 0, label: '0', checked: true, inline: true %>
+          <%= f.radio_button :index_reads, 1, label: '1', inline: true %>
+          <%= f.radio_button :index_reads, 2, label: '2', inline: true %>
+        <% end %>
       </div>
       <div class="field">
         <%= f.text_field :read_type %>

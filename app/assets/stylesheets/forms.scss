@@ -14,7 +14,6 @@ fieldset {
   color: steelBlue;
 }
 
-
 // Options to easily fill the form fields
 .existing-options {
   .btn {
@@ -39,7 +38,15 @@ fieldset {
   margin-top: 10px;
 }
 
-.selectable-dnas {
+.multi-option {
+  cursor: pointer;
+
+  input[type=checkbox] {
+    display: none;
+  }
+}
+
+.option-group {
   label {
     width: 97%;
     padding: 6px;

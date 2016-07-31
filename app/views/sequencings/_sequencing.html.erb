@@ -18,9 +18,10 @@
     <tr><th>Old ID</th><td><%= sequencing.old_id %></td></tr>
   </table>
 
-  <h2 class="title">DNA Extractions in this sequencing</h2>
-  <% @dna_extractions = sequencing.dna_extractions.decorate %>
-  <%= render file: 'dna_extractions/index', locals: { omit_header: true, owner_id: sequencing.id } %>
+  <h2 class="title">Library DNAs in this sequencing</h2>
+  <%= render file: 'sequencing_dnas/index',
+      locals: { sequencing_dnas: sequencing.sequencing_dnas,
+                owner_id: sequencing.id } %>
 
   <%= link_to 'Edit this sequencing info', edit_sequencing_path(sequencing),
       class: 'btn btn-info' %>

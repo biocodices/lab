@@ -1,13 +1,14 @@
 class Sequencing < ActiveRecord::Base
-  has_many :sequencing_dnas
-  has_many :dna_extractions, through: :sequencing_dnas
+  has_many :sequencing_dnas, dependent: :destroy
+  has_many :library_dnas, through: :sequencing_dnas, dependent: :destroy
+  has_many :dna_extractions, through: :library_dnas
 
   def projects
     dna_extractions.map(&:project).uniq
   end
 
   def libraries
-    dna_extractions.map(&:libraries).flatten.uniq
+    library_dnas.map(&:library).flatten.uniq
   end
 
   def samples

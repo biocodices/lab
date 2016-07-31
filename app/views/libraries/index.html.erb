@@ -15,9 +15,10 @@
     <tr>
       <th>ID</th>
       <th>Project</th>
-      <th>DNA extractions</th>
+      <th>Library DNAs</th>
       <th>Used in these<br>sequencings</th>
       <th>Laboratory</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -29,14 +30,15 @@
           <td class="project-tag">
             <%= safe_join(library.projects.map(&:decorate).map(&:tag).uniq, ',') %>
           </td>
-          <td><%= library.dna_extractions.count %></td>
+          <td><%= library.library_dnas.count %></td>
           <td><%= library.sequencings.map(&:id).join(', ') %></td>
           <td><%= library.laboratory %></td>
+          <td><%= link_to 'Edit', edit_library_path(library) %></td>
         </tr>
 
         <!-- Details box -->
         <tr class="hidden-row">
-          <td colspan="5">
+          <td colspan="6">
             <div class="accordion-body collapse" id="detail-<%= library.id %>">
               <div class="card">
 

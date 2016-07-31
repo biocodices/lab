@@ -1,0 +1,25 @@
+<div class="selectable-dnas horizontal-flex">
+
+  <% dna_groups.each do |group_name, dnas| %>
+    <% next if dnas.count.zero? %>
+    <div class="flex-child fixed-width option-group-container">
+      <h2 class="title">
+        <label for="<%= group_name %>" data-toggle="tooltip" data-placement="top" title="Select/Deselect all" class="multi-option">
+          <%= check_box_tag group_name %>
+          <%= ActiveSupport::Inflector.titleize group_name %>
+        </label>
+      </h2>
+
+      <div class="checkbox with-scroll option-group">
+        <%= collection_check_boxes(owner_sym, owned_sym_ids, dnas, :id, :description) do |b| %>
+          <%= b.label do %>
+            <%= b.check_box + b.text %>
+          <% end %>
+          <br>
+        <% end %>
+      </div>
+    </div><!-- .group-with-scroll -->
+  <% end %>
+
+</div><!-- .selectable-dnas -->
+

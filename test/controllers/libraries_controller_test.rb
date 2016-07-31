@@ -4,6 +4,10 @@ class LibrariesControllerTest < ActionController::TestCase
   setup do
     @library = libraries(:one)
     @dna_extractions = dna_extractions(:one, :two, :three)
+
+    LibraryDna.destroy_all
+    LibraryDna.create(library: Library.last,
+                      dna_extraction: dna_extractions(:one))
   end
 
   test "should get index" do
@@ -19,7 +23,7 @@ class LibrariesControllerTest < ActionController::TestCase
 
   test "should create library" do
     assert_difference('Library.count') do
-      post :create, library: { 
+      post :create, library: {
         clp: @library.clp,
         fpu: @library.fpu,
         hyp: @library.hyp,

@@ -1,10 +1,8 @@
 class SequencingDna < ActiveRecord::Base
-  self.table_name = 'dna_extractions_sequencings'
-
   belongs_to :sequencing
-  belongs_to :dna_extraction
+  belongs_to :library_dna
 
-  def to_s
-    "<SequencingDna dna: #{dna_extraction.id} sequencing: #{sequencing.id}>"
-  end
+  has_one :dna_extraction, through: :library_dna
+  has_one :sample, through: :dna_extraction
+  has_one :patient, through: :sample
 end

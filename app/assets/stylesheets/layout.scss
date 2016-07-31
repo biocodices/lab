@@ -30,6 +30,14 @@ hr {
   flex-wrap: wrap;
   align-content: space-between;
 
+  .flex-child {
+    margin: 10px;
+  }
+
+  .flex-grow {
+    flex: 1;
+  }
+
   .left {
     max-width: 400px;
   }
@@ -37,14 +45,16 @@ hr {
   .right {
     text-align: right;
   }
+}
 
-  .flex-child {
-    margin: 10px;
-  }
+.fixed-width {
+  width: 210px;
+}
 
-  .flex-grow {
-    flex-grow: 1;
-  }
+.with-scroll {
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 img.preview {

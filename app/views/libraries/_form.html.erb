@@ -12,9 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= render partial: 'dna_extractions/selectable_dnas',
-      locals: { object_sym: :library,
-                dna_extractions: @dna_extractions } %>
+    <%= render partial: 'shared/selectable_dnas',
+      locals: { owner_sym: :library,
+                owned_sym_ids: :dna_extraction_ids,
+                dna_groups: @dna_extractions } %>
   </div>
 
   <div class="row">
@@ -26,34 +27,34 @@
         <%= f.text_area :notes %>
       </div>
       <div class="field">
-        <%= f.date_select :pre_pcr_date, {include_blank: true, default: nil} %>
+        <%= f.date_select :pre_pcr_date, label: 'Pre PCR date', include_blank: true, default: nil %>
       </div>
       <div class="field">
-        <%= f.date_select :pcr_date, {include_blank: true, default: nil} %>
+        <%= f.date_select :pcr_date, include_blank: true, default: nil %>
       </div>
       <div class="field">
-        <%= f.date_select :post_pcr_date, {include_blank: true, default: nil} %>
+        <%= f.date_select :post_pcr_date, label: 'Post PCR date', include_blank: true, default: nil %>
       </div>
     </div><!-- .col-sm-6 -->
 
     <div class="col-sm-6">
       <div class="field">
-        <%= f.text_field :hyp %>
+        <%= f.text_field :hyp, label: 'HYP' %>
       </div>
       <div class="field">
-        <%= f.text_field :fpu %>
+        <%= f.text_field :fpu, label: 'FPU' %>
       </div>
       <div class="field">
-        <%= f.text_field :iap %>
+        <%= f.text_field :iap, label: 'IAP' %>
       </div>
       <div class="field">
-        <%= f.text_field :clp %>
+        <%= f.text_field :clp, label: 'CLP' %>
       </div>
       <div class="field">
-        <%= f.text_field :lnp %>
+        <%= f.text_field :lnp, label: 'LNP' %>
       </div>
       <div class="field">
-        <%= f.text_field :sgp %>
+        <%= f.text_field :sgp, label: 'SGP' %>
       </div>
     </div><!-- .col-sm-6 -->
   </div><!-- .row -->

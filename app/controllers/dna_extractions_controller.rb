@@ -43,10 +43,10 @@ class DnaExtractionsController < ApplicationController
   def select_quantification_files
     dna_ids_with_gel = DnaExtraction.all.to_a.keep_if(&:gel_picture?)
     @dna_extractions_by_pic = {
-      have_gel_picture: DnaExtraction.where(id: dna_ids_with_gel)
-                                     .map(&:decorate),
-      dont_have_gel_picture: DnaExtraction.where.not(id: dna_ids_with_gel)
-                                          .map(&:decorate)
+      have_a_gel_picture: DnaExtraction.where(id: dna_ids_with_gel)
+                                       .map(&:decorate),
+      dont_have_a_gel_picture: DnaExtraction.where.not(id: dna_ids_with_gel)
+                                            .map(&:decorate)
     }
 
     render :select_quantification_files

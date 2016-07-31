@@ -7,7 +7,10 @@
       </p>
       <ul>
         <li>Is part of Library: <%= dna_extraction.libraries.map(&:id).join(', ') %></li>
-        <li>Was sequenced in Sequencing: <%= dna_extraction.sequencings.map(&:id).join(', ') %></li>
+        <li>Was sequenced in Sequencing: <%= dna_extraction.sequencings.map(&:id).sort.join(', ') %></li>
+        <li>
+          Was sequenced as: <strong><%= dna_extraction.sequencing_dnas.map(&:external_id).join(', ') %></strong>
+        </li>
       </ul>
     </div>
   </div>

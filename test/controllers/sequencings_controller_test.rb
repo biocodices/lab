@@ -3,6 +3,11 @@ require 'test_helper'
 class SequencingsControllerTest < ActionController::TestCase
   setup do
     @sequencing = sequencings(:one)
+    @dna_extraction_ids = DnaExtraction.last(2).map(&:id)
+
+    LibraryDna.destroy_all
+    LibraryDna.create(library: Library.last,
+                      dna_extraction: dna_extractions(:one))
   end
 
   test "should get index" do
@@ -29,8 +34,11 @@ class SequencingsControllerTest < ActionController::TestCase
         pal: @sequencing.pal,
         pre_seq_date: @sequencing.pre_seq_date,
         pre_seq_notes: @sequencing.pre_seq_notes,
-        rcb: @sequencing.rcb, read_type: @sequencing.read_type, run_date: @sequencing.run_date, sample_prep_kit: @sequencing.sample_prep_kit,
-        dna_extraction_ids: dna_extractions(:one, :two)
+        rcb: @sequencing.rcb,
+        read_type: @sequencing.read_type,
+        run_date: @sequencing.run_date,
+        sample_prep_kit: @sequencing.sample_prep_kit,
+        dna_extraction_ids: @dna_extraction_ids
       }
     end
 
@@ -59,8 +67,11 @@ class SequencingsControllerTest < ActionController::TestCase
       pal: @sequencing.pal,
       pre_seq_date: @sequencing.pre_seq_date,
       pre_seq_notes: @sequencing.pre_seq_notes,
-      rcb: @sequencing.rcb, read_type: @sequencing.read_type, run_date: @sequencing.run_date, sample_prep_kit: @sequencing.sample_prep_kit,
-      dna_extraction_ids: dna_extractions(:one, :two)
+      rcb: @sequencing.rcb,
+      read_type: @sequencing.read_type,
+      run_date: @sequencing.run_date,
+      sample_prep_kit: @sequencing.sample_prep_kit,
+      dna_extraction_ids: @dna_extraction_ids
     }
 
     assert_redirected_to sequencings_path

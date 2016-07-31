@@ -1,10 +1,10 @@
 class LibraryDna < ActiveRecord::Base
-  self.table_name = 'dna_extractions_libraries'
-
   belongs_to :library
   belongs_to :dna_extraction
 
-  def to_s
-    "<LibraryDna dna: #{dna_extraction.id}, library: #{library.id}>"
-  end
+  has_many :sequencing_dnas, dependent: :destroy
+  has_many :sequencings, through: :sequencing_dnas
+
+  has_one :sample, through: :dna_extraction
+  has_one :patient, through: :sample
 end

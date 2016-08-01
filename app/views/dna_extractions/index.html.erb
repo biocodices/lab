@@ -27,6 +27,7 @@
       <th>In sequencings</th>
       <th>Extraction date</th>
       <th colspan="2"></th>
+      <th>Report</th>
     </tr>
   </thead>
 
@@ -43,6 +44,13 @@
         <td><%= dna_extraction.formated_date || dna_extraction.created_at %></td>
         <td><%= link_to 'Edit', edit_dna_extraction_path(dna_extraction) %></td>
         <td><%= link_to 'Destroy', dna_extraction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% dna_extraction.reports.each do |report| %>
+            <%= link_to report.url, target: '_blank' do %>
+              <%= fa_icon 'file-text-o' %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
 
       <tr class="hidden-row">

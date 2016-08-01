@@ -31,8 +31,8 @@ class DnaExtractionDecorator < Draper::Decorator
   end
 
   def report_links
-    h.safe_join(object.reports.map do |report|
+    object.reports.map do |report|
       h.link_to report.file.filename, report.url, target: '_blank'
-    end)
+    end
   end
 end

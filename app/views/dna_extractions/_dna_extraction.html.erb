@@ -9,7 +9,7 @@
       <li>Was sequenced in Sequencing: <%= dna_extraction.sequencings_list %></li>
       <li>Was sequenced as: <%= dna_extraction.external_ids_list %></li>
       <% if dna_extraction.reports? %>
-        <li>Has reports: <%= dna_extraction.report_links %></li>
+        <li>Has reports: <%= safe_join(dna_extraction.report_links, ', ') %></li>
       <% end %>
     </ul>
   </div>

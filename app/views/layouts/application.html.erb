@@ -70,6 +70,13 @@
                 <%= fa_icon 'wikipedia-w' %>
               <% end %>
             </li>
+            <% if Rails.env.development? %>
+              <li data-toggle="tooltip" data-placement="bottom" title="Prod">
+                <%= link_to 'http://numenor.local/lab' do %>
+                  <%= fa_icon 'server' %>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>

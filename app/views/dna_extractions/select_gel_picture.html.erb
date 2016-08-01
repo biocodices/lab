@@ -1,0 +1,47 @@
+<div class="header">
+  <div class="title">
+    <h1>
+      <%= fa_icon 'barcode' %>
+      Upload a gel electrophoresis picture
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_tag('/dna_extractions/upload_gel_picture', action: :upload, multipart: true) do |f| %>
+      <div class="field">
+        <label class="control-label">Gel picture (.jpg, .jpeg, .png)</label>
+        <%= file_field_tag 'gel_picture[image]' %>
+      </div>
+
+      <div class="field">
+        <label class="control-label">DNA extractions shown in the picture</label>
+        <div class="selectable-dnas horizontal-flex">
+          <% @dna_extractions_by_pic.each do |group_name, dnas| %>
+            <% next if dnas.count.zero? %>
+            <div class="flex-child fixed-width option-group-container">
+              <h2 class="title"><%= ActiveSupport::Inflector.titleize group_name %></h2>
+              <div class="checkbox with-scroll option-group">
+                <% dnas.each do |dna_extraction| %>
+                  <label for="gel_picture_associated_dnas_<%= dna_extraction.id %>">
+                    <%= check_box_tag("gel_picture[associated_dnas][#{dna_extraction.id}]", dna_extraction.id) %>
+                    <%= dna_extraction.description %>
+                  </label>
+                  <br>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+        </div><!-- .selectable-dnas -->
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        Submit the gel picture
+      </button>
+    <% end %><!-- form -->
+
+  </div><!-- .col-sm-12 -->
+</div><!-- .row -->
+

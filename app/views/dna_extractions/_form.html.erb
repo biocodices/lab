@@ -12,16 +12,17 @@
   <% end %>
 
   <div class="field">
+    <%= f.text_field :tag %>
+  </div>
+
+  <div class="field">
     <label class="control-label">DNA extracted from this raw sample:</label><br>
     <%= collection_select(:dna_extraction, :sample_id, Sample.all.decorate,
-                          :id, :description, {prompt: 'Select a  sample or leave this for controls'},
+                          :id, :description, {prompt: 'Select a  sample or leave like this for controls'},
                           {class: 'form-control inline'}) %>
   </div>
   <div class="field">
     <%= f.date_select :date, include_blank: true %>
-  </div>
-  <div class="field">
-    <%= f.text_field :tag %>
   </div>
   <div class="field">
     <%= f.text_area :notes %>

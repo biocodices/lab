@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  post 'dna_extractions/upload_quantification_files' => 'dna_extractions#upload_quantification_files'
   get 'dna_extractions/select_quantification_files' => 'dna_extractions#select_quantification_files'
-
+  get 'dna_extractions/select_gel_picture' => 'dna_extractions#select_gel_picture'
+  post 'dna_extractions/upload_quantification_files' => 'dna_extractions#upload_quantification_files'
   post 'dna_extractions/upload_gel_picture' => 'dna_extractions#upload_gel_picture'
 
   get 'notebooks/:subdir/:image_filename' => 'notebooks#image'

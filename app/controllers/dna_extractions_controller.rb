@@ -1,10 +1,31 @@
 class DnaExtractionsController < ApplicationController
   include DnaExtractionsHelper
 
-  before_action :all_dnas, only: [:index, :select_quantification_files]
   before_action :set_dna_sample, only: [:show, :edit, :update, :destroy]
 
   def index
+    @dna_extractions = DnaExtraction.preload(
+      :sample,
+      :nanodrop_quantifications,
+      :qubit_quantifications
+    ).all_but_controls.decorate.reverse
+
+    @control_dnas = DnaExtraction.control.decorate
+    dna_ids_with_gel = DnaExtraction.all.to_a.keep_if(&:gel_picture?)
+    @dna_extractions_by_pic = {
+      have_a_gel_picture: DnaExtraction.where(id: dna_ids_with_gel)
+                                       .map(&:decorate),
+      dont_have_a_gel_picture: DnaExtraction.where.not(id: dna_ids_with_gel)
+                                            .map(&:decorate)
+    }
+  end
+
+  def select_quantification_files
+    render :select_quantification_files
+  end
+
+  def select_gel_picture
+    render :select_gel_picture
   end
 
   def show
@@ -38,18 +59,6 @@ class DnaExtractionsController < ApplicationController
   def destroy
     @dna_extraction.destroy
     redirect_to dna_extractions_url, notice: 'DNA was successfully destroyed.'
-  end
-
-  def select_quantification_files
-    dna_ids_with_gel = DnaExtraction.all.to_a.keep_if(&:gel_picture?)
-    @dna_extractions_by_pic = {
-      have_a_gel_picture: DnaExtraction.where(id: dna_ids_with_gel)
-                                       .map(&:decorate),
-      dont_have_a_gel_picture: DnaExtraction.where.not(id: dna_ids_with_gel)
-                                            .map(&:decorate)
-    }
-
-    render :select_quantification_files
   end
 
   def upload_quantification_files
@@ -97,16 +106,6 @@ class DnaExtractionsController < ApplicationController
   end
 
   private
-
-  def all_dnas
-    @dna_extractions = DnaExtraction.preload(
-      :sample,
-      :nanodrop_quantifications,
-      :qubit_quantifications
-    ).all_but_controls.decorate.reverse
-
-    @control_dnas = DnaExtraction.control.decorate
-  end
 
   def set_dna_sample
     @dna_extraction = DnaExtraction.find(params[:id]).decorate

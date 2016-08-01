@@ -6,9 +6,14 @@
         DNA Extractions
       </h1>
     </div>
+
     <div class="actions">
-      <%= link_to 'Manually create a new DNA Extraction record', new_dna_extraction_path,
-        class: "btn btn-default" %>
+      <%= link_to dna_extractions_select_quantification_files_path, class: 'btn btn-primary' do %>
+        <%= fa_icon 'balance-scale' %> Upload quantification files
+      <% end %>
+      <%= link_to dna_extractions_select_gel_picture_path, class: 'btn btn-primary' do %>
+        <%= fa_icon 'barcode' %> Upload gel picture
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -54,7 +59,21 @@
   </tbody>
 </table>
 
-<h2>Control DNAs</h2>
+<hr>
+
+<div class="header">
+  <div class="title">
+    <h1>
+      <%= fa_icon 'check-square-o' %>
+      Control DNAs
+    </h1>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Create a control DNA', new_dna_extraction_path,
+        class: "btn btn-primary" %>
+  </div>
+</div>
 
 <table class='table table-striped table-condensed'>
   <thead>
@@ -86,4 +105,3 @@
     <% end %>
   </tbody>
 </table>
-

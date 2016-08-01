@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730023005) do
+ActiveRecord::Schema.define(version: 20160731203031) do
 
   create_table "dna_extractions", force: :cascade do |t|
     t.integer  "sample_id",   limit: 4
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20160730023005) do
     t.integer "sequencing_id",  limit: 4
     t.integer "library_dna_id", limit: 4
     t.string  "external_id",    limit: 255
+    t.string  "report",         limit: 255
   end
 
   add_index "sequencing_dnas", ["library_dna_id"], name: "index_sequencing_dnas_on_library_dna_id", using: :btree

@@ -19,13 +19,14 @@
   </table>
 
   <h2 class="title">Library DNAs in this sequencing</h2>
+
   <%= render file: 'sequencing_dnas/index',
-      locals: { sequencing_dnas: sequencing.sequencing_dnas,
-                owner_id: sequencing.id } %>
+             locals: { sequencing_dnas: sequencing.sequencing_dnas,
+                       owner_id: sequencing.id } %>
 
   <%= link_to 'Edit this sequencing info', edit_sequencing_path(sequencing),
-      class: 'btn btn-info' %>
+               class: 'btn btn-info' %>
   <%= link_to 'Remove this sequencing from the db', sequencing,
-    class: 'btn btn-danger', method: :delete,
-    data: { confirm: sequencing.delete_prompt } %>
+              class: 'btn btn-danger', method: :delete,
+              data: { confirm: sequencing.delete_prompt } %>
 </div>

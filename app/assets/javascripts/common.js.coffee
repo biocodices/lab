@@ -11,4 +11,8 @@ ready = ->
   # Initialize bootstrap tooltips
   $('[data-toggle="tooltip"]').tooltip()
 
+  $('[data-toggle="collapse"]').find('a').click( (e) ->
+    e.stopPropagation() unless $(this).text() is 'Destroy'
+  )
+
 $(document).on('turbolinks:load', ready)

@@ -20,7 +20,7 @@
       <th>Investigator name</th>
       <th>Pre seq date</th>
       <th>Run date</th>
-      <th></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -37,11 +37,12 @@
         <td><%= sequencing.pre_seq_date %></td>
         <td><%= sequencing.run_date %></td>
         <td><%= link_to 'Edit', edit_sequencing_path(sequencing) %></td>
+        <td><%= link_to 'Show', sequencing %></td>
       </tr>
 
       <!-- Details row -->
       <tr class="hidden-row">
-        <td colspan="8">
+        <td colspan="9">
           <div class="accordion-body collapse" id="detail-<%= sequencing.id %>">
 
             <%= render sequencing %>

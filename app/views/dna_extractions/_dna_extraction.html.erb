@@ -1,16 +1,17 @@
 <div class="card card-dna">
-  <div class="card__title horizontal-flex">
-    <div class="left flex-grow">
-      <p>
-        <%= fa_icon 'tint' %>
-        <%= dna_extraction.description %>
-      </p>
-      <ul>
-        <li>Is part of Library: <%= dna_extraction.libraries_list %></li>
-        <li>Was sequenced in Sequencing: <%= dna_extraction.sequencings_list %></li>
-        <li>Was sequenced as: <%= dna_extraction.external_ids %></li>
-      </ul>
-    </div>
+  <div class="card__title">
+    <p>
+      <%= fa_icon 'tint' %>
+      <%= dna_extraction.description %>
+    </p>
+    <ul>
+      <li>Is part of Library: <%= dna_extraction.libraries_list %></li>
+      <li>Was sequenced in Sequencing: <%= dna_extraction.sequencings_list %></li>
+      <li>Was sequenced as: <%= dna_extraction.external_ids_list %></li>
+      <% if dna_extraction.reports? %>
+        <li>Has reports: <%= dna_extraction.report_links %></li>
+      <% end %>
+    </ul>
   </div>
 
   <div class="horizontal-flex">

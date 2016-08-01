@@ -17,16 +17,22 @@ class DnaExtractionDecorator < Draper::Decorator
     object.sequencings.map(&:id).join(', ')
   end
 
-  def external_ids
-    object.sequencing_dnas.map(&:external_id).reject(&:blank?).join(',')
+  def external_ids_list
+    object.external_ids.join(',')
   end
 
   def description
-    return "DNA #{object.tag}" if object.is_control?
+    return "DNA #{object.tag}" if object.control?
 
     desc = "DNA #{object.tag} from #{object.sample.patient.full_name}"
     desc += ", extracted #{date}" if date
 
     desc.html_safe
+  end
+
+  def report_links
+    h.safe_join(object.reports.map do |report|
+      h.link_to report.file.filename, report.url, target: '_blank'
+    end)
   end
 end

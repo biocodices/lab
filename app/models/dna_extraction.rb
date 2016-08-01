@@ -25,24 +25,36 @@ class DnaExtraction < ActiveRecord::Base
     all_but_controls - used_in_libraries
   end
 
-  def is_control?
+  def control?
     tag =~ /control/i
   end
 
+  def reports?
+    sequencing_dnas.map(&:report).map(&:file).any?
+  end
+
+  def reports
+    sequencing_dnas.map(&:report).reject{ |report| report.file.nil? }
+  end
+
+  def external_ids
+    sequencing_dnas.map(&:external_id).reject(&:blank?)
+  end
+
   def sample
-    return mock_sample if is_control?
+    return mock_sample if control?
 
     Sample.find(sample_id)
   end
 
   def patient
-    return mock_patient if is_control?
+    return mock_patient if control?
 
     sample.patient
   end
 
   def project
-    return mock_project if is_control?
+    return mock_project if control?
 
     sample.project
   end

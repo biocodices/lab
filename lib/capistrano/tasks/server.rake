@@ -8,6 +8,13 @@ namespace :server do
   # end
   # end
 
+  desc "Invoke a rake task in the server: `cap production rake:invoke task=<task_name>`"
+  task :rake do
+    on roles(:app) do
+      execute "cd #{current_path}; RAILS_ENV=#{fetch(:stage)} #{fetch(:rbenv_prefix)} /bundle exec rake #{ENV['task']}"
+    end
+  end
+
   desc 'Start the Rails server'
   task :start do
     on roles(:app) do

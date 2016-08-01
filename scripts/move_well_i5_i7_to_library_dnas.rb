@@ -1,4 +1,4 @@
-SequencingDna.all.each do |seq_dna|
+TemporaryHelperDnaSequencing.all.each do |seq_dna|
   puts seq_dna
 
   library_dna = LibraryDna.find_by(

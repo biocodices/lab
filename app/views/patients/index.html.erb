@@ -21,6 +21,7 @@
       <th>Sample IDs</th>
       <th>Age</th>
       <th colspan="2"></th>
+      <th>Report</th>
     </tr>
   </thead>
 
@@ -37,6 +38,13 @@
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient,
                 method: :delete, data: { confirm: patient.delete_prompt } %></td>
+        <td>
+          <% patient.reports.each do |report| %>
+            <%= link_to report.url, target: '_blank' do %>
+              <%= fa_icon 'file-text-o' %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
 
       <!-- Details row -->

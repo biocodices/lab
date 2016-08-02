@@ -9,39 +9,30 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <%= form_tag('/dna_extractions/upload_gel_picture', action: :upload, multipart: true) do |f| %>
-      <div class="field">
-        <label class="control-label">Gel picture (.jpg, .jpeg, .png)</label>
-        <%= file_field_tag 'gel_picture[image]' %>
-      </div>
 
-      <div class="field">
-        <label class="control-label">DNA extractions shown in the picture</label>
-        <div class="selectable-dnas horizontal-flex">
-          <% @dna_extractions_by_pic.each do |group_name, dnas| %>
-            <% next if dnas.count.zero? %>
-            <div class="flex-child fixed-width option-group-container">
-              <h2 class="title"><%= ActiveSupport::Inflector.titleize group_name %></h2>
-              <div class="checkbox with-scroll option-group">
-                <% dnas.each do |dna_extraction| %>
-                  <label for="gel_picture_associated_dnas_<%= dna_extraction.id %>">
-                    <%= check_box_tag("gel_picture[associated_dnas][#{dna_extraction.id}]", dna_extraction.id) %>
-                    <%= dna_extraction.description %>
-                  </label>
-                  <br>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-
-        </div><!-- .selectable-dnas -->
-      </div>
-
-      <button type="submit" class="btn btn-primary">
-        Submit the gel picture
-      </button>
-    <% end %><!-- form -->
-
+    <%= render 'gel_picture_form' %>
+ 
   </div><!-- .col-sm-12 -->
 </div><!-- .row -->
 
+<hr>
+
+<div class="header">
+  <h1 class="title">
+    Uploaded pictures so far
+  </h1>
+</div>
+
+<div class="row">
+  <% @dnas_by_gel_picture.each do |gel_picture_url, associated_dnas| %>
+
+    <div class="col-sm-4">
+
+      <p><%= File.basename gel_picture_url %></p>
+
+      <%= render partial: 'gel_picture_thumbnail', locals: { url: gel_picture_url, text: associated_dnas.map(&:decorate).map(&:description).join(', '), dna_id: associated_dnas.first.id } %>
+
+    </div><!-- .col-sm-3 -->
+
+  <% end %>
+</div><!-- .row -->

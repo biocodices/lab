@@ -1,0 +1,13 @@
+img.thumbnail {
+  max-width: 350px;
+  max-height: 150px;
+  padding: 5px;
+  border: 1px solid silver;
+  border-radius: 2px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+

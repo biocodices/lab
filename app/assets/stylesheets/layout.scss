@@ -53,17 +53,6 @@ hr {
   overflow-x: hidden;
 }
 
-img.preview {
-  max-width: 350px;
-  padding: 5px;
-  border: 1px solid silver;
-  border-radius: 2px;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .quanti-index {  // First cell of quantification tables
   width: 75px;
 }

@@ -40,35 +40,7 @@
 
     <!-- Gel picture preview -->
     <% if dna_extraction.gel_picture.file %>
-      <div class="flex-child">
-        <a data-toggle="modal" data-target="#gel-modal-<%= dna_extraction.id %>">
-            <%= image_tag dna_extraction.gel_picture.url, class: 'preview' %>
-        </a>
-      </div>
-
-      <div class="flex-child">
-        <p class="img-comment">
-          <%= extract_img_comment(dna_extraction.gel_picture.path) %>
-        </p>
-      </div>
-
-      <!-- Large modal with the Gel Picture associated to this DNA Extraction -->
-      <div id="gel-modal-<%= dna_extraction.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gelPictureModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Gel Electrophoresis run with DNA #<%= dna_extraction.id %></h4>
-            </div>
-            <div class="modal-body">
-              <p class="img-comment">
-                <%= extract_img_comment(dna_extraction.gel_picture.path) %>
-              </p>
-              <%= image_tag(dna_extraction.gel_picture.url) %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render partial: 'gel_picture_thumbnail', locals: { url: dna_extraction.gel_picture.url, text: dna_extraction.description, id: dna_extraction.id } %>
     <% end %>
 
   </div>

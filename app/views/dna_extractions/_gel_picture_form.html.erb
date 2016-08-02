@@ -1,0 +1,39 @@
+<div class="alert alert-info">
+  <%= fa_icon 'lightbulb-o' %> You can dissasociate a picture previously added to some DNA Extractions by selecting them and then submitting the form <em>without any picture</em>.
+</div>
+
+<%= form_tag('/dna_extractions/upload_gel_picture', action: :upload, multipart: true) do |f| %>
+  <div class="field">
+    <label class="control-label">Gel picture (.jpg, .jpeg, .png)</label>
+    <%= file_field_tag 'gel_picture[image]' %>
+  </div>
+
+  <div class="field">
+    <label class="control-label">DNA extractions shown in the picture</label>
+    <div class="selectable-dnas horizontal-flex">
+      <% @dnas_by_gel_presence.each do |group_name, dnas| %>
+        <% next if dnas.count.zero? %>
+
+        <div class="flex-child fixed-width option-group-container">
+          <h2 class="title"><%= ActiveSupport::Inflector.titleize group_name %></h2>
+          <div class="checkbox with-scroll option-group">
+            <% dnas.each do |dna_extraction| %>
+              <label for="dna-<%= dna_extraction.id %>">
+                <input type="checkbox" name="gel_picture[associated_dnas][]" id="dna-<%= dna_extraction.id %>" value="<%= dna_extraction.id %>">
+                <%= dna_extraction.description %>
+              </label>
+              <br>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div><!-- .selectable-dnas -->
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    Submit the gel picture
+  </button>
+<% end %><!-- form -->
+

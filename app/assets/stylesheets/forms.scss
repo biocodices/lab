@@ -14,6 +14,10 @@ fieldset {
   color: steelBlue;
 }
 
+input[type="file"] {
+  margin: 15px; 
+}
+
 // Options to easily fill the form fields
 .existing-options {
   .btn {

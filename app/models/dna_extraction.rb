@@ -15,6 +15,9 @@ class DnaExtraction < ActiveRecord::Base
   scope :control, -> { where('tag LIKE ?', '%ontrol%') }
   scope :all_but_controls, -> { where('tag NOT LIKE ?', '%control%') }
 
+  scope :have_gel_picture, -> { where('gel_picture IS NOT NULL') }
+  scope :dont_have_gel_picture, -> { where('gel_picture IS NULL') }
+
   mount_uploader :gel_picture, GelPictureUploader
 
   def self.used_in_libraries
@@ -23,6 +26,10 @@ class DnaExtraction < ActiveRecord::Base
 
   def self.unused_in_libraries
     all_but_controls - used_in_libraries
+  end
+
+  def self.grouped_by_gel_picture
+    have_gel_picture.group_by { |dna| dna.gel_picture.url }
   end
 
   def control?

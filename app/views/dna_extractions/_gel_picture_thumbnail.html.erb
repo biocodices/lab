@@ -1,0 +1,32 @@
+<div class="flex-child">
+  <a data-toggle="modal" data-target="#gel-modal-<%= dna_id %>">
+      <%= image_tag url, class: 'thumbnail' %>
+  </a>
+</div>
+
+<div class="flex-child">
+  <p class="img-comment">
+    <%# extract_img_comment(dna_extraction.gel_picture.path) %>
+    <%= text %>
+  </p>
+</div>
+
+<!-- Large modal with the Gel Picture associated to this DNA Extraction -->
+<div id="gel-modal-<%= dna_id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gelPictureModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Gel Electrophoresis</h4>
+      </div>
+      <div class="modal-body">
+        <p class="img-comment">
+          <%# extract_img_comment(dna_extraction.gel_picture.path) %>
+          <%= text %>
+        </p>
+        <%= image_tag(url) %>
+      </div>
+    </div>
+  </div>
+</div>
+

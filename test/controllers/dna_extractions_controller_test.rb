@@ -3,6 +3,9 @@ require 'test_helper'
 class DnaExtractionsControllerTest < ActionController::TestCase
   setup do
     @dna_extraction = dna_extractions(:one)
+    @dna_extraction.gel_picture = fixture_file_upload('files/gel_pic.jpg')
+    @dna_extraction.save!
+
     @control_dna = dna_extractions(:control)
   end
 

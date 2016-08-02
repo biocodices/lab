@@ -40,7 +40,7 @@
 
     <!-- Gel picture preview -->
     <% if dna_extraction.gel_picture.file %>
-      <%= render partial: 'gel_picture_thumbnail', locals: { url: dna_extraction.gel_picture.url, text: dna_extraction.description, id: dna_extraction.id } %>
+      <%= render partial: 'gel_picture_thumbnail', locals: { url: dna_extraction.gel_picture.url, text: dna_extraction.description, dna_id: dna_extraction.id } %>
     <% end %>
 
   </div>

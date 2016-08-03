@@ -87,6 +87,9 @@
   <thead>
     <tr>
       <th>DNA Tag</th>
+      <th>In libraries</th>
+      <th>In sequencings</th>
+      <th>Extraction date</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -96,12 +99,15 @@
 
       <tr class="display-row collapsed" data-toggle="collapse" data-target="#dna-detail-<%= control_dna.id %><%= "-#{owner_id}" if defined? owner_id %>" class="accordion-toggle">
         <td><%= control_dna.tag %></td>
+        <td><%= control_dna.libraries_list %></td>
+        <td><%= control_dna.sequencings_list %></td>
+        <td><%= control_dna.formated_date || control_dna.created_at %></td>
         <td><%= link_to 'Edit', edit_dna_extraction_path(control_dna) %></td>
         <td><%= link_to 'Destroy', control_dna, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
 
       <tr class="hidden-row">
-        <td colspan="3">
+        <td colspan="6">
           <div class="accordion-body collapse" id="dna-detail-<%= control_dna.id %><%= "-#{owner_id}" if defined? owner_id %>">
 
             <%= render control_dna %>

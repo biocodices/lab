@@ -1,5 +1,5 @@
-<h1 class='title'>Editing Dna Extraction</h1>
+<h1 class='title'>Editing DNA Extraction</h1>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: {button_text: 'Update this DNA Extraction'} %>
 
 <%= link_to 'Destroy this DNA Extraction', @dna_extraction, class: 'btn btn-danger', method: :delete, data: { confirm: "Destroy DNA Extraction ##{@dna_extraction.id} from sample ##{@dna_extraction.sample.id}"} %>

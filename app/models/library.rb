@@ -10,6 +10,6 @@ class Library < ActiveRecord::Base
   end
 
   def sequencings
-    dna_extractions.map(&:sequencings).flatten.uniq.sort
+    library_dnas.map(&:sequencings).flatten.uniq.sort
   end
 end

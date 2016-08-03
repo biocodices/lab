@@ -10,7 +10,8 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="alert alert-info">
-      Please refer to the IDs in <%= link_to 'samples', samples_path, target: '_blank' %> for the "Sample ID" field of the quantification files.
+      <%= fa_icon 'lightbulb-o' %>
+      Please put <%= link_to 'DNA Tags', dna_extractions_path, target: '_blank' %> in the "Sample ID" or "Name" field of the quantification files.
     </div>
 
     <%= form_tag("/dna_extractions/upload_quantification_files", action: :upload, multipart: true) do |f| %>

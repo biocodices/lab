@@ -1,13 +1,13 @@
 class Patient < ActiveRecord::Base
-  has_many :samples, dependent: :destroy
+  has_many :studies, dependent: :destroy
   validate :unique_name_or_acronym_and_birthday, on: :create
 
   def doctors
-    samples.map(&:doctor_full_name).uniq
+    studies.map(&:doctor_full_name).uniq
   end
 
   def institutions
-    samples.map(&:institution).uniq
+    studies.map(&:institution).uniq
   end
 
   def unique_name_or_acronym_and_birthday
@@ -32,7 +32,7 @@ class Patient < ActiveRecord::Base
   end
 
   def projects
-    samples.map(&:project).uniq
+    studies.map(&:project).uniq
   end
 
   def full_name
@@ -42,6 +42,10 @@ class Patient < ActiveRecord::Base
   end
 
   def reports
-    samples.flatten.map(&:dna_extractions).flatten.map(&:reports).flatten
+    studies
+      .flatten.map(&:samples)
+      .flatten.map(&:dna_extractions)
+      .flatten.map(&:reports)
+      .flatten
   end
 end

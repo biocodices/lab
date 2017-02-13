@@ -1,8 +1,23 @@
+<div class="header">
+  <div class="title">
+    <h1>
+      <%= fa_icon 'id-card-o' %>
+      Studies
+    </h1>
+  </div>
+
+  <div class="actions">
+    <%= link_to new_study_path, class: 'btn btn-primary' do %>
+      <%= fa_icon 'archive', text: 'A new study has arrived' %>
+    <% end %>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Studies</h1>
+<%= render 'shared/search_form' %>
 
-<table>
+<table class="table table-striped table-condensed">
   <thead>
     <tr>
       <th>Project</th>
@@ -40,6 +55,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Study', new_study_path %>

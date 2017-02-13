@@ -35,6 +35,12 @@
         </a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
+            <li data-toggle="tooltip" data-placement="bottom" title="Studies">
+              <%= link_to '/studies' do %>
+                <%= fa_icon 'id-card-o' %>
+              <% end %>
+            </li>
+
             <li data-toggle="tooltip" data-placement="bottom" title="Patients">
               <%= link_to "/patients" do %>
                 <%= fa_icon 'female' %>

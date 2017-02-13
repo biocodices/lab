@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @study.project %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @study.patient %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @study.tag %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @study.note %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @study.institution %>
+</p>
+
+<p>
+  <strong>Doctor full name:</strong>
+  <%= @study.doctor_full_name %>
+</p>
+
+<p>
+  <strong>Doctor email:</strong>
+  <%= @study.doctor_email %>
+</p>
+
+<p>
+  <strong>Request date:</strong>
+  <%= @study.request_date %>
+</p>
+
+<p>
+  <strong>Admission date:</strong>
+  <%= @study.admission_date %>
+</p>
+
+<p>
+  <strong>Request category:</strong>
+  <%= @study.request_category %>
+</p>
+
+<%= link_to 'Edit', edit_study_path(@study) %> |
+<%= link_to 'Back', studies_path %>

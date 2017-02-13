@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731203031) do
+ActiveRecord::Schema.define(version: 20170213205922) do
 
   create_table "dna_extractions", force: :cascade do |t|
     t.integer  "sample_id",   limit: 4
@@ -174,6 +174,24 @@ ActiveRecord::Schema.define(version: 20160731203031) do
     t.datetime "updated_at",                      null: false
   end
 
+  create_table "studies", force: :cascade do |t|
+    t.integer  "project_id",       limit: 4
+    t.integer  "patient_id",       limit: 4
+    t.string   "tag",              limit: 255
+    t.text     "note",             limit: 65535
+    t.string   "institution",      limit: 255
+    t.string   "doctor_full_name", limit: 255
+    t.string   "doctor_email",     limit: 255
+    t.date     "request_date"
+    t.date     "admission_date"
+    t.string   "request_category", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "studies", ["patient_id"], name: "index_studies_on_patient_id", using: :btree
+  add_index "studies", ["project_id"], name: "index_studies_on_project_id", using: :btree
+
   add_foreign_key "dna_extractions", "samples"
   add_foreign_key "dna_extractions_sequencings", "dna_extractions"
   add_foreign_key "dna_extractions_sequencings", "sequencings"
@@ -183,4 +201,6 @@ ActiveRecord::Schema.define(version: 20160731203031) do
   add_foreign_key "samples", "projects"
   add_foreign_key "sequencing_dnas", "library_dnas"
   add_foreign_key "sequencing_dnas", "sequencings"
+  add_foreign_key "studies", "patients"
+  add_foreign_key "studies", "projects"
 end

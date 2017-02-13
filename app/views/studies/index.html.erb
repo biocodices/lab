@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Studies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Patient</th>
+      <th>Tag</th>
+      <th>Note</th>
+      <th>Institution</th>
+      <th>Doctor full name</th>
+      <th>Doctor email</th>
+      <th>Request date</th>
+      <th>Admission date</th>
+      <th>Request category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @studies.each do |study| %>
+      <tr>
+        <td><%= study.project %></td>
+        <td><%= study.patient %></td>
+        <td><%= study.tag %></td>
+        <td><%= study.note %></td>
+        <td><%= study.institution %></td>
+        <td><%= study.doctor_full_name %></td>
+        <td><%= study.doctor_email %></td>
+        <td><%= study.request_date %></td>
+        <td><%= study.admission_date %></td>
+        <td><%= study.request_category %></td>
+        <td><%= link_to 'Show', study %></td>
+        <td><%= link_to 'Edit', edit_study_path(study) %></td>
+        <td><%= link_to 'Destroy', study, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Study', new_study_path %>

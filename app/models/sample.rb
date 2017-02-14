@@ -6,6 +6,7 @@
 # of the sample.
 class Sample < ActiveRecord::Base
   belongs_to :study
+  belongs_to :project  # TODO: remove this after creating the Studies
   validates :study, presence: true
 
   has_many :dna_extractions, dependent: :destroy

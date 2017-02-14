@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213205922) do
+ActiveRecord::Schema.define(version: 20170214191247) do
 
   create_table "dna_extractions", force: :cascade do |t|
     t.integer  "sample_id",   limit: 4
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20170213205922) do
     t.string   "barcode",          limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "study_id",         limit: 4
   end
 
   add_index "samples", ["patient_id"], name: "index_samples_on_patient_id", using: :btree

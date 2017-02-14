@@ -13,4 +13,24 @@ class Study < ActiveRecord::Base
   has_many :samples, dependent: :destroy
 
   delegate :full_name, to: :patient
+
+  def tag
+    "#{project.tag}-#{admission_date.try(:year) || '?'}-#{order_in_its_year}"
+  end
+
+  def studies_of_same_project_and_year
+    if admission_date
+      query_string = 'project_id = ? and extract(year from admission_date) = ?'
+      studies = Study.where(query_string, project_id, admission_date.year)
+    else
+      query_string = 'project_id = ? and admission_date IS NULL'
+      studies = Study.where(query_string, project_id)
+    end
+
+    studies.sort{ |a, b| a.admission_date <=> b.admission_date }.map(&:id)
+  end
+
+  def order_in_its_year
+    studies_of_same_project_and_year.index(id) + 1
+  end
 end

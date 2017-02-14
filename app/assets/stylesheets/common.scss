@@ -9,6 +9,15 @@
 .mono-font { font-family: monospace; }
 .align-right { text-align: right; }
 
+.tag {
+    @extend .mono-font;
+}
+.tag--bold {
+    @extend .tag;
+    font-weight: bold;
+
+}
+
 .danger-highlight {
   border: 3px solid tomato !important;
   // !important to override Bootstrap's td styles

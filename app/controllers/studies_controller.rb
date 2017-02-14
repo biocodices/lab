@@ -1,25 +1,34 @@
 class StudiesController < ApplicationController
   before_action :set_study, only: [:show, :edit, :update, :destroy]
 
-  # GET /studies
   def index
-    @studies = Study.all
+    all_studies = Study.all.order(id: :desc)
+
+    @studies_by_year_and_project = {}
+
+    by_year = all_studies.group_by { |study| study.admission_date.try(:year) }
+
+    by_year.each do |year, year_studies|
+      year_studies.group_by(&:project).each do |project, project_studies|
+        @studies_by_year_and_project[year] ||= {}
+        @studies_by_year_and_project[year][project] = \
+          project_studies.map(&:decorate)
+      end
+    end
+
+    @studies_by_year_and_project
   end
 
-  # GET /studies/1
   def show
   end
 
-  # GET /studies/new
   def new
     @study = Study.new
   end
 
-  # GET /studies/1/edit
   def edit
   end
 
-  # POST /studies
   def create
     @study = Study.new(study_params)
 
@@ -30,7 +39,6 @@ class StudiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /studies/1
   def update
     if @study.update(study_params)
       redirect_to @study, notice: 'Study was successfully updated.'
@@ -39,20 +47,18 @@ class StudiesController < ApplicationController
     end
   end
 
-  # DELETE /studies/1
   def destroy
     @study.destroy
     redirect_to studies_url, notice: 'Study was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_study
-      @study = Study.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def study_params
-      params.require(:study).permit(:project_id, :patient_id, :tag, :note, :institution, :doctor_full_name, :doctor_email, :request_date, :admission_date, :request_category)
-    end
+  def set_study
+    @study = Study.find(params[:id])
+  end
+
+  def study_params
+    params.require(:study).permit(:project_id, :patient_id, :tag, :note, :institution, :doctor_full_name, :doctor_email, :request_date, :admission_date, :request_category)
+  end
 end

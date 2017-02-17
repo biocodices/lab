@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # A study can be thought of as a 'case' that arrives to the lab
 # from a given institution and doctor, belonging to some patient
 # and with one or many samples attached to it.
@@ -14,6 +12,8 @@ class Study < ActiveRecord::Base
 
   delegate :full_name, to: :patient
 
+  default_scope { order(admission_date: :desc, request_date: :desc, id: :desc) }
+
   def tag
     "#{project.tag}-#{admission_date.try(:year) || '?'}-#{order_in_its_year}"
   end
@@ -21,16 +21,14 @@ class Study < ActiveRecord::Base
   def studies_of_same_project_and_year
     if admission_date
       query_string = 'project_id = ? and extract(year from admission_date) = ?'
-      studies = Study.where(query_string, project_id, admission_date.year)
+      Study.where(query_string, project_id, admission_date.year)
     else
       query_string = 'project_id = ? and admission_date IS NULL'
-      studies = Study.where(query_string, project_id)
+      Study.where(query_string, project_id)
     end
-
-    studies.sort{ |a, b| a.admission_date <=> b.admission_date }.map(&:id)
   end
 
   def order_in_its_year
-    studies_of_same_project_and_year.index(id) + 1
+    studies_of_same_project_and_year.map(&:id).index(id) + 1
   end
 end

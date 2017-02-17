@@ -1,8 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  project_id: 
-  patient_id: 
+  project_id: 1
+  patient_id:
+  tag: MyString
+  note: MyText
+  institution: MyString
+  doctor_full_name: MyString
+  doctor_email: MyString
+  request_date: 2017-02-13
+  admission_date: 2017-02-12
+  request_category: MyString
+
+two:
+  project_id: 1
+  patient_id:
   tag: MyString
   note: MyText
   institution: MyString
@@ -12,14 +24,16 @@ one:
   admission_date: 2017-02-13
   request_category: MyString
 
-two:
-  project_id: 
-  patient_id: 
-  tag: MyString
-  note: MyText
-  institution: MyString
-  doctor_full_name: MyString
-  doctor_email: MyString
-  request_date: 2017-02-13
-  admission_date: 2017-02-13
-  request_category: MyString
+three:
+  request_date: 2017-02-11
+  admission_date: 2017-02-11
+
+four:
+  request_date: null
+  admission_date: null
+
+fifth:
+  project_id: 1
+  request_date: null
+  admission_date: null
+

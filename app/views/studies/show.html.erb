@@ -1,18 +1,22 @@
+<div class="header">
+  <h1 class="title">
+    <%= fa_icon 'id-card-o' %>
+    Study <%= @study.tag %>
+  </h1>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Project:</strong>
-  <%= @study.project %>
+  <span class="project-tag <%= @study.project.tag %>">
+    <%= @study.project.tag %>
+  </span>
 </p>
 
 <p>
   <strong>Patient:</strong>
-  <%= @study.patient %>
-</p>
-
-<p>
-  <strong>Tag:</strong>
-  <%= @study.tag %>
+  <%= @study.patient.full_name %>
 </p>
 
 <p>

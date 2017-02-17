@@ -31,8 +31,7 @@ class StudiesController < ApplicationController
       # TODO: validate the samples were correctly created!
     end
 
-    # Try to create associated Patient
-    @study.patient = Patient.create(patient_params)
+    @study.patient = Patient.find_or_create_by(patient_params)
 
     if !@study.patient.valid?
       @study.errors.add(:patient,

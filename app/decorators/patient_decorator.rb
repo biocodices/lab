@@ -9,7 +9,7 @@ class PatientDecorator < Draper::Decorator
 
   def select_option
     project_tags = object.projects.map(&:tag).uniq.join(', ')
-    institutions = object.samples.map(&:institution).uniq.join(', ')
+    institutions = object.studies.map(&:institution).uniq.join(', ')
     bday = object.birthdate.strftime('%-d %B %Y') if object.birthdate
 
     ["##{object.id} #{object.full_name}", project_tags,
@@ -18,8 +18,9 @@ class PatientDecorator < Draper::Decorator
 
   def delete_prompt
     msg = "Delete patient #{object.full_name} from the database?"
-    unless object.samples.count.zero?
-      msg += " It will delete #{h.pluralize(object.samples.count, 'sample')} too!"
+
+    unless object.studies.count.zero?
+      msg += " It will delete #{h.pluralize(object.studies.count, 'study')} too!"
     end
 
     msg

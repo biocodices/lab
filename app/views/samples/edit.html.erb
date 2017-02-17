@@ -1,3 +1,8 @@
-<h1>Editing sample #<%= @sample.id %></h1>
+<div class="header">
+  <h1 class="title">
+    <%= fa_icon 'flask' %>
+    Editing sample #<%= @sample.tag %>
+  </h1>
+</div>
 
 <%= render partial: 'form', locals: { submit_button_text: 'Update this sample' } %>

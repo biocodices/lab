@@ -1,6 +1,10 @@
-<h1>Editing Study</h1>
+<div class="header">
+  <div class="title">
+    <h1>
+      <%= fa_icon 'id-card' %>
+      Editing Study <%= @study.tag %>
+    </h1>
+  </div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @study %> |
-<%= link_to 'Back', studies_path %>
+<%= render partial: 'form', locals: { submit_button_text: 'Update this Study' } %>

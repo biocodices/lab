@@ -4,6 +4,7 @@
   </div>
 
   <ul>
+    <li>Tag: <%= sample.tag || sample.old_id || "-"  %></li>
     <li>Patient: <%= sample.patient.full_name %></li>
     <li>Institution: <%= sample.institution %></li>
     <li>Request date: <%= sample.request_date %></li>
@@ -12,17 +13,20 @@
     <li>Doctor name: <%= sample.doctor_full_name || "-" %></li>
     <li>Doctor email: <%= sample.doctor_email || "-" %></li>
     <li>Old ID: <%= sample.old_id || "-" %></li>
-    <li>Barcode: <%= sample.barcode || "-"  %></li>
     <li>Notes: <%= sample.notes || "-" %></li>
   </ul>
   <p>
-    <%= link_to 'Edit the sample details', edit_sample_path(sample),
+    <%= link_to 'Edit the sample details',
+      edit_sample_path(sample),
       class: "btn btn-default", target: "_blank" %>
-    <%= link_to 'Edit the patient details', edit_patient_path(sample.patient),
+
+    <%= link_to 'Edit the patient details',
+      edit_patient_path(sample.patient),
       class: "btn btn-default", target: "_blank" %>
+
     <%= link_to 'Destroy this sample', sample,
-        class: 'btn btn-default',
-        method: 'delete', data: { confirm: "Destroy sample #{sample.id} from patient #{sample.patient.full_name}?" } %>
+      class: 'btn btn-default', method: 'delete',
+      data: { confirm: "Destroy sample #{sample.tag} from study #{sample.study.tag}?" } %>
   </p>
 
   <% unless sample.dna_extractions.count.zero? %>

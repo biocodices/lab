@@ -7,7 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Lab" %></title>
     <%= csrf_meta_tags %>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <%= stylesheet_link_tag "application", :media => "all" %>
 
     <!-- For all other devices -->
@@ -66,19 +66,14 @@
                 <%= fa_icon 'braille' %>
               <% end %>
             </li>
-            <li data-toggle="tooltip" data-placement="bottom" title="Notebooks">
-              <%= link_to "/notebooks" do %>
-                <%= fa_icon 'book' %>
-              <% end %>
-            </li>
             <li data-toggle="tooltip" data-placement="bottom" title="Biocódices Wiki">
-              <%= link_to 'http://numenor.local/dokuwiki' do %>
+              <%= link_to 'http://45.79.143.160/dokuwiki' do %>
                 <%= fa_icon 'wikipedia-w' %>
               <% end %>
             </li>
             <% if Rails.env.development? %>
               <li data-toggle="tooltip" data-placement="bottom" title="Prod">
-                <%= link_to 'http://numenor.local/lab' do %>
+                <%= link_to 'http://numenor.local:3000' do %>
                   <%= fa_icon 'server' %>
                 <% end %>
               </li>

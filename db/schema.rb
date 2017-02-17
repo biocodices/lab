@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214191247) do
+ActiveRecord::Schema.define(version: 20170217191910) do
 
   create_table "dna_extractions", force: :cascade do |t|
     t.integer  "sample_id",   limit: 4
@@ -127,24 +127,13 @@ ActiveRecord::Schema.define(version: 20170214191247) do
   add_index "qubit_quantifications", ["dna_extraction_id"], name: "index_qubit_quantifications_on_dna_extraction_id", using: :btree
 
   create_table "samples", force: :cascade do |t|
-    t.string   "institution",      limit: 255
-    t.string   "doctor_full_name", limit: 255
-    t.string   "doctor_email",     limit: 255
-    t.date     "request_date"
-    t.date     "admission_date"
-    t.string   "request_category", limit: 255
-    t.text     "notes",            limit: 65535
-    t.integer  "project_id",       limit: 4
-    t.string   "old_id",           limit: 255
-    t.integer  "patient_id",       limit: 4
-    t.string   "barcode",          limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "study_id",         limit: 4
+    t.text     "notes",      limit: 65535
+    t.string   "old_id",     limit: 255
+    t.string   "tag",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "study_id",   limit: 4
   end
-
-  add_index "samples", ["patient_id"], name: "index_samples_on_patient_id", using: :btree
-  add_index "samples", ["project_id"], name: "index_samples_on_project_id", using: :btree
 
   create_table "sequencing_dnas", force: :cascade do |t|
     t.integer "sequencing_id",  limit: 4
@@ -198,8 +187,6 @@ ActiveRecord::Schema.define(version: 20170214191247) do
   add_foreign_key "dna_extractions_sequencings", "sequencings"
   add_foreign_key "nanodrop_quantifications", "dna_extractions"
   add_foreign_key "qubit_quantifications", "dna_extractions"
-  add_foreign_key "samples", "patients"
-  add_foreign_key "samples", "projects"
   add_foreign_key "sequencing_dnas", "library_dnas"
   add_foreign_key "sequencing_dnas", "sequencings"
   add_foreign_key "studies", "patients"

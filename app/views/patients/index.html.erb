@@ -18,10 +18,9 @@
     <tr>
       <th>Name</th>
       <th>Project</th>
-      <th>Sample IDs</th>
       <th>Age</th>
       <th colspan="2"></th>
-      <th>Report</th>
+      <th>Reports</th>
     </tr>
   </thead>
 
@@ -33,14 +32,14 @@
         data-target="#detail-<%= patient.id %>" class="accordion-toggle">
         <td><%= patient.full_name %></td>
         <td class="project-tag"><%= safe_join(patient.project_tags, ', ') %></td>
-        <td><%= patient.sample_ids.join(', ') %></td>
         <td><%= patient.age %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient,
                 method: :delete, data: { confirm: patient.delete_prompt } %></td>
         <td>
           <% patient.reports.each do |report| %>
-            <%= link_to report.url, target: '_blank' do %>
+            <%= link_to report.url, target: '_blank',
+                title: File.basename(report.url) do %>
               <%= fa_icon 'file-text-o' %>
             <% end %>
           <% end %>
@@ -52,16 +51,6 @@
         <td colspan="8">
           <div class="accordion-body collapse" id="detail-<%= patient.id %>">
             <%= render patient %>
-
-            <% patient.samples.decorate.each do |sample| %>
-
-              <%= render sample %>
-
-            <% end %>
-
-            <% if patient.samples.count.zero? %>
-              <div class="card">No samples associated with this patient.</div>
-            <% end %>
           </div><!-- .accordion-body -->
         </td>
       </tr>

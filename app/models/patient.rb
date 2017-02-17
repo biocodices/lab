@@ -1,6 +1,5 @@
 class Patient < ActiveRecord::Base
   has_many :studies, dependent: :destroy
-  has_many :samples  # TODO: remove after script
   validate :unique_name_or_acronym_and_birthday, on: :create
 
   def doctors
@@ -33,8 +32,7 @@ class Patient < ActiveRecord::Base
   end
 
   def projects
-    samples.map(&:project).uniq
-    # studies.map(&:project).uniq  # FIXME: uncomment after script
+    studies.map(&:project).uniq
   end
 
   def full_name

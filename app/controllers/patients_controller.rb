@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def index
-    @patients = Patient.preload(:samples).all.decorate.reverse
+    @patients = Patient.all.decorate.reverse
   end
 
   def show

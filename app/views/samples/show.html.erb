@@ -1,4 +1,41 @@
+<h2>
+  <%= fa_icon 'flask' %>
+  Details from Sample <%= @sample.tag || @sample.old_id %>
+</h2>
+
 <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @sample.tag %>
+</p>
+
+<p>
+  <strong>Old:</strong>
+  <%= @sample.old_id %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @sample.notes %>
+</p>
+
+<h2>
+  <%= fa_icon 'id-card-o' %>
+  Study <%= @sample.study.tag %>
+</h2>
+
+<p>
+  <strong>Project:</strong>
+  <span class="project-tag <%= @sample.project.tag %>">
+    <%= @sample.project.tag %>
+  </span>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @sample.patient.full_name %>
+</p>
 
 <p>
   <strong>Institution:</strong>
@@ -27,32 +64,9 @@
 
 <p>
   <strong>Request category:</strong>
-  <%= @sample.request_category %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @sample.notes %>
-</p>
-
-<p>
-  <strong>Project:</strong>
-  <%= @sample.project %>
-</p>
-
-<p>
-  <strong>Old:</strong>
-  <%= @sample.old_id %>
-</p>
-
-<p>
-  <strong>Patient:</strong>
-  <%= @sample.patient %>
-</p>
-
-<p>
-  <strong>Barcode:</strong>
-  <%= @sample.barcode %>
+  <span class="tag">
+    <%= @sample.request_category %>
+  </span>
 </p>
 
 <%= link_to 'Edit', edit_sample_path(@sample) %> |

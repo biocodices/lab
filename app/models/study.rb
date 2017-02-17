@@ -15,7 +15,11 @@ class Study < ActiveRecord::Base
   default_scope { order(admission_date: :desc, request_date: :desc, id: :desc) }
 
   def tag
-    "#{project.tag}-#{admission_date.try(:year) || '?'}-#{order_in_its_year}"
+    year = admission_date.try(:year)
+    year &&= year.to_s[-2..-1] # Use '15' instead of '2015'
+    year ||= '?'
+
+    "#{project.tag}-#{year}-#{order_in_its_year}"
   end
 
   def studies_of_same_project_and_year

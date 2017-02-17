@@ -3,8 +3,23 @@
   /* font-weight: bold; */
 }
 
-.enpv1,.enpv2 { color: dodgerBlue; }
-.exome { color: olive; }
-.pgsn,.pgsnm,.pgsa, .pgdk, .pgsam { color: orangeRed; }
-.cdp { color: forestGreen; }
-.ela { color: black; }
+.enpv1, .enp, .enpv2, .np {
+    color: dodgerBlue;
+}
+
+.exome {
+    color: olive;
+}
+
+.pgsn, .pgsnm, .pgsa, .pgdk, .pgsam {
+    color: orangeRed;
+}
+
+.cdp {
+    color: forestGreen;
+}
+
+.ela {
+    color: black;
+}
+

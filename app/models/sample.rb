@@ -6,6 +6,8 @@ class Sample < ActiveRecord::Base
   belongs_to :study
   validates :study, presence: true
 
+  validates :tag, uniqueness: { scope: :study }
+
   has_many :dna_extractions, dependent: :destroy
   has_many :libraries, through: :dna_extractions
   has_many :sequencings, through: :dna_extractions

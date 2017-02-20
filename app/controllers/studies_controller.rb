@@ -17,33 +17,59 @@ class StudiesController < ApplicationController
   end
 
   def create
+    # This creates a copy of the params that we can modify:
     parameters = study_params
-    samples = parameters.delete('samples')
+    sample_names = parameters.delete('samples')
+    patient_id = parameters.delete('patient_id')
 
+    # We first need to create the Patient, since there can't be a Study
+    # with no associated Patient:
+    patient = if patient_id.blank?
+                Patient.create(patient_params)
+              else
+                Patient.find(patient_id)
+              end
+
+    # We create the @study to store errors in it
     @study = Study.new(parameters)
 
-    # Try to create associated Samples
-    if samples
-      @study.errors.add(:samples, 'No samples associated with this study?')
-    else
-      samples = samples.split(',').map(&:strip)
-      samples.map { |tag| Sample.create(study: @study, tag: tag) }
-      # TODO: validate the samples were correctly created!
-    end
-
-    @study.patient = Patient.find_or_create_by(patient_params)
-
-    if !@study.patient.valid?
-      @study.errors.add(:patient,
-                        @study.patient.errors.messages.values.join(', '))
-    end
-
-    if @study.errors.count.zero? && @study.save
-      redirect_to @study, notice: 'Study was successfully created.'
-    else
+    # If the patient is not valid, we stop the Study creation immediately:
+    unless patient.valid?
+      @study.errors.add(:patient, patient.errors.messages.values.join(', '))
       set_form_options
       render :new
     end
+
+    # We can now assign the Patient to the Study and proceed:
+    @study.patient = patient
+
+    unless @study.save
+      set_form_options
+      render :new
+    end
+
+    # Next we have to create the Samples and associate them to this study
+    sample_names = sample_names.split(',').map(&:strip)
+    samples = samples.map { |tag| Sample.create(study: @study, tag: tag) }
+
+    unless samples.map(&:valid?).all?
+      #
+      #
+      #
+      # FIXME: This is a problem !
+      # We *already created* the @study, so we can't redirect to
+      # render :new .... we should redirect to :edit
+      # so think how we will create samples in Study#edit
+      #
+      #
+      #
+      error_messages = samples.map(&:errors).flatten.map(&:messages).flatten
+      @study.errors.add(:samples, error_messages.map(&:values).join(', '))
+      set_form_options
+      render :new
+    end
+
+    redirect_to @study, notice: 'Study was successfully created.'
   end
 
   def update

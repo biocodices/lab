@@ -1,6 +1,6 @@
 <h2>
   <%= fa_icon 'flask' %>
-  Details from Sample <%= @sample.tag || @sample.old_id %>
+  Sample <%= @sample.tag || @sample.old_id %>
 </h2>
 
 <p id="notice"><%= notice %></p>
@@ -20,10 +20,9 @@
   <%= @sample.notes %>
 </p>
 
-<h2>
-  <%= fa_icon 'id-card-o' %>
-  Study <%= @sample.study.tag %>
-</h2>
+<h3>
+  Belongs to Study <%= @sample.study.tag %>:
+</h3>
 
 <p>
   <strong>Project:</strong>

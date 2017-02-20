@@ -101,9 +101,7 @@ class StudiesController < ApplicationController
       by_project = year_studies.group_by(&:project)
 
       by_project.each do |project, project_studies|
-        project_studies = project_studies.sort_by(&:order_in_its_year)
-                                         .reverse
-                                         .map(&:decorate)
+        project_studies = project_studies.map(&:decorate)
 
         studies_by_year_and_project[year] ||= {}
         studies_by_year_and_project[year][project] = project_studies

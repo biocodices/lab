@@ -46,11 +46,11 @@
                                 <td><%= study.patient.full_name %></td>
                                 <td><%= study.doctor_full_name %></td>
                                 <td><%= study.institution %></td>
-                                <td title="<%= study.request_date %>">
-                                    <%= study.request_date_ago %>
+                                <td title="<%= study.request_date_ago %>">
+                                    <%= study.request_date %>
                                 </td>
-                                <td title="<%= study.admission_date %>">
-                                    <%= study.admission_date_ago %>
+                                <td title="<%= study.admission_date_ago %>">
+                                    <%= study.admission_date %>
                                 </td>
                                 <td class="tag">
                                     <%= study.request_category.downcase[0..2] %>

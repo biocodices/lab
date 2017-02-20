@@ -22,7 +22,7 @@ class StudyTest < ActiveSupport::TestCase
   test 'studies_of_same_project_and_year' do
     others = @study.studies_of_same_project_and_year
 
-    assert_equal others.count, 2
+    assert_equal 4, others.count
 
     assert others.map { |study| study.project_id == @study.project_id }.all?
 
@@ -34,8 +34,7 @@ class StudyTest < ActiveSupport::TestCase
   end
 
   test 'order_in_its_year' do
-    assert_equal @study.order_in_its_year, 1
-    assert_equal @studies.second.order_in_its_year, 2
-    assert_equal @studies[3].order_in_its_year, 1
+    assert_equal 4, @study.order_in_its_year
+    assert_equal 3, @studies.second.order_in_its_year
   end
 end

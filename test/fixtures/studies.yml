@@ -3,45 +3,38 @@
 one:
   project_id: 1
   patient_id: 1
-  tag: MyString
-  note: MyText
-  institution: MyString
-  doctor_full_name: MyString
-  doctor_email: MyString
-  request_date: 2017-02-13
+  # tag: MyString
+  note: should be second
+  # institution: MyString
+  # doctor_full_name: MyString
+  # doctor_email: MyString
+  request_date: 2017-02-12
   admission_date: 2017-02-12
   request_category: cat
 
 two:
   project_id: 1
   patient_id: 1
-  tag: MyString
-  note: MyText
-  institution: MyString
-  doctor_full_name: MyString
-  doctor_email: MyString
+  # tag: MyString
+  note: should be first
+  # institution: MyString
+  # doctor_full_name: MyString
+  # doctor_email: MyString
   request_date: 2017-02-13
   admission_date: 2017-02-13
-  request_category: cat
+  # request_category: cat
 
 three:
-  project_id: 2
-  patient_id: 2
-  request_date: 2017-02-11
-  admission_date: 2017-02-11
-  request_category: cat
-
-four:
-  project_id: 2
-  patient_id: 2
-  request_date: null
-  admission_date: null
-  request_category: cat
-
-fifth:
   project_id: 1
   patient_id: 2
-  request_date: null
-  admission_date: null
-  request_category: cat
+  note: should be third or fourth
+  request_date: 2017-02-11
+  admission_date: 2017-02-11
+
+four:
+  project_id: 1
+  patient_id: 2
+  note: should be third or fourth
+  request_date: 2017-02-11
+  admission_date: 2017-02-11
 

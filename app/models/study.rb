@@ -33,6 +33,7 @@ class Study < ActiveRecord::Base
   end
 
   def order_in_its_year
-    studies_of_same_project_and_year.map(&:id).index(id) + 1
+    ids = studies_of_same_project_and_year.map(&:id).reverse
+    ids.index(id) + 1
   end
 end

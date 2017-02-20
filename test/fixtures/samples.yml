@@ -2,28 +2,12 @@
 
 one:
   id: 1
-  institution: Clínica San Cristobal
-  doctor_full_name: Dr. Jaime
-  doctor_email: jaime@hotmail.com
-  request_date: 2016-06-26
-  admission_date: 2016-06-26
-  request_category: validacion
   # notes: MyText
-  project_id: 1
-  old_id: old_0001
-  patient_id: 1
-  barcode: ABC-1234
+  tag: ABC-1234
+  study_id: 1
 
 two:
   id: 2
-  institution: Clínica San Cristobal
-  doctor_full_name: Dr. Lázaro
-  doctor_email: lázaro@hotmail.com
-  request_date: 2016-06-26
-  admission_date: 2016-06-26
-  request_category: comercial
+  study_id: 2
   # notes: MyText
-  project_id: 1
-  old_id: old_0002
-  patient_id: 2
-  barcode: ABC-1233
+  tag: ABC-1233
